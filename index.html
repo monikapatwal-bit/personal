@@ -7,9 +7,10 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
 </head>
 <body>
+
   <!-- Navigation -->
   <nav class="nav" id="nav">
     <div class="nav-inner">
@@ -28,20 +29,50 @@
 
   <!-- Hero -->
   <section id="hero" class="hero">
-    <div class="container">
-      <p class="hero-eyebrow">Hi, I'm</p>
-      <h1 class="hero-name">Monika Patwal</h1>
-      <p class="hero-title"><!-- e.g. Software Engineer · Full Stack Developer --></p>
-      <p class="hero-bio">
-        I build thoughtful, performant software. Passionate about clean code,
-        great UX, and solving real problems.
-      </p>
-      <div class="hero-cta">
-        <a href="#projects" class="btn btn-primary">View My Work</a>
-        <a href="#contact" class="btn btn-outline">Get In Touch</a>
-      </div>
+    <!-- Star / particle canvas -->
+    <canvas id="starCanvas" class="star-canvas"></canvas>
+
+    <!-- Decorative sparkle elements -->
+    <span class="sp-cross" style="left:28%;top:51%">✦</span>
+    <span class="sp-cross sp-sm" style="left:30.5%;top:53.5%">+</span>
+    <span class="sp-dot" style="left:14%;top:29%"></span>
+    <span class="sp-dot" style="left:74%;top:21%"></span>
+    <span class="sp-dot sp-lg" style="left:42%;top:17%"></span>
+    <span class="sp-ring" style="left:79%;top:44%">○</span>
+    <span class="sp-dot" style="left:88%;top:65%"></span>
+    <span class="sp-cross sp-xs" style="left:87.5%;top:67.5%">·</span>
+    <span class="sp-dot" style="left:6%;top:58%"></span>
+    <span class="sp-dot sp-lg" style="left:60%;top:83%"></span>
+    <span class="sp-cross sp-xs" style="left:59.5%;top:82.5%">·</span>
+
+    <!-- Scattered interactive words -->
+    <div class="scatter-field" id="scatterField">
+      <span class="sw"          style="left:8%;top:62%">IDEAS</span>
+      <span class="sw sw-light" style="left:23%;top:57%">ARE</span>
+      <span class="sw sw-bold"  style="left:54%;top:62%">OUT</span>
+      <span class="sw"          style="left:65%;top:58%">THERE,</span>
+      <span class="sw"          style="left:11%;top:71%">WAITING</span>
+      <span class="sw sw-light" style="left:34%;top:68%">TO BE</span>
+      <span class="sw"          style="left:49%;top:74%">BUILT.</span>
+      <span class="sw sw-sm"    style="left:63%;top:69%">WHY</span>
+      <span class="sw sw-bold"  style="left:71%;top:76%">NOT</span>
+      <span class="sw sw-bold"  style="left:79%;top:71%">BY YOU?</span>
     </div>
-    <div class="hero-scroll-hint" aria-hidden="true">↓</div>
+
+    <!-- Center content -->
+    <div class="hero-content">
+      <p class="hero-welcome-text">WELCOME TO</p>
+      <h1 class="hero-main-title">Monika's World</h1>
+      <a href="#projects" class="hero-explore-btn">EXPLORE &nbsp;→</a>
+      <span class="hero-skip-text" role="button" tabindex="0" id="skipIntro">SKIP INTRO</span>
+    </div>
+
+    <!-- Bottom-left status bar -->
+    <div class="hero-statusbar">
+      <span id="liveClock">12:00:00 AM</span>
+      <span class="statusbar-sep">•</span>
+      <span>ALL SYSTEMS OPERATIONAL</span>
+    </div>
   </section>
 
   <!-- About -->
@@ -51,8 +82,6 @@
       <div class="about-grid">
         <div class="about-text">
           <p>
-            <!-- Add your personal bio here. Where are you based? What do you do?
-                 What are you passionate about? -->
             I'm a software engineer with a love for building elegant solutions
             to complex problems. When I'm not coding, you can find me exploring
             new technologies, contributing to open source, or enjoying the outdoors.
@@ -65,7 +94,6 @@
           </a>
         </div>
         <div class="about-image-wrap">
-          <!-- Replace src with your photo -->
           <div class="about-image-placeholder">
             <span>Your Photo</span>
           </div>
@@ -84,7 +112,6 @@
           <ul>
             <li>JavaScript / TypeScript</li>
             <li>Python</li>
-            <li><!-- Add more --></li>
           </ul>
         </div>
         <div class="skill-group">
@@ -92,7 +119,6 @@
           <ul>
             <li>React</li>
             <li>Node.js</li>
-            <li><!-- Add more --></li>
           </ul>
         </div>
         <div class="skill-group">
@@ -100,7 +126,6 @@
           <ul>
             <li>Git / GitHub</li>
             <li>Docker</li>
-            <li><!-- Add more --></li>
           </ul>
         </div>
         <div class="skill-group">
@@ -108,7 +133,6 @@
           <ul>
             <li>REST APIs</li>
             <li>SQL / NoSQL</li>
-            <li><!-- Add more --></li>
           </ul>
         </div>
       </div>
