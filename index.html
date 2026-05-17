@@ -4,370 +4,332 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Monika Patwal — Product Designer</title>
-  <meta name="description" content="Product designer specialising in Fintech, AI and SaaS. 3+ years. Bangalore." />
+  <meta name="description" content="Product designer specialising in Fintech, AI and SaaS. 4 years. Bangalore." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="/assets/index-Cf2Urhbw.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-DnY41OKP.css">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="/assets/index-BCo5YSnW.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-C8XYgQVi.css">
 </head>
 <body>
 
-  <div id="cursor" aria-hidden="true">
-    <div id="cursor-ring"></div>
-    <div id="cursor-dot"></div>
-  </div>
+<div class="cursor-dot"  id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="cursor-label" id="cursorLabel">VIEW</div>
+<div class="load-wipe"   id="loadWipe"></div>
 
-  <div id="page-wipe" aria-hidden="true"></div>
+<div class="shell">
 
-  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <!-- ════════ LEFT PANEL ════════ -->
+  <aside class="left-panel" id="leftPanel">
+    <div class="lp-top"><a class="lp-logo" href="#">MP</a></div>
 
-  <div class="layout">
+    <nav class="lp-nav" id="lpNav">
+      <a class="lp-nav-link active" href="#work"    data-section="work"><span class="nav-num">01</span><span class="nav-txt">Work</span></a>
+      <a class="lp-nav-link"        href="#about"   data-section="about"><span class="nav-num">02</span><span class="nav-txt">About</span></a>
+      <a class="lp-nav-link"        href="#contact" data-section="contact"><span class="nav-num">03</span><span class="nav-txt">Contact</span></a>
+    </nav>
 
-    <!-- ── LEFT PANEL ── -->
-    <aside class="left-panel" id="left-panel">
-      <div class="left-inner">
-
-        <div class="left-top">
-          <div class="left-name js-load-name">
-            <span class="name-first">Monika</span>
-            <span class="name-last">Patwal</span>
-          </div>
-          <div class="left-role js-load-sub">Product Designer · Bangalore</div>
-          <div class="left-status js-load-sub">
-            <span class="status-dot" aria-hidden="true"></span>
-            Open to work
-          </div>
-
-          <p class="left-tagline js-load-sub">
-            Design that ships,<br>scales, and <em>sticks.</em>
-          </p>
-          <p class="left-bio js-load-sub">
-            3+ years in fintech, AI &amp; SaaS. I run research,
-            write PRDs, build design systems, and ship products
-            for 600+ analysts.
-          </p>
-        </div>
-
-        <nav class="left-nav" aria-label="Main navigation">
-          <a href="#work"    class="left-nav-link js-nav-link">Work</a>
-          <a href="#about"   class="left-nav-link js-nav-link">About</a>
-          <a href="#contact" class="left-nav-link js-nav-link">Contact</a>
-        </nav>
-
-        <div class="left-bottom">
-          <a href="mailto:monikapatwal.work@gmail.com" class="left-social js-magnetic">Email</a>
-          <a href="https://www.linkedin.com/in/monikapatwal/" class="left-social js-magnetic" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://behance.net/monikapatwal" class="left-social js-magnetic" target="_blank" rel="noopener">Behance</a>
-          <a href="https://dribbble.com/Monika_Patwal" class="left-social js-magnetic" target="_blank" rel="noopener">Dribbble</a>
-          <a href="https://drive.google.com/file/d/YOUR_RESUME_ID/view" class="left-resume js-magnetic" target="_blank" rel="noopener">
-            Resume ↗
-          </a>
-
-        </div>
-
+    <div class="lp-bottom">
+      <div class="lp-identity">
+        <p class="lp-name">Monika Patwal</p>
+        <p class="lp-role">Product Designer &amp; PM · Bangalore</p>
+        <p class="lp-bio">4 years turning complex workflows into tools people actually want to use — across fintech, AI and enterprise SaaS.</p>
       </div>
-
-      <svg class="grain" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-        <filter id="noise">
-          <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
-          <feColorMatrix type="saturate" values="0"/>
-        </filter>
-        <rect width="100%" height="100%" filter="url(#noise)"/>
-      </svg>
-    </aside>
-
-    <!-- ── RIGHT PANEL ── -->
-    <main class="right-panel" id="right-panel">
-
-      <!-- Work header strip -->
-      <div class="work-header-strip">
-        <span class="work-header-label">Selected Work</span>
-        <span class="work-header-label">2021 – 2026</span>
+      <div class="lp-links">
+        <a href="mailto:monika.patwal@aerchain.io" class="lp-link">Email ↗</a>
+        <a href="https://linkedin.com/in/monikapatwal" target="_blank" class="lp-link">LinkedIn ↗</a>
+        <a href="#" class="lp-link">Resume ↗</a>
       </div>
-
-      <section class="section-work" id="work">
-        <div class="work-list" id="work-list">
-
-          <a class="work-row reveal" href="#" data-preview="aura">
-            <div class="work-row-left">
-              <span class="work-index">01</span>
-              <div>
-                <div class="work-company">Aerchain</div>
-                <div class="work-title">Auction Platform</div>
-              </div>
-            </div>
-            <div class="work-row-mid">
-              <span class="work-tag">0→1 Design</span>
-              <span class="work-tag">Procurement</span>
-              <span class="work-tag">Enterprise</span>
-            </div>
-            <div class="work-row-right">
-              <span class="work-metric">$90K</span>
-              <span class="work-year">2026</span>
-              <span class="work-arrow">↗</span>
-            </div>
-          </a>
-
-          <a class="work-row reveal" href="#" data-preview="vendor">
-            <div class="work-row-left">
-              <span class="work-index">02</span>
-              <div>
-                <div class="work-company">Aerchain</div>
-                <div class="work-title">Vendor Onboarding</div>
-              </div>
-            </div>
-            <div class="work-row-mid">
-              <span class="work-tag">User Research</span>
-              <span class="work-tag">B2B SaaS</span>
-              <span class="work-tag">Research→Ship</span>
-            </div>
-            <div class="work-row-right">
-              <span class="work-metric">Critical</span>
-              <span class="work-year">2026</span>
-              <span class="work-arrow">↗</span>
-            </div>
-          </a>
-
-          <a class="work-row reveal" href="#" data-preview="aura-akp">
-            <div class="work-row-left">
-              <span class="work-index">03</span>
-              <div>
-                <div class="work-company">Acuity Knowledge Partners</div>
-                <div class="work-title">Aura Redesign</div>
-              </div>
-            </div>
-            <div class="work-row-mid">
-              <span class="work-tag">Redesign</span>
-              <span class="work-tag">Fintech</span>
-              <span class="work-tag">AI Tool</span>
-            </div>
-            <div class="work-row-right">
-              <span class="work-metric">$2.3M</span>
-              <span class="work-year">2025</span>
-              <span class="work-arrow">↗</span>
-            </div>
-          </a>
-
-          <a class="work-row reveal" href="#" data-preview="researchhub">
-            <div class="work-row-left">
-              <span class="work-index">04</span>
-              <div>
-                <div class="work-company">Acuity Knowledge Partners</div>
-                <div class="work-title">ResearchHub</div>
-              </div>
-            </div>
-            <div class="work-row-mid">
-              <span class="work-tag">0→1 Build</span>
-              <span class="work-tag">AI Product</span>
-              <span class="work-tag">Solo Designer</span>
-            </div>
-            <div class="work-row-right">
-              <span class="work-metric">70%</span>
-              <span class="work-year">2024</span>
-              <span class="work-arrow">↗</span>
-            </div>
-          </a>
-
-          <a class="work-row reveal" href="#" data-preview="design-system">
-            <div class="work-row-left">
-              <span class="work-index">05</span>
-              <div>
-                <div class="work-company">Acuity Knowledge Partners</div>
-                <div class="work-title">AKP Design System</div>
-              </div>
-            </div>
-            <div class="work-row-mid">
-              <span class="work-tag">Design System</span>
-              <span class="work-tag">Accessibility</span>
-              <span class="work-tag">14+ Designers</span>
-            </div>
-            <div class="work-row-right">
-              <span class="work-metric">14+</span>
-              <span class="work-year">2023–now</span>
-              <span class="work-arrow">↗</span>
-            </div>
-          </a>
-
-          <a class="work-row reveal" href="https://www.behance.net/monikapatwal" target="_blank" rel="noopener" data-preview="vaulted">
-            <div class="work-row-left">
-              <span class="work-index">06</span>
-              <div>
-                <div class="work-company">Personal Project</div>
-                <div class="work-title">Vaulted</div>
-              </div>
-            </div>
-            <div class="work-row-mid">
-              <span class="work-tag">NFT Marketplace</span>
-              <span class="work-tag">UX Design</span>
-            </div>
-            <div class="work-row-right">
-              <span class="work-metric">—</span>
-              <span class="work-year">2022</span>
-              <span class="work-arrow">↗</span>
-            </div>
-          </a>
-
-        </div>
-
-        <div class="work-preview" id="work-preview" aria-hidden="true">
-          <img id="work-preview-img" src="" alt="" />
-        </div>
-      </section>
-
-      <!-- Marquee -->
-      <div class="marquee-wrap" aria-hidden="true">
-        <div class="marquee-track">
-          <span>$2.3M contract impact</span><span class="mdot">·</span>
-          <span>14+ designers</span><span class="mdot">·</span>
-          <span>3+ years</span><span class="mdot">·</span>
-          <span>Fintech</span><span class="mdot">·</span>
-          <span>AI Products</span><span class="mdot">·</span>
-          <span>B2B SaaS</span><span class="mdot">·</span>
-          <span>Acuity Knowledge Partners</span><span class="mdot">·</span>
-          <span>Aerchain</span><span class="mdot">·</span>
-          <span>Design Systems</span><span class="mdot">·</span>
-          <span>$2.3M contract impact</span><span class="mdot">·</span>
-          <span>14+ designers</span><span class="mdot">·</span>
-          <span>3+ years</span><span class="mdot">·</span>
-          <span>Fintech</span><span class="mdot">·</span>
-          <span>AI Products</span><span class="mdot">·</span>
-          <span>B2B SaaS</span><span class="mdot">·</span>
-          <span>Acuity Knowledge Partners</span><span class="mdot">·</span>
-          <span>Aerchain</span><span class="mdot">·</span>
-          <span>Design Systems</span><span class="mdot">·</span>
-        </div>
+      <div class="lp-footer">
+        <div class="lp-status"><span class="status-dot"></span>Open to work</div>
+        <div class="lp-clock" id="lpClock">00:00:00</div>
       </div>
-
-      <!-- About -->
-      <section class="section-about" id="about">
-
-        <div class="about-stats reveal">
-          <div class="stat">
-            <div class="stat-num" data-count="4">0</div>
-            <div class="stat-label">Years of<br>product design</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num" data-count="600">0</div>
-            <div class="stat-label">Analysts using<br>products I shipped</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num" data-count="14">0</div>
-            <div class="stat-label">Designers on<br>AKP design system</div>
-          </div>
-        </div>
-
-        <div class="about-body reveal">
-          <div class="section-label">About</div>
-          <p>Self-taught product designer with a <strong>PM mindset</strong>. I run research, write PRDs, build design systems, and ship. At Aerchain I owned auction, vendor onboarding, evaluation, and award modules. Before that, 2.5 years at Acuity Knowledge Partners designing fintech and AI tools for 600+ financial analysts. The Aura redesign helped close a $2.3M contract.</p>
-          <p>I specialise in clarity and systems thinking — turning dense data workflows into tools people actually want to use.</p>
-        </div>
-
-        <div class="about-exp reveal">
-          <div class="section-label">Experience</div>
-          <div class="exp-list">
-            <div class="exp-row">
-              <div class="exp-role">Product Designer</div>
-              <div class="exp-company">Aerchain</div>
-              <div class="exp-period">2024–Present</div>
-            </div>
-            <div class="exp-row">
-              <div class="exp-role">Product Designer</div>
-              <div class="exp-company">Acuity Knowledge Partners</div>
-              <div class="exp-period">May 2023–2024</div>
-            </div>
-            <div class="exp-row">
-              <div class="exp-role">UI/UX Designer</div>
-              <div class="exp-company">Pitchworx</div>
-              <div class="exp-period">Jul 2022–Mar 2023</div>
-            </div>
-            <div class="exp-row">
-              <div class="exp-role">Graphic Designer</div>
-              <div class="exp-company">Freelance</div>
-              <div class="exp-period">Aug 2021–Jul 2022</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="about-skills reveal">
-          <div class="section-label">Skills</div>
-          <div class="skills-tags">
-            <span class="skill-tag">Figma</span>
-            <span class="skill-tag">Design Systems</span>
-            <span class="skill-tag">UX Research</span>
-            <span class="skill-tag">Fintech</span>
-            <span class="skill-tag">AI Products</span>
-            <span class="skill-tag">Prototyping</span>
-            <span class="skill-tag">Accessibility</span>
-            <span class="skill-tag">PRD Writing</span>
-            <span class="skill-tag">B2B SaaS</span>
-          </div>
-        </div>
-
-      </section>
-
-      <!-- Contact -->
-      <section class="section-contact" id="contact">
-        <div class="contact-eyebrow reveal">Don't be shy</div>
-        <h2 class="contact-headline reveal">Let's make<br><em>something</em><br>together.</h2>
-        <div class="contact-links reveal">
-          <a href="mailto:monikapatwal.work@gmail.com" class="contact-link js-magnetic">Email ↗</a>
-          <a href="https://www.linkedin.com/in/monikapatwal/" class="contact-link js-magnetic" target="_blank" rel="noopener">LinkedIn ↗</a>
-          <a href="https://behance.net/monikapatwal" class="contact-link js-magnetic" target="_blank" rel="noopener">Behance ↗</a>
-          <a href="https://dribbble.com/Monika_Patwal" class="contact-link js-magnetic" target="_blank" rel="noopener">Dribbble ↗</a>
-        </div>
-        <div class="footer-bottom">
-          <span class="footer-copy">© 2026 Monika Patwal</span>
-          <span class="footer-copy">Bangalore, India</span>
-        </div>
-      </section>
-
-    </main>
-  </div>
-
-  <!-- ── FLOATING DOG GUIDE ── -->
-  <div class="dog-widget" id="dog-widget" role="complementary" aria-label="Portfolio guide Mochi">
-    <div class="dog-bubble-wrap" id="dog-bubble">
-      <span id="dog-text">…</span>
-      <div class="dog-bubble-tail"></div>
     </div>
-    <svg class="dog-svg" viewBox="0 0 9 11" xmlns="http://www.w3.org/2000/svg"
-         style="image-rendering:pixelated" width="54" height="66" aria-hidden="true">
-      <!-- ears -->
-      <rect x="1" y="0" width="1" height="1" fill="#c4a882"/>
-      <rect x="5" y="0" width="2" height="1" fill="#c4a882"/>
-      <!-- head row 1 -->
-      <rect x="1" y="1" width="6" height="1" fill="#c4a882"/>
-      <!-- head row 2 full -->
-      <rect x="0" y="2" width="8" height="1" fill="#c4a882"/>
-      <!-- face row 3: eyes -->
-      <rect x="0" y="3" width="2" height="1" fill="#c4a882"/>
-      <rect x="2" y="3" width="1" height="1" fill="#1a0e06"/>
-      <rect x="3" y="3" width="2" height="1" fill="#c4a882"/>
-      <rect x="5" y="3" width="1" height="1" fill="#1a0e06"/>
-      <rect x="6" y="3" width="2" height="1" fill="#c4a882"/>
-      <!-- face row 4 + nose -->
-      <rect x="0" y="4" width="8" height="1" fill="#c4a882"/>
-      <rect x="3" y="4" width="2" height="1" fill="#8b5040"/>
-      <!-- collar -->
-      <rect x="1" y="5" width="6" height="1" fill="#d4c5a9"/>
-      <!-- body -->
-      <rect x="1" y="6" width="7" height="1" fill="#a8845e"/>
-      <rect x="1" y="7" width="7" height="1" fill="#a8845e"/>
-      <!-- tail -->
-      <rect x="8" y="5" width="1" height="3" fill="#a8845e"/>
-      <!-- legs -->
-      <rect x="1" y="8" width="1" height="2" fill="#a8845e"/>
-      <rect x="3" y="8" width="1" height="2" fill="#a8845e"/>
-      <rect x="5" y="8" width="1" height="2" fill="#a8845e"/>
-      <rect x="7" y="8" width="1" height="2" fill="#a8845e"/>
-      <!-- paw highlights -->
-      <rect x="1" y="9" width="1" height="1" fill="#c4a882"/>
-      <rect x="3" y="9" width="1" height="1" fill="#c4a882"/>
-      <rect x="5" y="9" width="1" height="1" fill="#c4a882"/>
-      <rect x="7" y="9" width="1" height="1" fill="#c4a882"/>
-    </svg>
+  </aside>
+
+  <!-- ════════ RIGHT PANEL ════════ -->
+  <main class="right-panel" id="rightPanel">
+    <div class="rp-inner" id="rpInner">
+
+      <!-- WORK -->
+      <section class="rp-section" id="work">
+        <div class="section-eyebrow">
+          <span class="asterisk">✳</span>
+          <span class="section-label">Selected Work</span>
+          <span class="section-count">— 04 projects</span>
+        </div>
+        <div class="cards-list" id="cardsList">
+
+          <article class="card" data-project="0">
+            <div class="card-cover" style="--cover-bg:#E3EAF2;--cover-accent:#7BA7D4;">
+              <span class="cover-initial">AU</span>
+              <div class="cover-tags"><span class="ctag">Redesign</span><span class="ctag">Fintech</span><span class="ctag">AI Tool</span></div>
+              <span class="cover-num">01</span>
+            </div>
+            <div class="card-body">
+              <div class="card-company-row"><span class="card-company">Acuity Knowledge Partners</span><span class="card-year">2025</span></div>
+              <h2 class="card-title">AURA — Financial Data&nbsp;Extraction</h2>
+              <p class="card-outcome">Analyst time 40→12 min. Contract renewed at <strong>$2.3M.</strong></p>
+              <div class="card-meta-strip">
+                <div class="meta-col"><span class="meta-label">Role</span><span class="meta-val">Lead Product Designer</span></div>
+                <div class="meta-col"><span class="meta-label">Timeline</span><span class="meta-val">Jan–Nov 2025</span></div>
+                <div class="meta-col"><span class="meta-label">Team</span><span class="meta-val">15 Eng + 1 PM</span></div>
+              </div>
+            </div>
+            <div class="card-cta-row"><span class="card-cta-label">Read case study</span><span class="card-cta-arrow">↗</span></div>
+          </article>
+
+          <article class="card" data-project="1">
+            <div class="card-cover" style="--cover-bg:#F0E8D8;--cover-accent:#C4924A;">
+              <span class="cover-initial">AC</span>
+              <div class="cover-tags"><span class="ctag">0→1</span><span class="ctag">Procurement</span><span class="ctag">Enterprise</span></div>
+              <span class="cover-num">02</span>
+            </div>
+            <div class="card-body">
+              <div class="card-company-row"><span class="card-company">Aerchain</span><span class="card-year">2026</span></div>
+              <h2 class="card-title">Auction Platform — 4 Formats,&nbsp;One System</h2>
+              <p class="card-outcome">Meta onboarded. Diageo live. ARR contribution <strong>$90K.</strong></p>
+              <div class="card-meta-strip">
+                <div class="meta-col"><span class="meta-label">Role</span><span class="meta-val">Lead PD + PM</span></div>
+                <div class="meta-col"><span class="meta-label">Timeline</span><span class="meta-val">Nov 2025–Mar 2026</span></div>
+                <div class="meta-col"><span class="meta-label">Team</span><span class="meta-val">2 Engineers</span></div>
+              </div>
+            </div>
+            <div class="card-cta-row"><span class="card-cta-label">Read case study</span><span class="card-cta-arrow">↗</span></div>
+          </article>
+
+          <article class="card" data-project="2">
+            <div class="card-cover" style="--cover-bg:#DFF0E8;--cover-accent:#3A9E72;">
+              <span class="cover-initial">VO</span>
+              <div class="cover-tags"><span class="ctag">User Research</span><span class="ctag">B2B SaaS</span></div>
+              <span class="cover-num">03</span>
+            </div>
+            <div class="card-body">
+              <div class="card-company-row"><span class="card-company">Aerchain</span><span class="card-year">2026</span></div>
+              <h2 class="card-title">Vendor Onboarding — Research&nbsp;First</h2>
+              <p class="card-outcome">11 steps → 3. PAN auth + doc validation shipped. <strong>Rated 4.6/5.</strong></p>
+              <div class="card-meta-strip">
+                <div class="meta-col"><span class="meta-label">Role</span><span class="meta-val">Lead Product Designer</span></div>
+                <div class="meta-col"><span class="meta-label">Timeline</span><span class="meta-val">Jan–Apr 2026</span></div>
+                <div class="meta-col"><span class="meta-label">Team</span><span class="meta-val">Sole Designer</span></div>
+              </div>
+            </div>
+            <div class="card-cta-row"><span class="card-cta-label">Read case study</span><span class="card-cta-arrow">↗</span></div>
+          </article>
+
+          <article class="card" data-project="3">
+            <div class="card-cover" style="--cover-bg:#EDE8F5;--cover-accent:#8B77CC;">
+              <span class="cover-initial">RH</span>
+              <div class="cover-tags"><span class="ctag">0→1</span><span class="ctag">AI Product</span><span class="ctag">Solo</span></div>
+              <span class="cover-num">04</span>
+            </div>
+            <div class="card-body">
+              <div class="card-company-row"><span class="card-company">Acuity Knowledge Partners</span><span class="card-year">2024</span></div>
+              <h2 class="card-title">ResearchHub — AI Research&nbsp;Platform</h2>
+              <p class="card-outcome">Research tracking <strong>70% faster.</strong> +15% analyst retention at 6 months.</p>
+              <div class="card-meta-strip">
+                <div class="meta-col"><span class="meta-label">Role</span><span class="meta-val">Lead PD (Solo)</span></div>
+                <div class="meta-col"><span class="meta-label">Timeline</span><span class="meta-val">Feb–Dec 2024</span></div>
+                <div class="meta-col"><span class="meta-label">Team</span><span class="meta-val">4 Eng + 1 PM</span></div>
+              </div>
+            </div>
+            <div class="card-cta-row"><span class="card-cta-label">Read case study</span><span class="card-cta-arrow">↗</span></div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section class="rp-section contact-section" id="contact">
+        <div class="contact-eyebrow"><span class="asterisk">✳</span> Let's talk</div>
+        <h2 class="contact-headline">
+          <span class="mag-word">Let's</span><span class="mag-word">make</span>
+          <em class="mag-word italic-word">something</em><span class="mag-word">together.</span>
+        </h2>
+        <div class="contact-links">
+          <a href="mailto:monika.patwal@aerchain.io" class="contact-link">Email ↗</a>
+          <a href="https://linkedin.com/in/monikapatwal" target="_blank" class="contact-link">LinkedIn ↗</a>
+          <a href="#" class="contact-link">Resume ↗</a>
+        </div>
+        <footer class="site-footer">
+          <span>© 2026 Monika Patwal</span><span>Bangalore, India</span>
+        </footer>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<!-- CASE STUDY OVERLAY -->
+<div class="cs-overlay" id="csOverlay">
+  <div class="cs-shell">
+    <aside class="cs-toc" id="csToc">
+      <button class="cs-home-btn" id="csBack">← Home</button>
+      <p class="cs-toc-label">Table of Contents</p>
+      <nav class="cs-toc-nav" id="csTocNav"></nav>
+      <button class="cs-top-btn" id="csTop">↑ Back to top</button>
+    </aside>
+    <div class="cs-main" id="csMain">
+      <button class="cs-close" id="csClose">× Close</button>
+      <div class="cs-body" id="csBody"></div>
+    </div>
   </div>
+</div>
+
+<!-- ABOUT OVERLAY -->
+<div class="about-overlay" id="aboutOverlay">
+
+  <div class="ao-nav">
+    <button class="ao-back" id="aoBack">← Back</button>
+    <span class="ao-logo">MP</span>
+  </div>
+
+  <div class="ao-body" id="aoBody">
+
+    <!-- ① OPENER -->
+    <div class="ao-opener">
+      <div class="ao-opener-left">
+        <p class="ao-eyebrow"><span class="ao-asterisk">✳</span> Product Designer &amp; PM · Bangalore · 2026</p>
+        <h1 class="ao-headline">Design is where<br>I think <em>out loud.</em></h1>
+        <p class="ao-sub">4 years turning messy problems into tools people<br>actually want to use — across fintech, AI and enterprise SaaS.</p>
+      </div>
+      <div class="ao-opener-photo">
+        <div class="ao-photo-frame" data-slot="hero">
+          <span class="ao-photo-label">your photo</span>
+        </div>
+        <p class="ao-photo-caption">Monika Patwal, Bangalore</p>
+      </div>
+    </div>
+
+    <!-- ② RULED DIVIDER -->
+    <div class="ao-rule-row">
+      <span class="ao-rule-tag">2021 → present</span>
+      <div class="ao-rule-line"></div>
+      <span class="ao-rule-tag">open to work</span>
+    </div>
+
+    <!-- ③ BIO + SIDEBAR -->
+    <div class="ao-editorial">
+      <div class="ao-editorial-body">
+        <p>I came from a research background before I ever touched Figma. That means I'm uncomfortable shipping something I don't understand — and I ask uncomfortable questions early so the right things get built, not just built right.</p>
+        <p>Currently at Aerchain as Lead PD + PM, shipping procurement and auction tooling. Previously at Acuity Knowledge Partners redesigning financial analyst workflows used by 600+ people every day.</p>
+        <p>I believe the best design decisions look obvious in hindsight. The job is to get there before the engineers do.</p>
+      </div>
+      <div class="ao-editorial-aside">
+        <div class="ao-aside-block">
+          <span class="ao-aside-label">Currently reading</span>
+          <span class="ao-aside-val">The Design of Everyday Things</span>
+        </div>
+        <div class="ao-aside-block">
+          <span class="ao-aside-label">Listening to</span>
+          <span class="ao-aside-val">Lo-fi + monsoon playlists</span>
+        </div>
+        <div class="ao-aside-block">
+          <span class="ao-aside-label">Planning</span>
+          <span class="ao-aside-val">Solo trip to Japan 🌏</span>
+        </div>
+        <div class="ao-aside-block">
+          <span class="ao-aside-label">Fuel</span>
+          <span class="ao-aside-val">Strong chai, always 🍵</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ④ NUMBERS STRIP -->
+    <div class="ao-numbers">
+      <div class="ao-num-item">
+        <span class="ao-num">4+</span>
+        <span class="ao-num-lbl">years</span>
+      </div>
+      <div class="ao-num-div"></div>
+      <div class="ao-num-item">
+        <span class="ao-num ao-num--accent">600+</span>
+        <span class="ao-num-lbl">analysts impacted daily</span>
+      </div>
+      <div class="ao-num-div"></div>
+      <div class="ao-num-item">
+        <span class="ao-num">5</span>
+        <span class="ao-num-lbl">modules shipped 0→1</span>
+      </div>
+      <div class="ao-num-div"></div>
+      <div class="ao-num-item">
+        <span class="ao-num">$2.3M</span>
+        <span class="ao-num-lbl">contract renewed</span>
+      </div>
+    </div>
+
+    <!-- ⑤ PHOTO ROW -->
+    <div class="ao-photo-row">
+      <div class="ao-photo-cell ao-photo-cell--tall" data-slot="p1">
+        <span class="ao-photo-label">add photo</span>
+      </div>
+      <div class="ao-photo-cell ao-photo-cell--wide" data-slot="p2">
+        <span class="ao-photo-label">add photo</span>
+      </div>
+      <div class="ao-photo-cell" data-slot="p3">
+        <span class="ao-photo-label">add photo</span>
+      </div>
+    </div>
+
+    <!-- ⑥ MARQUEE -->
+    <div class="ao-marquee-band">
+      <div class="ao-marquee-track">
+        <span>Figma</span><span class="ao-mdot">✳</span>
+        <span>Design Systems</span><span class="ao-mdot">✳</span>
+        <span>Prototyping</span><span class="ao-mdot">✳</span>
+        <span>UX Writing</span><span class="ao-mdot">✳</span>
+        <span>Usability Testing</span><span class="ao-mdot">✳</span>
+        <span>Contextual Inquiry</span><span class="ao-mdot">✳</span>
+        <span>Journey Mapping</span><span class="ao-mdot">✳</span>
+        <span>PRDs</span><span class="ao-mdot">✳</span>
+        <span>Roadmaps</span><span class="ao-mdot">✳</span>
+        <span>Fintech</span><span class="ao-mdot">✳</span>
+        <span>AI Products</span><span class="ao-mdot">✳</span>
+        <span>B2B SaaS</span><span class="ao-mdot">✳</span>
+        <span>Figma</span><span class="ao-mdot">✳</span>
+        <span>Design Systems</span><span class="ao-mdot">✳</span>
+        <span>Prototyping</span><span class="ao-mdot">✳</span>
+        <span>UX Writing</span><span class="ao-mdot">✳</span>
+        <span>Usability Testing</span><span class="ao-mdot">✳</span>
+        <span>Contextual Inquiry</span><span class="ao-mdot">✳</span>
+        <span>Journey Mapping</span><span class="ao-mdot">✳</span>
+        <span>PRDs</span><span class="ao-mdot">✳</span>
+        <span>Roadmaps</span><span class="ao-mdot">✳</span>
+        <span>Fintech</span><span class="ao-mdot">✳</span>
+        <span>AI Products</span><span class="ao-mdot">✳</span>
+        <span>B2B SaaS</span><span class="ao-mdot">✳</span>
+      </div>
+    </div>
+
+    <!-- ⑦ BELIEFS — editorial pull quotes -->
+    <div class="ao-beliefs-section">
+      <div class="ao-belief-row ao-belief-row--left">
+        <span class="ao-belief-num">01</span>
+        <p class="ao-belief-quote">"The best interface is no interface — until it needs to be."</p>
+      </div>
+      <div class="ao-belief-row ao-belief-row--right">
+        <span class="ao-belief-num">02</span>
+        <p class="ao-belief-quote">"If users need a tutorial, we failed."</p>
+      </div>
+      <div class="ao-belief-row ao-belief-row--left">
+        <span class="ao-belief-num">03</span>
+        <p class="ao-belief-quote">"Research isn't a phase. It's the whole job."</p>
+      </div>
+    </div>
+
+    <!-- ⑧ CTA -->
+    <div class="ao-cta-block">
+      <p class="ao-cta-text">Want to build something together?</p>
+      <div class="ao-cta-links">
+        <a href="mailto:monika.patwal@aerchain.io" class="ao-cta-btn ao-cta-btn--fill">Say hello ↗</a>
+        <a href="https://linkedin.com/in/monikapatwal" target="_blank" class="ao-cta-btn">LinkedIn ↗</a>
+        <a href="#" class="ao-cta-btn">Resume ↗</a>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 </body>
 </html>
