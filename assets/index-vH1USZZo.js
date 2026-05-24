@@ -9,13 +9,7 @@
       <span class="cs-impact-lbl">${t.label}</span>
       <span class="cs-impact-sub">${t.sub}</span>
     </div>
-  `).join(``),i=e.sections.map((e,t)=>`
-    ${t>0?`<div class="cs-journey-line"></div>`:``}
-    <div class="cs-journey-step" data-idx="${t}">
-      <span class="cs-journey-dot"></span>
-      <span class="cs-journey-label">${e.label}</span>
-    </div>
-  `).join(``),a=e.sections.map((t,n)=>{let r=t.label.toLowerCase()===`outcome`,i=t.imgUrl?`<div class="cs-img-block cs-img-block--photo">
+  `).join(``),i=e.sections.map((t,n)=>{let r=t.label.toLowerCase()===`outcome`,i=t.imgUrl?`<div class="cs-img-block cs-img-block--photo">
            <img src="${t.imgUrl}" alt="${t.imgLabel||``}" loading="lazy" />
            ${t.imgLabel?`<p class="cs-img-caption">${t.imgLabel}</p>`:``}
          </div>`:t.imgLabel?`<div class="cs-img-block" style="--cover-bg:${e.coverBg}"><span class="cs-img-label">${t.imgLabel}</span></div>`:``;return r?`
@@ -65,12 +59,8 @@
       <p class="cs-overview-text">${e.intro}</p>
     </div>
 
-    <div class="cs-journey-bar">
-      ${i}
-    </div>
-
     <div class="cs-sections">
-      ${a}
+      ${i}
 
       <div class="cs-next">
         <p class="cs-next-label">Next project</p>
@@ -80,9 +70,9 @@
         </button>
       </div>
     </div>
-  `,Qs.querySelector(`.cs-next-btn`)?.addEventListener(`click`,e=>{let t=parseInt(e.currentTarget.dataset.project,10);xc(Gs[t]),Sc(Gs[t]),rc.scrollTop=0}),Qs.querySelectorAll(`.cs-journey-step`).forEach(e=>{e.addEventListener(`click`,()=>{let t=rc.querySelector(`#cs-sec-${e.dataset.idx}`);t&&rc.scrollTo({top:t.offsetTop-80,behavior:`smooth`})})})}function Sc(e){$s.innerHTML=e.sections.map((e,t)=>`
+  `,Qs.querySelector(`.cs-next-btn`)?.addEventListener(`click`,e=>{let t=parseInt(e.currentTarget.dataset.project,10);xc(Gs[t]),Sc(Gs[t]),rc.scrollTop=0})}function Sc(e){$s.innerHTML=e.sections.map((e,t)=>`
     <a class="cs-toc-link" href="#cs-sec-${t}" data-sec="${t}">
       <span class="cs-toc-num">${e.num}</span>
       <span class="cs-toc-text">${e.label}</span>
     </a>
-  `).join(``),$s.querySelectorAll(`.cs-toc-link`).forEach(e=>{e.addEventListener(`click`,t=>{t.preventDefault();let n=rc.querySelector(`#cs-sec-${e.dataset.sec}`);n&&rc.scrollTo({top:n.offsetTop-80,behavior:`smooth`})})}),$s.querySelector(`.cs-toc-link`)?.classList.add(`active`)}function Cc(){rc.addEventListener(`scroll`,()=>{let e=rc.scrollTop,t=rc.scrollHeight-rc.clientHeight,n=t>0?e/t*100:0;ic.style.width=n+`%`;let r=rc.querySelectorAll(`.cs-sec`),i=0;r.forEach((e,t)=>{e.getBoundingClientRect().top<200&&(i=t)}),$s.querySelectorAll(`.cs-toc-link`).forEach((e,t)=>{e.classList.toggle(`active`,t===i)}),rc.querySelectorAll(`.cs-journey-step`).forEach((e,t)=>{e.classList.toggle(`cs-journey-step--active`,t===i)}),r.forEach(e=>{e.classList.contains(`cs-sec--visible`)||e.getBoundingClientRect().top<window.innerHeight*.88&&(e.classList.add(`cs-sec--visible`),K.fromTo(e,{y:28,opacity:0},{y:0,opacity:1,duration:.65,ease:`power3.out`}))})},{passive:!0})}function wc(){rc.querySelectorAll(`.cs-sec`).forEach(e=>{e.getBoundingClientRect().top<window.innerHeight*.88&&(e.classList.add(`cs-sec--visible`),K.fromTo(e,{y:28,opacity:0},{y:0,opacity:1,duration:.65,ease:`power3.out`,delay:.1}))})}var Tc=!1;function Ec(e){let t=Gs[e];xc(t),Sc(t),Tc||=(Cc(),!0),rc.scrollTop=0,ic.style.width=`0%`,Zs.style.display=`flex`,Zs.style.pointerEvents=`all`,K.fromTo(Zs,{opacity:0},{opacity:1,duration:.3,ease:`power2.out`}),K.fromTo(Zs.querySelector(`.cs-shell`),{x:`100%`},{x:`0%`,duration:.6,ease:`expo.out`,onComplete:()=>{wc()}}),K.fromTo([Zs.querySelector(`.cs-toc`),Qs],{opacity:0,y:12},{opacity:1,y:0,duration:.5,stagger:.08,ease:`power2.out`,delay:.3}),document.body.style.overflow=`hidden`}function Dc(){K.to(Zs.querySelector(`.cs-shell`),{x:`100%`,duration:.5,ease:`expo.in`,onComplete:()=>{Zs.style.display=`none`,document.body.style.overflow=``}})}ec?.addEventListener(`click`,Dc),tc.addEventListener(`click`,Dc),nc.addEventListener(`click`,()=>rc.scrollTo({top:0,behavior:`smooth`})),document.addEventListener(`keydown`,e=>{e.key===`Escape`&&(Zs.style.display===`flex`&&Dc(),ac.classList.contains(`is-open`)&&kc())});function Oc(){ac.style.display=`flex`,ac.classList.add(`is-open`);let e=document.getElementById(`aoBody`);e.scrollTop=0,K.fromTo(ac,{y:`100%`},{y:`0%`,duration:.65,ease:`expo.out`,onComplete:()=>{let t=e.querySelectorAll(`.ao-opener, .ao-rule-row, .ao-editorial, .ao-numbers, .ao-photo-row, .ao-marquee-band, .ao-beliefs-section, .ao-cta-block`);K.fromTo(t,{y:32,opacity:0},{y:0,opacity:1,duration:.55,stagger:.08,ease:`power3.out`})}}),document.body.style.overflow=`hidden`}function kc(){K.to(ac,{y:`100%`,duration:.5,ease:`expo.in`,onComplete:()=>{ac.style.display=`none`,ac.classList.remove(`is-open`),document.body.style.overflow=``}})}oc.addEventListener(`click`,kc),document.querySelector(`.lp-logo`)?.addEventListener(`click`,e=>{e.preventDefault(),sc.scrollTo(0,{duration:1.2})}),history.pushState(null,``,window.location.href),window.addEventListener(`popstate`,()=>{history.pushState(null,``,window.location.href)});
+  `).join(``),$s.querySelectorAll(`.cs-toc-link`).forEach(e=>{e.addEventListener(`click`,t=>{t.preventDefault();let n=rc.querySelector(`#cs-sec-${e.dataset.sec}`);n&&rc.scrollTo({top:n.offsetTop-80,behavior:`smooth`})})}),$s.querySelector(`.cs-toc-link`)?.classList.add(`active`)}function Cc(){rc.addEventListener(`scroll`,()=>{let e=rc.scrollTop,t=rc.scrollHeight-rc.clientHeight,n=t>0?e/t*100:0;ic.style.width=n+`%`;let r=rc.querySelectorAll(`.cs-sec`),i=0;r.forEach((e,t)=>{e.getBoundingClientRect().top<200&&(i=t)}),$s.querySelectorAll(`.cs-toc-link`).forEach((e,t)=>{e.classList.toggle(`active`,t===i)}),r.forEach(e=>{e.classList.contains(`cs-sec--visible`)||e.getBoundingClientRect().top<window.innerHeight*.88&&(e.classList.add(`cs-sec--visible`),K.fromTo(e,{y:28,opacity:0},{y:0,opacity:1,duration:.65,ease:`power3.out`}))})},{passive:!0})}function wc(){rc.querySelectorAll(`.cs-sec`).forEach(e=>{e.getBoundingClientRect().top<window.innerHeight*.88&&(e.classList.add(`cs-sec--visible`),K.fromTo(e,{y:28,opacity:0},{y:0,opacity:1,duration:.65,ease:`power3.out`,delay:.1}))})}var Tc=!1;function Ec(e){let t=Gs[e];xc(t),Sc(t),Tc||=(Cc(),!0),rc.scrollTop=0,ic.style.width=`0%`,Zs.style.display=`flex`,Zs.style.pointerEvents=`all`,K.fromTo(Zs,{opacity:0},{opacity:1,duration:.3,ease:`power2.out`}),K.fromTo(Zs.querySelector(`.cs-shell`),{x:`100%`},{x:`0%`,duration:.6,ease:`expo.out`,onComplete:()=>{wc()}}),K.fromTo([Zs.querySelector(`.cs-toc`),Qs],{opacity:0,y:12},{opacity:1,y:0,duration:.5,stagger:.08,ease:`power2.out`,delay:.3}),document.body.style.overflow=`hidden`}function Dc(){K.to(Zs.querySelector(`.cs-shell`),{x:`100%`,duration:.5,ease:`expo.in`,onComplete:()=>{Zs.style.display=`none`,document.body.style.overflow=``}})}ec?.addEventListener(`click`,Dc),tc.addEventListener(`click`,Dc),nc.addEventListener(`click`,()=>rc.scrollTo({top:0,behavior:`smooth`})),document.addEventListener(`keydown`,e=>{e.key===`Escape`&&(Zs.style.display===`flex`&&Dc(),ac.classList.contains(`is-open`)&&kc())});function Oc(){ac.style.display=`flex`,ac.classList.add(`is-open`);let e=document.getElementById(`aoBody`);e.scrollTop=0,K.fromTo(ac,{y:`100%`},{y:`0%`,duration:.65,ease:`expo.out`,onComplete:()=>{let t=e.querySelectorAll(`.ao-opener, .ao-rule-row, .ao-editorial, .ao-numbers, .ao-photo-row, .ao-marquee-band, .ao-beliefs-section, .ao-cta-block`);K.fromTo(t,{y:32,opacity:0},{y:0,opacity:1,duration:.55,stagger:.08,ease:`power3.out`})}}),document.body.style.overflow=`hidden`}function kc(){K.to(ac,{y:`100%`,duration:.5,ease:`expo.in`,onComplete:()=>{ac.style.display=`none`,ac.classList.remove(`is-open`),document.body.style.overflow=``}})}oc.addEventListener(`click`,kc),document.querySelector(`.lp-logo`)?.addEventListener(`click`,e=>{e.preventDefault(),sc.scrollTo(0,{duration:1.2})}),history.pushState(null,``,window.location.href),window.addEventListener(`popstate`,()=>{history.pushState(null,``,window.location.href)});
