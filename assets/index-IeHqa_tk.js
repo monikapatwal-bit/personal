@@ -12,7 +12,13 @@
   `).join(``),i=e.sections.map((t,n)=>{let r=t.label.toLowerCase()===`outcome`,i=t.imgUrl?`<div class="cs-img-block cs-img-block--photo">
            <img src="${t.imgUrl}" alt="${t.imgLabel||``}" loading="lazy" />
            ${t.imgLabel?`<p class="cs-img-caption">${t.imgLabel}</p>`:``}
-         </div>`:t.imgLabel?`<div class="cs-img-block" style="--cover-bg:${e.coverBg}"><span class="cs-img-label">${t.imgLabel}</span></div>`:``;return r?`
+         </div>`:t.imgLabel?`<div class="cs-img-block" style="--cover-bg:${e.coverBg}">
+             <span class="cs-img-label">
+               <span class="cs-img-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span>
+               <span class="cs-img-tag">Image placeholder</span>
+               ${t.imgLabel}
+             </span>
+           </div>`:``;return r?`
         <div class="cs-sec cs-sec--outcome" id="cs-sec-${n}">
           <p class="cs-sec-label">${t.num} — ${t.label}</p>
           <h2 class="cs-sec-heading">${t.heading}</h2>
