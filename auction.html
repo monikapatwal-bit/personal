@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>One Auction, Five Formats — Monika Patwal</title>
+  <meta name="description" content="Redesigned Aerchain's auction module from a single English-reverse auction into one guided flow that runs five formats — with a status model buyers could follow and a bid model that stopped asking buyers for prices they were trying to discover." />
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Instrument+Serif:ital@0;1&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" crossorigin href="./assets/index-2FCE6Xp1.css">
+  <style>
+    /* Standalone-page overrides: this is a normal scrollable document, not the SPA overlay */
+    html,body{cursor:auto!important;overflow:visible!important;height:auto!important;background:var(--cream);}
+    .cs-page-shell{min-height:100vh;display:flex;align-items:flex-start;}
+    .cs-page-shell .cs-toc{position:sticky;top:0;align-self:flex-start;height:100vh;}
+    .cs-page-main{background:var(--cream);flex:1;min-width:0;}
+    .cs-page-main .cs-body{max-width:none;}
+    @media (max-width:900px){
+      .cs-page-shell{display:block;}
+      .cs-page-shell .cs-toc{position:static;height:auto;}
+    }
+  </style>
+</head>
+<body>
+  <div class="cs-page-shell">
+    <aside class="cs-toc">
+      <a class="cs-home-btn" href="./index.html#work">← Home</a>
+      <p class="cs-toc-label">Table of Contents</p>
+      <nav class="cs-toc-nav">
+      <a class="cs-toc-link active" href="#cs-sec-0">
+        <span class="cs-toc-num">01</span>
+        <span class="cs-toc-text">Context</span>
+      </a>
+      <a class="cs-toc-link" href="#cs-sec-1">
+        <span class="cs-toc-num">02</span>
+        <span class="cs-toc-text">The Problem</span>
+      </a>
+      <a class="cs-toc-link" href="#cs-sec-2">
+        <span class="cs-toc-num">03</span>
+        <span class="cs-toc-text">Research</span>
+      </a>
+      <a class="cs-toc-link" href="#cs-sec-3">
+        <span class="cs-toc-num">04</span>
+        <span class="cs-toc-text">Design</span>
+      </a>
+      <a class="cs-toc-link" href="#cs-sec-4">
+        <span class="cs-toc-num">05</span>
+        <span class="cs-toc-text">Before & After</span>
+      </a>
+      <a class="cs-toc-link" href="#cs-sec-5">
+        <span class="cs-toc-num">06</span>
+        <span class="cs-toc-text">Prototype</span>
+      </a>
+      <a class="cs-toc-link" href="#cs-sec-6">
+        <span class="cs-toc-num">07</span>
+        <span class="cs-toc-text">Outcome & Honesty</span>
+      </a>
+      <a class="cs-toc-link" href="#cs-sec-7">
+        <span class="cs-toc-num">08</span>
+        <span class="cs-toc-text">Reflection</span>
+      </a>
+      </nav>
+      <a class="cs-top-btn" href="#top">↑ Back to top</a>
+    </aside>
+    <div class="cs-page-main">
+      <div class="cs-body">
+    <div class="cs-hero-band" style="background:#FFF4D0" id="top">
+      <div class="cs-hero-text">
+        <p class="cs-company-label">Aerchain · 2026</p>
+        <h1 class="cs-title">One Auction, Five Formats</h1>
+        <div class="cs-tags"><span class="ctag">Redesign</span><span class="ctag">Procurement</span><span class="ctag">Auctions</span></div>
+      </div>
+      <span class="cs-hero-initial" style="color:#B8943A">AC</span>
+    </div>
+
+    <div class="cs-impact-strip">
+      
+    <div class="cs-impact-item">
+      <span class="cs-impact-num" style="color:#B8943A">1→5</span>
+      <span class="cs-impact-lbl">auction formats</span>
+      <span class="cs-impact-sub">English F/R, Dutch, Japanese clock</span>
+    </div>
+    <div class="cs-impact-item">
+      <span class="cs-impact-num" style="color:#B8943A">5</span>
+      <span class="cs-impact-lbl">step guided setup</span>
+      <span class="cs-impact-sub">Details · Items · Suppliers · Timing · Review</span>
+    </div>
+    <div class="cs-impact-item">
+      <span class="cs-impact-num" style="color:#B8943A">5</span>
+      <span class="cs-impact-lbl">lifecycle states</span>
+      <span class="cs-impact-sub">Draft → Pre-Live → Live → Post-Live → Cancelled</span>
+    </div>
+    <div class="cs-impact-item">
+      <span class="cs-impact-num" style="color:#B8943A">3</span>
+      <span class="cs-impact-lbl">core pains fixed</span>
+      <span class="cs-impact-sub">one format · forced price · status maze</span>
+    </div>
+    </div>
+
+    <div class="cs-meta-row">
+      <div class="cs-meta-pill"><span class="cs-meta-pill-lbl">Role</span><span class="cs-meta-pill-val">Product Designer + Research</span></div>
+      <div class="cs-meta-pill"><span class="cs-meta-pill-lbl">Timeline</span><span class="cs-meta-pill-val">2026</span></div>
+      <div class="cs-meta-pill"><span class="cs-meta-pill-lbl">Team</span><span class="cs-meta-pill-val">Engineering team (build) · Client anonymised</span></div>
+    </div>
+
+    <div class="cs-overview-block">
+      <p class="cs-overview-text">Redesigned Aerchain's auction module from a single English-reverse auction into one guided flow that runs five formats — with a status model buyers could follow and a bid model that stopped asking buyers for prices they were trying to discover.</p>
+    </div>
+
+    <div class="cs-sections">
+      
+      <div class="cs-sec" id="cs-sec-0">
+        <div class="cs-sec-header-row">
+          <p class="cs-sec-label">01 — Context</p>
+        </div>
+        <h2 class="cs-sec-heading">One format, on a platform that needed a family of them.</h2>
+        <div class="cs-sec-layout">
+          <div class="cs-sec-body"><p>Auctions let a buyer put line items in front of invited suppliers and let competition set the price. Aerchain's module supported exactly one mechanism — an <strong>English reverse auction</strong> (price starts high, suppliers bid it down). It was live with a real enterprise buyer running genuine sourcing events, across a buyer app and a separate supplier app.</p><p>My role was <strong>research and product design</strong>: I ran the audit and competitive research, defined the redesign, and prototyped it end to end. Implementation was owned by the engineering team — I don't claim the code as mine.</p></div>
+          
+            <aside class="cs-sec-aside">
+              <div class="cs-insight-card">
+                <span class="cs-insight-icon">❝</span>
+                <p class="cs-insight-text">My role was research and product design — I ran the audit and prototyped it end to end. Engineering owned the build; I don't claim the code.</p>
+              </div>
+            </aside>
+        </div>
+        
+        <div class="cs-img-block" style="--cover-bg:#FFF4D0">
+           <span class="cs-img-label">
+               <span class="cs-img-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span>
+               <span class="cs-img-tag">Image placeholder</span>
+               Aerchain auction — single-format starting point
+             </span>
+           </div>
+      </div>
+      <div class="cs-sec" id="cs-sec-1">
+        <div class="cs-sec-header-row">
+          <p class="cs-sec-label">02 — The Problem</p>
+        </div>
+        <h2 class="cs-sec-heading">Three things the product got wrong.</h2>
+        <div class="cs-sec-layout">
+          <div class="cs-sec-body"><p><strong>1 · Only one auction format worked.</strong> English reverse was the sole supported mechanism. Buyers who needed a Dutch clock, a Japanese last-standing round, or a forward auction couldn't run one.</p><p><strong>2 · Buyers were forced to enter the price the auction should discover.</strong> On the create form, Price and Amount were mandatory for the buyer — even though the whole point of an auction is for suppliers to submit price. Buyers were blocked on a field that wasn't theirs.</p><p><strong>3 · The status vocabulary was a maze.</strong> The same auction appeared as "Released", "Processed", "Pre-Bid Submitted", "converted", "live", "pending" — across a listing, a lifecycle rail, and a separate supplier-response tab set. No single, followable state.</p></div>
+          
+            <aside class="cs-sec-aside">
+              <div class="cs-insight-card">
+                <span class="cs-insight-icon">❝</span>
+                <p class="cs-insight-text">The whole point of an auction is for suppliers to submit price — yet the buyer's create form blocked on a Price field that wasn't theirs.</p>
+              </div>
+            </aside>
+        </div>
+        
+        <div class="cs-img-block" style="--cover-bg:#FFF4D0">
+           <span class="cs-img-label">
+               <span class="cs-img-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span>
+               <span class="cs-img-tag">Image placeholder</span>
+               Old create form — mandatory Price/Amount on the buyer
+             </span>
+           </div>
+      </div>
+      <div class="cs-sec" id="cs-sec-2">
+        <div class="cs-sec-header-row">
+          <p class="cs-sec-label">03 — Research</p>
+        </div>
+        <h2 class="cs-sec-heading">How mature platforms model a family of formats.</h2>
+        <div class="cs-sec-layout">
+          <div class="cs-sec-body"><p>Before redesigning, I studied how mature sourcing platforms model auctions — most closely SAP Ariba, the enterprise reference point. The pattern is consistent: buyers expect a <strong>family of formats</strong> across reverse and forward directions, each suited to a different situation.</p><ul><li><strong>English reverse</strong> — price starts high, suppliers bid down; full transparency (rank, lead bid, gap).</li><li><strong>Dutch</strong> — price rises at set intervals from a low start; first to accept wins. Fast, decisive.</li><li><strong>Japanese (clock)</strong> — price moves in fixed rounds; suppliers must actively accept to stay in; last standing wins.</li><li><strong>Forward</strong> — the same formats, inverted, for selling rather than buying.</li></ul><p><em>Sources: SAP Help — reverse auctions; SAP Learning — auction formats.</em></p><p><em>[Add your primary research: SAP Ariba deep-dive + Buyer Guide on auction types &amp; award formats.]</em></p></div>
+          
+            <aside class="cs-sec-aside">
+              <div class="cs-insight-card">
+                <span class="cs-insight-icon">❝</span>
+                <p class="cs-insight-text">SAP Ariba was the enterprise reference point: buyers expect a family of formats across reverse and forward directions.</p>
+              </div>
+            </aside>
+        </div>
+        
+        <div class="cs-img-block" style="--cover-bg:#FFF4D0">
+           <span class="cs-img-label">
+               <span class="cs-img-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span>
+               <span class="cs-img-tag">Image placeholder</span>
+               Format landscape — reverse & forward mechanisms
+             </span>
+           </div>
+      </div>
+      <div class="cs-sec" id="cs-sec-3">
+        <div class="cs-sec-header-row">
+          <p class="cs-sec-label">04 — Design</p>
+        </div>
+        <h2 class="cs-sec-heading">Three decisions that carried the redesign.</h2>
+        <div class="cs-sec-layout">
+          <div class="cs-sec-body"><p><strong>1 · One guided wizard for all five formats — not five separate flows.</strong> Auction type is a set of plain-language cards (English Forward / English Reverse / Dutch / Japanese Clock), each explaining what it does and when to use it, with English Reverse recommended by default. Format-specific rules appear only when relevant. <em>Rejected:</em> a picker branching into five bespoke flows — multiplies maintenance and forces buyers to relearn the tool per format. One wizard keeps a single mental model; the trade-off is heavier conditional logic.</p><p><strong>2 · Buyers set bounds; suppliers provide the price.</strong> Instead of a mandatory Price/Amount, buyers set a <strong>Ceiling</strong> and <strong>Floor</strong> — the guardrails the auction runs between — and additional charges are labelled "supplier will provide amounts." <em>Rejected:</em> keeping one price field and just making it optional — leaves the concept muddled. Ceiling/floor makes the buyer's real job (setting bounds) explicit.</p><p><strong>3 · One lifecycle vocabulary: Draft → Pre-Live → Live → Post-Live → Cancelled.</strong> The tangle of Released / Processed / Pre-Bid / converted collapses into one ordered lifecycle used consistently across listing, detail, and supplier views. <em>Rejected:</em> renaming statuses in place without unifying them — cosmetic, and the same auction would still read differently on different screens.</p></div>
+          
+            <aside class="cs-sec-aside">
+              <div class="cs-insight-card">
+                <span class="cs-insight-icon">❝</span>
+                <p class="cs-insight-text">Ceiling/floor makes the buyer's real job — setting bounds — explicit, instead of asking for a price the auction is meant to discover.</p>
+              </div>
+            </aside>
+        </div>
+        
+        <div class="cs-img-block" style="--cover-bg:#FFF4D0">
+           <span class="cs-img-label">
+               <span class="cs-img-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span>
+               <span class="cs-img-tag">Image placeholder</span>
+               Auction-type cards — plain-language format selection
+             </span>
+           </div>
+      </div>
+      <div class="cs-sec" id="cs-sec-4">
+        <div class="cs-sec-header-row">
+          <p class="cs-sec-label">05 — Before & After</p>
+        </div>
+        <h2 class="cs-sec-heading">One five-step wizard: Details → Items → Suppliers → Timing → Review.</h2>
+        <div class="cs-sec-layout">
+          <div class="cs-sec-body"><p>The redesigned create flow is a five-step wizard — <strong>Details → Items → Suppliers → Timing &amp; Rules → Review</strong> — with the format cards, ceiling/floor items, AI-ranked supplier recommendations, and a review-and-publish summary.</p></div>
+          
+            <aside class="cs-sec-aside">
+              <div class="cs-insight-card">
+                <span class="cs-insight-icon">❝</span>
+                <p class="cs-insight-text">Five steps replace a single overloaded form: Details → Items → Suppliers → Timing → Review.</p>
+              </div>
+            </aside>
+        </div>
+        
+        <div class="cs-img-block" style="--cover-bg:#FFF4D0">
+           <span class="cs-img-label">
+               <span class="cs-img-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span>
+               <span class="cs-img-tag">Image placeholder</span>
+               Old buyer-create, vendor-bid, listing → new type-select, items, suppliers, listing, review
+             </span>
+           </div>
+      </div>
+      <div class="cs-sec" id="cs-sec-5">
+        <div class="cs-sec-header-row">
+          <p class="cs-sec-label">06 — Prototype</p>
+        </div>
+        <h2 class="cs-sec-heading">From first Figma frames to a clickable Lovable prototype.</h2>
+        <div class="cs-sec-layout">
+          <div class="cs-sec-body"><p>I took the redesign from first Figma frames through to a clickable, high-fidelity prototype in Lovable covering every nuance — type selection, lot vs list, scheduling modes, supplier recommendations, and review — so the interaction model could be pressure-tested before engineering picked it up.</p></div>
+          
+            <aside class="cs-sec-aside">
+              <div class="cs-insight-card">
+                <span class="cs-insight-icon">❝</span>
+                <p class="cs-insight-text">The best design decisions look obvious in hindsight. The job is to get there before the engineers do.</p>
+              </div>
+            </aside>
+        </div>
+        
+        <div class="cs-img-block" style="--cover-bg:#FFF4D0">
+           <span class="cs-img-label">
+               <span class="cs-img-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span>
+               <span class="cs-img-tag">Image placeholder</span>
+               High-fidelity Lovable prototype — end-to-end flow
+             </span>
+           </div>
+      </div>
+      <div class="cs-sec" id="cs-sec-6">
+        <div class="cs-sec-header-row">
+          <p class="cs-sec-label">07 — Outcome & Honesty</p>
+        </div>
+        <h2 class="cs-sec-heading">A validated prototype — and honest about it.</h2>
+        <div class="cs-sec-layout">
+          <div class="cs-sec-body"><p>The redesign is a <strong>validated prototype, not yet shipped to production.</strong> So I'm not attaching usage numbers to it — the auctions running live today are the old experience I'm replacing, not a result of this work.</p><p>What I can stand behind is verifiable in the interface: formats went from one to five, the create flow is a single guided wizard, the price model no longer blocks buyers on a field that isn't theirs, and the status vocabulary is one ordered lifecycle instead of six overlapping labels.</p><p><strong>How I'd measure it once it ships:</strong></p><ul><li>Format mix — which of the five formats buyers actually choose.</li><li>Create-to-publish completion and time-to-setup, vs the old flow.</li><li>Supplier participation funnel — invited → viewed → bid (already surfaced per auction).</li><li>Realised savings vs ceiling, by format.</li></ul></div>
+          
+            <aside class="cs-sec-aside">
+              <div class="cs-insight-card">
+                <span class="cs-insight-icon">❝</span>
+                <p class="cs-insight-text">The auctions running live today are the old experience I'm replacing — so I'm not attaching usage numbers to a prototype.</p>
+              </div>
+            </aside>
+        </div>
+        
+        <div class="cs-img-block" style="--cover-bg:#FFF4D0">
+           <span class="cs-img-label">
+               <span class="cs-img-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span>
+               <span class="cs-img-tag">Image placeholder</span>
+               How I'd measure it once it ships
+             </span>
+           </div>
+      </div>
+      <div class="cs-sec" id="cs-sec-7">
+        <div class="cs-sec-header-row">
+          <p class="cs-sec-label">08 — Reflection</p>
+        </div>
+        <h2 class="cs-sec-heading">Pushing a prototype this far before handoff.</h2>
+        <div class="cs-sec-layout">
+          <div class="cs-sec-body"><p><em>[Your first-person take: what you'd change, where it got hard (five formats in one wizard = a lot of conditional logic), and what you learned pushing a prototype this far before handoff.]</em></p><p><em>Client anonymised. Every claim traces to the product, the code, or cited research — no invented metrics; the redesign is labelled a prototype, not a shipped result.</em></p></div>
+          
+        </div>
+        
+      </div>
+
+      <div class="cs-next">
+        <p class="cs-next-label">Back to work</p>
+        <a class="cs-next-btn" href="./index.html#work">
+          <span class="cs-next-title">All projects</span>
+          <span class="cs-next-arrow">→</span>
+        </a>
+      </div>
+    </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
