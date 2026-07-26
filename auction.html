@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>I Started as the Designer. I Shipped it as the PM. — Monika Patwal</title>
-  <meta name="description" content="How I owned research, design and the auction PRD — turning a manual Ariba/Excel process into a shipped, AI-native auction module for a large enterprise client." />
+  <meta name="description" content="A product-design case study: rethinking the enterprise auction from the buyer's problem outward — beating SAP Ariba and our own first version." />
   <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,14 +34,13 @@
     /* breakout width for wide blocks */
     .cs-fullwrap{max-width:none;margin-top:34px}
 
-    /* As-Is → To-Be table */
+    /* shared table shell */
     .cs-abhead{display:flex;align-items:center;gap:12px;margin-bottom:14px}
     .cs-abhead .lbl{margin:0}
     .cs-table-scroll{overflow-x:auto;border:1px solid #0f0f0d1f;border-radius:10px;background:#fffdf7}
     table.cs-ab{border-collapse:collapse;width:100%;min-width:660px;font-family:var(--body)}
     .cs-ab thead th{text-align:left;font-family:var(--syne);text-transform:uppercase;letter-spacing:.11em;
       font-size:.64rem;font-weight:700;color:#0f0f0d80;padding:15px 20px;background:#f2ece1;border-bottom:1px solid #0f0f0d1f}
-    .cs-ab thead th.tt{color:var(--pink)}
     .cs-ab td{padding:15px 20px;border-bottom:1px solid #0f0f0d14;vertical-align:top;font-size:.95rem;line-height:1.55}
     .cs-ab td.as{color:#0f0f0d99;width:45%}
     .cs-ab td.to{color:#0f0f0d;font-weight:450}
@@ -56,15 +55,25 @@
     .mk.no{color:#c0574a}
     .cs-matrix .mk{font-size:1.05rem}
 
-    /* spec: lifecycle flow + limits */
+    /* 3-way comparison table (SAP Ariba · our v1 · our redesign) */
+    table.cs-cmp{min-width:840px}
+    .cs-cmp th.dimh{width:130px}
+    .cs-cmp th.newh{color:#B8943A}
+    .cs-cmp td.dim{font-weight:600;color:#0f0f0d;width:130px}
+    .cs-cmp td.old{color:#0f0f0d8c;width:29%}
+    .cs-cmp td.newc{color:#0f0f0d;background:#fff7e4;font-weight:450;width:29%}
+    .cs-cmp td.newc strong{font-weight:650;color:#8a6a1f}
+    .cs-cmp thead th.newh{background:#fbeecb}
+    .cs-cmp tbody tr:hover td{background:#faf5ea}
+    .cs-cmp tbody tr:hover td.newc{background:#fdf0d0}
+
+    /* lifecycle flow chips */
     .cs-flow-label{font-family:var(--syne);text-transform:uppercase;letter-spacing:.12em;font-size:.62rem;
-      font-weight:700;color:#0f0f0d80;margin:22px 0 10px}
+      font-weight:700;color:#0f0f0d80;margin:0 0 12px}
     .cs-flow{display:flex;flex-wrap:wrap;gap:7px;align-items:center}
     .cs-flow .st{font-family:var(--body);font-size:.82rem;color:#0f0f0d;padding:6px 12px;border:1px solid #0f0f0d1f;border-radius:999px;background:#fffdf7}
     .cs-flow .ar{color:var(--pink);font-weight:600}
-    .cs-limits{display:flex;flex-wrap:wrap;gap:26px;margin-top:24px;padding-top:20px;border-top:1px solid #0f0f0d1a}
-    .cs-limits .li b{font-family:var(--serif);font-style:italic;font-size:1.7rem;color:#B8943A;display:block;line-height:1}
-    .cs-limits .li span{font-family:var(--syne);text-transform:uppercase;letter-spacing:.08em;font-size:.58rem;color:#0f0f0d80;margin-top:6px;display:block}
+    .cs-flow .old{color:#0f0f0d80;text-decoration:line-through;text-decoration-color:#0f0f0d40}
 
     /* measured funnel (dark, gold serif — echoes the impact strip) */
     .cs-measured{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#0f0f0d;border-radius:10px;overflow:hidden;margin-top:16px}
@@ -94,12 +103,11 @@
       <nav class="cs-toc-nav">
         <a class="cs-toc-link active" href="#cs-sec-0"><span class="cs-toc-num">01</span><span class="cs-toc-text">Context</span></a>
         <a class="cs-toc-link" href="#cs-sec-1"><span class="cs-toc-num">02</span><span class="cs-toc-text">The Problem</span></a>
-        <a class="cs-toc-link" href="#cs-sec-2"><span class="cs-toc-num">03</span><span class="cs-toc-text">Research</span></a>
-        <a class="cs-toc-link" href="#cs-sec-3"><span class="cs-toc-num">04</span><span class="cs-toc-text">As-Is → To-Be</span></a>
-        <a class="cs-toc-link" href="#cs-sec-4"><span class="cs-toc-num">05</span><span class="cs-toc-text">How We Built It</span></a>
-        <a class="cs-toc-link" href="#cs-sec-5"><span class="cs-toc-num">06</span><span class="cs-toc-text">AI</span></a>
-        <a class="cs-toc-link" href="#cs-sec-6"><span class="cs-toc-num">07</span><span class="cs-toc-text">Impact &amp; Targets</span></a>
-        <a class="cs-toc-link" href="#cs-sec-7"><span class="cs-toc-num">08</span><span class="cs-toc-text">Reflection</span></a>
+        <a class="cs-toc-link" href="#cs-sec-2"><span class="cs-toc-num">03</span><span class="cs-toc-text">The Insight</span></a>
+        <a class="cs-toc-link" href="#cs-sec-3"><span class="cs-toc-num">04</span><span class="cs-toc-text">Design Decisions</span></a>
+        <a class="cs-toc-link" href="#cs-sec-4"><span class="cs-toc-num">05</span><span class="cs-toc-text">Better Than Before</span></a>
+        <a class="cs-toc-link" href="#cs-sec-5"><span class="cs-toc-num">06</span><span class="cs-toc-text">Impact</span></a>
+        <a class="cs-toc-link" href="#cs-sec-6"><span class="cs-toc-num">07</span><span class="cs-toc-text">Reflection</span></a>
       </nav>
       <a class="cs-top-btn" href="#top">↑ Back to top</a>
     </aside>
@@ -119,7 +127,7 @@
         <div class="cs-impact-strip">
           <div class="cs-impact-item"><span class="cs-impact-num" style="color:#B8943A">269</span><span class="cs-impact-lbl">Auctions created</span><span class="cs-impact-sub">measured · first ~8 weeks</span></div>
           <div class="cs-impact-item"><span class="cs-impact-num" style="color:#B8943A">~79%</span><span class="cs-impact-lbl">Started auctions closed</span><span class="cs-impact-sub">92 of 116 started</span></div>
-          <div class="cs-impact-item"><span class="cs-impact-num" style="color:#B8943A">2→15</span><span class="cs-impact-lbl">Distinct buyers</span><span class="cs-impact-sub">adoption ramp</span></div>
+          <div class="cs-impact-item"><span class="cs-impact-num" style="color:#B8943A">2→15</span><span class="cs-impact-lbl">Distinct buyers</span><span class="cs-impact-sub">adopted, unprompted</span></div>
           <div class="cs-impact-item"><span class="cs-impact-num" style="color:#B8943A">~9×</span><span class="cs-impact-lbl">MoM growth</span><span class="cs-impact-sub">26 → 243 created</span></div>
         </div>
         <p class="cs-strip-cap">Measured in PostHog · single tenant · Jun–Jul 2026 (July partial) · not annualised.</p>
@@ -131,68 +139,68 @@
         </div>
 
         <div class="cs-overview-block">
-          <p class="cs-overview-text">How I stepped into the PM seat mid-project — owning research, design, and the auction PRD — and helped turn a manual Ariba/Excel process into a shipped, AI-native auction module for a large enterprise client, now live with measured adoption.</p>
+          <p class="cs-overview-text">An auction exists to <em>discover</em> a price. Yet the two tools our buyers had — SAP Ariba and our own first version — both forced the buyer to type that price in, then made them fight the interface to run the event. I redesigned the auction from that contradiction outward: buyers set the bounds, suppliers set the price, and the whole event finally lived in one place.</p>
         </div>
 
         <div class="cs-sections">
 
-          <!-- 01 -->
+          <!-- 01 Context -->
           <div class="cs-sec" id="cs-sec-0">
             <div class="cs-sec-header-row"><p class="cs-sec-label">01 — Context</p></div>
-            <h2 class="cs-sec-heading">A named client, a fragmented stack, and auctions as Phase 1.</h2>
+            <h2 class="cs-sec-heading">Auctions were the wedge — and we had two things to beat.</h2>
             <div class="cs-sec-layout">
               <div class="cs-sec-body">
-                <p>Aerchain is an AI-native enterprise procurement platform. <strong>A large enterprise client</strong> partnered with Aerchain to digitise and standardise sourcing — replacing a stack fragmented across SAP ECC, SAP Ariba, email, and Excel calculators.</p>
-                <p>Auctions were a Phase-1 priority: <strong>reverse auctions</strong> to procure inputs (ENA, bottles, caps) and <strong>forward auctions</strong> for scrap sales (glass, PET, assets), with outcomes pushed back into SAP. I owned research, design, and the auction PRD; engineering built it.</p>
+                <p>Aerchain is an AI-native enterprise procurement platform. For a large enterprise client, auctions were the wedge into competitive sourcing — reverse auctions to buy inputs, forward auctions to sell scrap.</p>
+                <p>But I wasn't designing in a vacuum. The redesign had to win on experience against <strong>SAP Ariba</strong> — the incumbent the client was moving off — and improve on <strong>our own first version</strong> of the auction module. I owned the research, the design, and the auction PRD; engineering built it.</p>
               </div>
-              <aside class="cs-sec-aside"><div class="cs-insight-card"><span class="cs-insight-icon">❝</span><p class="cs-insight-text">Role: Product Designer + PM. I authored the auction PRD — research and design through to the spec engineering built from.</p></div></aside>
+              <aside class="cs-sec-aside"><div class="cs-insight-card"><span class="cs-insight-icon">❝</span><p class="cs-insight-text">Two benchmarks, one bar: beat the tool buyers were leaving, and beat the one we shipped first.</p></div></aside>
             </div>
-            <div class="cs-img-block" style="--cover-bg:#FFF4D0"><span class="cs-img-label"><span class="cs-img-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span><span class="cs-img-tag">Image placeholder</span>Enterprise client × Aerchain — auction program, Phase 1</span></div>
           </div>
 
-          <!-- 02 -->
+          <!-- 02 The Problem -->
           <div class="cs-sec" id="cs-sec-1">
             <div class="cs-sec-header-row"><p class="cs-sec-label">02 — The Problem</p></div>
-            <h2 class="cs-sec-heading">Manual, clunky, and prone to disruption.</h2>
+            <h2 class="cs-sec-heading">Both tools fought the buyer — in the same place.</h2>
             <div class="cs-sec-layout">
               <div class="cs-sec-body">
-                <p><strong>Reverse auctions</strong> in Ariba were, in the client's own words, "manual, clunky, and prone to disruptions":</p>
-                <ul>
-                  <li>Supplier addition was manual and one-by-one; inactive vendors (&gt;3 months) had to be reactivated by hand; Excel mass-upload rarely worked.</li>
-                  <li>Vendor login and access failures disrupted live events — alternate IDs created mid-auction, delaying participation 5–15 minutes per vendor.</li>
-                  <li>Rank-only visibility; buyers monitored live bids and clarified with suppliers over calls and WhatsApp.</li>
-                  <li>Evaluation and reporting were Excel-dependent; savings analysis done manually.</li>
-                  <li>No automated SAP sync — duplicated effort, and award data could differ across Ariba, SAP, and email.</li>
-                </ul>
-                <p><strong>Forward auctions (scrap)</strong> had no competitive price discovery at all — scrap rates were set over email and manual SAP VK11 condition updates.</p>
-                <p><strong>Governance</strong> was thin: offline negotiations (calls, WhatsApp, email) went uncaptured, retendering was rarely documented with justification, and approvals lived in email rather than the system.</p>
+                <p><strong>SAP Ariba</strong> was powerful but hostile. Buyers followed a live event through rank-only numbers on a dashboard that lagged around ten seconds, then clarified bids with suppliers over calls and WhatsApp. Suppliers were served so poorly that buyers routinely bid <em>on their behalf</em> — Ariba's own "Surrogate Bidder" workaround.</p>
+                <p><strong>Our first version</strong> had the opposite failure: it was rigid. One format (English reverse), no lot structure, and a status vocabulary that showed the same auction as six different words across the app.</p>
+                <p>But both shared one flaw that gave the redesign its spine: on the create screen, <strong>each forced the buyer to enter a price</strong> — the exact number an auction exists to discover.</p>
               </div>
-              <aside class="cs-sec-aside"><div class="cs-insight-card"><span class="cs-insight-icon">❝</span><p class="cs-insight-text">Every disruption traced back to a missing capability, not user error — supplier access, live visibility, SAP sync, and an audit trail that didn't exist.</p></div></aside>
+              <aside class="cs-sec-aside"><div class="cs-insight-card"><span class="cs-insight-icon">❝</span><p class="cs-insight-text">The most confusing field in both tools was the price field — in a product whose entire job is to find the price.</p></div></aside>
             </div>
-            <div class="cs-img-block" style="--cover-bg:#FFF4D0"><span class="cs-img-label"><span class="cs-img-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span><span class="cs-img-tag">Image placeholder</span>As-is Ariba / Excel flow — documented pains (client BRD)</span></div>
+            <div class="cs-img-block" style="--cover-bg:#FFF4D0"><span class="cs-img-label"><span class="cs-img-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span><span class="cs-img-tag">Image placeholder</span>Where each tool fought the buyer — Ariba live screen &amp; our v1 create form</span></div>
           </div>
 
-          <!-- 03 -->
+          <!-- 03 The Insight -->
           <div class="cs-sec" id="cs-sec-2">
-            <div class="cs-sec-header-row"><p class="cs-sec-label">03 — Research</p></div>
-            <h2 class="cs-sec-heading">An as-is process map, a screen-by-screen audit, and the category's own rules.</h2>
+            <div class="cs-sec-header-row"><p class="cs-sec-label">03 — The Insight</p></div>
+            <h2 class="cs-sec-heading">An auction discovers the price. So stop asking the buyer for it.</h2>
             <div class="cs-sec-layout">
               <div class="cs-sec-body">
-                <p>The redesign sits on three research threads. First, the client's <strong>as-is process map</strong> — actors, systems, the eight-step Ariba flow, pain points, and audit gaps.</p>
-                <p>Second, a <strong>screen-by-screen audit of Ariba's live buyer and supplier flows</strong> (auction creation, pre-bid, live event) that surfaced concrete requirements:</p>
-                <ul>
-                  <li><strong>Bulk line-item editing</strong> — multi-select items and edit together (e.g. increment / decrement price in bulk) instead of one at a time.</li>
-                  <li><strong>Vendor-wise price control</strong> — set ceiling / floor per vendor, not only per item.</li>
-                  <li><strong>Richer lot configurations</strong> — item-level and basket-level lots, basket-without-item-breakdown, staggered (phased) lots, and configurable review period / lot-wise duration.</li>
-                  <li><strong>Bid management &amp; notifications</strong> — a reviewed delete-bid path and email notification / resend controls.</li>
-                </ul>
-                <p>Third, a <strong>category scan</strong> of SAP Ariba, Keelvar, Coupa, GEP, Jaggaer, and Zycus. Two patterns stood out: mature platforms model a family of auction types × award formats where <em>not every combination is valid</em>; and they use buyer-friendly language — Ariba and Keelvar label the "English" auction as <strong>Open / Live</strong> and treat Sealed-Bid as a separate event type, because buyers recognise "live competition" faster than academic terms. That directly shaped the plain-language naming in the redesign.</p>
+                <p>The reframe was small, and it changed everything. A buyer shouldn't submit the price — they're accountable for the <strong>bounds</strong>. So buyers now set a <strong>ceiling</strong> (the most they'll pay) and a <strong>floor</strong>; suppliers provide the price by bidding between them.</p>
+                <p>One decision removed the most confusing input in both Ariba and our v1, and made the buyer's real job — defining the guardrails — explicit instead of implied.</p>
               </div>
-              <aside class="cs-sec-aside"><div class="cs-insight-card"><span class="cs-insight-icon">❝</span><p class="cs-insight-text">The "Surrogate Bidder" workaround said it all — when buyers bid for suppliers, the supplier experience is the real problem.</p></div></aside>
+              <aside class="cs-sec-aside"><div class="cs-insight-card"><span class="cs-insight-icon">❝</span><p class="cs-insight-text">Design isn't always adding the right field. Sometimes it's deleting the wrong one.</p></div></aside>
+            </div>
+          </div>
+
+          <!-- 04 Design Decisions -->
+          <div class="cs-sec" id="cs-sec-3">
+            <div class="cs-sec-header-row"><p class="cs-sec-label">04 — Design Decisions</p></div>
+            <h2 class="cs-sec-heading">Four opinionated calls.</h2>
+            <div class="cs-sec-layout">
+              <div class="cs-sec-body">
+                <p><strong>1 · One guided flow for a family of formats — not five flows, not a config maze.</strong> Buyers pick from plain-language format cards (English Reverse / Forward, Dutch, Japanese), each explaining when to use it. <em>Rejected:</em> Ariba's raw configuration screen, and the alternative of five bespoke flows — both make buyers relearn the tool every time.</p>
+                <p><strong>2 · Make broken setups impossible.</strong> Not every auction type works with every award format — a Dutch "first-to-accept" auction can't run item-level Cherry awards. I mapped the whole space into a compatibility matrix, and the product simply won't let a buyer build a structurally broken auction.</p>
+                <p><strong>3 · Buyers set bounds; suppliers set price.</strong> The ceiling / floor model, made concrete in the create flow and the live event. Extra charges are labelled "supplier will provide," so the buyer is never asked for a number that isn't theirs.</p>
+                <p><strong>4 · Bring the whole event in-platform.</strong> Real-time rank and bid history, plus 1:1 and broadcast negotiation inside the tool — so buyers stop clarifying over WhatsApp (Ariba) and stop flying blind (our v1). Auto-extend ends the "bid landed at the buzzer" disputes by design.</p>
+              </div>
+              <aside class="cs-sec-aside"><div class="cs-insight-card"><span class="cs-insight-icon">❝</span><p class="cs-insight-text">The best guardrail isn't a warning message — it's a product that can't be set up wrong.</p></div></aside>
             </div>
             <div class="cs-fullwrap">
               <div class="cs-abhead"><span class="lbl lbl--planned">Compatibility matrix · auction type × award format</span></div>
-              <p class="cs-sec-body" style="margin:0 0 14px">The category research crystallised into a <strong>compatibility matrix</strong> — which auction type × award format combinations are sound, which need care, and which are structurally misaligned. It became the guardrail that stops invalid configurations from ever reaching a buyer.</p>
+              <p class="cs-sec-body" style="margin:0 0 14px">Which combinations are sound, which need care, and which are structurally misaligned — encoded so the create flow blocks the broken ones before a buyer can build them.</p>
               <div class="cs-table-scroll">
                 <table class="cs-ab cs-matrix">
                   <thead><tr><th>Auction type</th><th class="ctr">List</th><th class="ctr">Lot</th><th class="ctr">Cherry</th><th>Why</th></tr></thead>
@@ -207,91 +215,47 @@
                 </table>
               </div>
               <p class="cs-strip-cap"><span class="mk ok">✓</span> common &amp; logical &nbsp;·&nbsp; <span class="mk warn">⚠</span> possible with careful design &nbsp;·&nbsp; <span class="mk no">✗</span> structurally misaligned</p>
-              <p class="cs-source" style="margin-top:1.4em">Primary research: SAP Ariba screen audit (buyer + supplier auction flows) and the internal Buyer Guide — Auction Types &amp; Award Formats. Category references: SAP Ariba Guided Sourcing, Keelvar, Coupa, GEP, Jaggaer, Zycus.</p>
+
+              <div style="margin-top:2.4em">
+                <div class="cs-flow-label">And one status model everyone could follow — replacing our v1's six labels</div>
+                <div class="cs-flow"><span class="st">Draft</span><span class="ar">→</span><span class="st">Pre-Live</span><span class="ar">→</span><span class="st">Live</span><span class="ar">→</span><span class="st">Post-Live</span><span class="ar">→</span><span class="st">Cancelled</span></div>
+              </div>
             </div>
+            <div class="cs-img-block" style="--cover-bg:#FFF4D0"><span class="cs-img-label"><span class="cs-img-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span><span class="cs-img-tag">Image placeholder</span>Guided create flow — plain-language format cards, ceiling / floor items</span></div>
           </div>
 
-          <!-- 04 As-Is → To-Be (full-width table) -->
-          <div class="cs-sec" id="cs-sec-3">
-            <div class="cs-sec-header-row"><p class="cs-sec-label">04 — As-Is → To-Be</p></div>
-            <h2 class="cs-sec-heading">The core before-and-after: documented pain, shipped solution.</h2>
+          <!-- 05 Better Than Before -->
+          <div class="cs-sec" id="cs-sec-4">
+            <div class="cs-sec-header-row"><p class="cs-sec-label">05 — Better Than Before</p></div>
+            <h2 class="cs-sec-heading">What we did better — measured against both.</h2>
             <div class="cs-sec-body">
-              <p>Each row pairs a <strong>documented pain</strong> from the client BRD with the <strong>shipped solution</strong> in the redesigned module — verifiable in the product, not a measured delta.</p>
+              <p>The redesign had to win on <strong>experience</strong>, not feature count. Here's how it compares with the tool buyers were leaving and the one we shipped first.</p>
             </div>
             <div class="cs-fullwrap">
-              <div class="cs-abhead"><span class="lbl lbl--planned">BRD pain → PRD solution</span></div>
               <div class="cs-table-scroll">
-                <table class="cs-ab">
-                  <thead><tr><th>As-Is — Ariba / Excel</th><th class="tt">Shipped solution</th></tr></thead>
+                <table class="cs-ab cs-cmp">
+                  <thead><tr><th class="dimh">Dimension</th><th>SAP Ariba</th><th>Our v1</th><th class="newh">Our redesign</th></tr></thead>
                   <tbody>
-                    <tr><td class="as">Manual, one-by-one supplier add + manual reactivation</td><td class="to"><strong>AI vendor recommendation</strong> (by history) + bulk invite; unified invite flow</td></tr>
-                    <tr><td class="as">Vendor login failures, alternate IDs, 5–15 min delays</td><td class="to">Redesigned access + <strong>Training / Dry-Run sandbox auctions</strong> (practice, excluded from SAP)</td></tr>
-                    <tr><td class="as">Rank-only visibility; clarifications over call / WhatsApp</td><td class="to">Configurable rank / top-N visibility + in-platform <strong>1:1 &amp; broadcast negotiation</strong>, all logged to audit</td></tr>
-                    <tr><td class="as">Ariba dashboard lag (~10 sec); timing disputes</td><td class="to"><strong>Sub-second WebSocket</strong> live dashboard, dynamic timer, live bid-history chart</td></tr>
-                    <tr><td class="as">Late bids ignored (fixed end time); auctions rerun</td><td class="to"><strong>Auto-extend</strong> (anti-sniping) — e.g. +3 min if a bid lands in the final 2 min</td></tr>
-                    <tr><td class="as">Wrong bids caught only post-event; suppliers disqualified</td><td class="to"><strong>Real-time bid validation</strong>; invalid bids (increment / ceiling / floor) rejected instantly</td></tr>
-                    <tr><td class="as">Evaluation in Excel; manual side-by-side; scoring offline</td><td class="to"><strong>Auto-evaluation dashboard</strong>, L1–L4 ranking, configurable landed-cost formula, one-click Excel / PDF</td></tr>
-                    <tr><td class="as">No SAP integration; manual re-entry</td><td class="to"><strong>Integration layer</strong> pushes approved outcomes to SAP (Agreements / LOIs / PIRs; VK11 for forward) with doc numbers returned</td></tr>
-                    <tr><td class="as">Scrap sales: no competitive discovery; manual VK11</td><td class="to"><strong>Forward auction</strong> (highest bid) → SAP VK11 price-condition update with validity</td></tr>
-                    <tr><td class="as">Offline negotiations / approvals uncaptured; award data drifts</td><td class="to"><strong>End-to-end audit trail</strong> (creation, bids, overrides, approvals, SAP push), downloadable, ≥3-year retention</td></tr>
-                    <tr><td class="as">Retendering undocumented</td><td class="to"><strong>Justification workflows</strong>; allocation override allowed with remarks</td></tr>
-                    <tr><td class="as">No reusable templates; repetitive setup</td><td class="to"><strong>Auction templates</strong> + AI-assisted template completion</td></tr>
+                    <tr><td class="dim">Who enters the price</td><td class="old">Buyer, forced</td><td class="old">Buyer, forced</td><td class="newc">Buyer sets <strong>ceiling + floor</strong>; supplier bids the price</td></tr>
+                    <tr><td class="dim">Formats</td><td class="old">Many, but a configuration maze — easy to misconfigure</td><td class="old">One: English reverse</td><td class="newc">A <strong>family</strong>, via one guided flow; invalid combos <strong>blocked by design</strong></td></tr>
+                    <tr><td class="dim">Live visibility</td><td class="old">Rank-only, ~10s lag; clarify over call / WhatsApp</td><td class="old">Buyer flies blind</td><td class="newc"><strong>Real-time</strong> rank &amp; bid history + in-platform 1:1 / broadcast negotiation</td></tr>
+                    <tr><td class="dim">Supplier access</td><td class="old">So poor buyers bid for suppliers ("Surrogate Bidder")</td><td class="old">Manual, one-by-one adds</td><td class="newc">Suppliers bid for themselves; <strong>AI-recommended</strong> + bulk invite</td></tr>
+                    <tr><td class="dim">Status model</td><td class="old">Event-type sprawl</td><td class="old">Six overlapping labels</td><td class="newc"><strong>One</strong> followable lifecycle</td></tr>
+                    <tr><td class="dim">Setup</td><td class="old">Configuration screen; steep learning curve</td><td class="old">Rigid single template</td><td class="newc"><strong>Five-step guided</strong> flow, plain language</td></tr>
+                    <tr><td class="dim">Timing disputes</td><td class="old">Fixed end time; "buzzer" bids spark reruns</td><td class="old">Fixed end time</td><td class="newc"><strong>Auto-extend</strong> ends sniping disputes by design</td></tr>
                   </tbody>
                 </table>
               </div>
-              <p class="cs-callout">Twelve documented pains, twelve shipped answers — the before/after is verifiable in the product, not a metric I'm claiming.</p>
+              <p class="cs-callout">Not more features than Ariba — fewer places to get lost. Every row is a documented behaviour of each tool, not a benchmarked measurement.</p>
             </div>
           </div>
 
-          <!-- 05 How we built it -->
-          <div class="cs-sec" id="cs-sec-4">
-            <div class="cs-sec-header-row"><p class="cs-sec-label">05 — How We Built It</p></div>
-            <h2 class="cs-sec-heading">Formats, structures, statuses, and the guardrails around them.</h2>
-            <div class="cs-sec-layout">
-              <div class="cs-sec-body">
-                <p><strong>Formats × structures.</strong> English (Forward / Reverse), Dutch, and Japanese — each running in a <strong>List</strong> or <strong>Package</strong> structure. Bidding rules and ceiling / floor apply to English; Dutch auto-decreases to the first acceptor; Japanese decreases in rounds where suppliers must accept or exit.</p>
-                <p><strong>Create wizard.</strong> Five steps — Details → Items → Suppliers → Timing &amp; Rules → Review — with buyer settings (sealed bid / anonymous suppliers), team roles (Owner / Collaborator / Moderator), and T&amp;C gating (Gate View / Gate Entry).</p>
-                <p><strong>Key capabilities.</strong> A decrement / increment rule engine locked at publish; auto-extend; ceiling / floor bid coverage; sealed pre-bids with mass Excel upload; live pause / resume + extend (reason logged); "Save Without SAP Push" hold-for-review; n-level approval before SAP; and analytics — Bid Progression, a tamper-evident Audit Trail, and a Message &amp; Clarification Log.</p>
-              </div>
-              <aside class="cs-sec-aside"><div class="cs-insight-card"><span class="cs-insight-icon">❝</span><p class="cs-insight-text">The rule engine locks decrement / increment logic at publish — the auction can't drift mid-event.</p></div></aside>
-            </div>
-            <div class="cs-fullwrap">
-              <div class="cs-flow-label">Buyer status lifecycle</div>
-              <div class="cs-flow"><span class="st">Draft</span><span class="ar">→</span><span class="st">Pending Approval</span><span class="ar">→</span><span class="st">Invited</span><span class="ar">→</span><span class="st">Live</span><span class="ar">→</span><span class="st">Completed</span><span class="ar">→</span><span class="st">Cancelled</span></div>
-              <div class="cs-flow-label">Supplier status (per auction)</div>
-              <div class="cs-flow"><span class="st">Invited</span><span class="ar">→</span><span class="st">Declined / Pending Submission</span><span class="ar">→</span><span class="st">Submitted</span><span class="ar">→</span><span class="st">Live</span><span class="ar">→</span><span class="st">Completed / Cancelled</span></div>
-              <div class="cs-limits">
-                <div class="li"><b>1,000</b><span>items / auction</span></div>
-                <div class="li"><b>100</b><span>lots</span></div>
-                <div class="li"><b>50</b><span>items / lot</span></div>
-                <div class="li"><b>40</b><span>suppliers / auction</span></div>
-              </div>
-            </div>
-            <div class="cs-img-block" style="--cover-bg:#FFF4D0"><span class="cs-img-label"><span class="cs-img-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span><span class="cs-img-tag">Image placeholder</span>Five-step create wizard — Details → Items → Suppliers → Timing &amp; Rules → Review</span></div>
-          </div>
-
-          <!-- 06 AI -->
+          <!-- 06 Impact -->
           <div class="cs-sec" id="cs-sec-5">
-            <div class="cs-sec-header-row"><p class="cs-sec-label">06 — AI</p></div>
-            <h2 class="cs-sec-heading">AI where the data supports it — and where it doesn't, yet.</h2>
-            <div class="cs-sec-layout">
-              <div class="cs-sec-body">
-                <p><span class="lbl lbl--measured">Current release</span></p>
-                <p>AI-assisted RFx / auction template completion (subject &amp; description); a <strong>Vendor Recommendation Engine</strong> that surfaces vendors from historical participation — signals include location, vendor type, prior engagement, and a confidence score; and AI-driven bid-evaluation support (assisted scoring and insights).</p>
-                <p style="margin-top:1.6em"><span class="lbl lbl--planned">Roadmap · Jan–Mar 2026 · not shipped</span></p>
-                <p>AI Category Intelligence (Transgraph market benchmarking) and an AI-enabled Negotiation module (simulating multi-round vendor discussions and recommending counter-offers).</p>
-                <p>Today, historical data powers <strong>vendor recommendation only — not price</strong>. That boundary is deliberate.</p>
-              </div>
-              <aside class="cs-sec-aside"><div class="cs-insight-card"><span class="cs-insight-icon">❝</span><p class="cs-insight-text">Historical data powers vendor recommendation, not price — an honest limit, not a hidden one.</p></div></aside>
-            </div>
-          </div>
-
-          <!-- 07 Impact & Targets -->
-          <div class="cs-sec" id="cs-sec-6">
-            <div class="cs-sec-header-row"><p class="cs-sec-label">07 — Impact &amp; Targets</p></div>
-            <h2 class="cs-sec-heading">Measured adoption — and the targets it will be judged on.</h2>
+            <div class="cs-sec-header-row"><p class="cs-sec-label">06 — Impact</p></div>
+            <h2 class="cs-sec-heading">Buyers chose it.</h2>
             <div class="cs-sec-body">
-              <p><span class="lbl lbl--measured">Measured · PostHog</span> &nbsp;First ~8 weeks (Jun–Jul 2026, July partial). The shipped module's real adoption:</p>
+              <p><span class="lbl lbl--measured">Measured · PostHog</span> &nbsp;In the first ~8 weeks (Jun–Jul 2026, July partial), adoption climbed on its own — the clearest signal a redesign landed:</p>
             </div>
             <div class="cs-fullwrap" style="margin-top:16px">
               <div class="cs-measured">
@@ -300,33 +264,32 @@
                 <div class="mi"><div class="mn">92</div><div class="ml">Closed · ~79%</div></div>
                 <div class="mi"><div class="mn">9</div><div class="ml">Cancelled</div></div>
               </div>
-              <p class="cs-strip-cap">Distinct buyers 2 → 15 · MoM created 26 → 243 (~9×) · single tenant, server-side, July partial — not annualised.</p>
+              <p class="cs-strip-cap">Distinct buyers 2 → 15 · monthly auctions 26 → 243 (~9×) · single tenant, server-side, July partial — not annualised.</p>
 
               <div class="cs-sec-body" style="margin-top:2.4em">
-                <p><span class="lbl lbl--target">Targets · not yet achieved</span> &nbsp;Defined in the client BRD (baselines TBD, to be measured post go-live). These are the yardsticks the redesign will be judged on:</p>
+                <p><span class="lbl lbl--target">Targets · not yet achieved</span> &nbsp;The yardsticks the redesign will be judged on as it rolls out (baselines TBD, measured post go-live):</p>
               </div>
               <div class="cs-targets">
                 <ul>
-                  <li><span class="tk">→</span><span><b>RFx → Award cycle time</b> −XX% within 60 days of go-live</span></li>
-                  <li><span class="tk">→</span><span><b>Supplier participation</b> (Invited → Active) target XX%</span></li>
-                  <li><span class="tk">→</span><span><b>SAP sync SLA</b> ≥98% first-pass, ≤24h fix turnaround</span></li>
-                  <li><span class="tk">→</span><span><b>Governance</b> 100% audit-pack compliance</span></li>
-                  <li><span class="tk">→</span><span><b>Live-auction stability</b> ≤1 minor incident / event, 0 critical</span></li>
-                  <li><span class="tk">→</span><span><b>Optimizer traceability</b> 100%</span></li>
+                  <li><span class="tk">→</span><span><b>Create-to-publish time</b> — faster setup vs the old flow</span></li>
+                  <li><span class="tk">→</span><span><b>Supplier participation</b> (Invited → Active) — how many actually bid</span></li>
+                  <li><span class="tk">→</span><span><b>Format mix</b> — which of the formats buyers actually reach for</span></li>
+                  <li><span class="tk">→</span><span><b>Realised savings vs ceiling</b>, by format</span></li>
+                  <li><span class="tk">→</span><span><b>Reruns per event</b> — trending to zero as auto-extend removes disputes</span></li>
                 </ul>
               </div>
-              <p class="cs-callout">Measured is what shipped and PostHog can see. Targets are the BRD's yardsticks — labelled as targets until actuals exist. <em>[Open slot: Google Analytics prior-design before/after.]</em></p>
+              <p class="cs-callout">Measured is what shipped and PostHog can see. Targets are the yardsticks — labelled as targets until actuals exist.</p>
             </div>
           </div>
 
-          <!-- 08 Reflection -->
-          <div class="cs-sec" id="cs-sec-7">
-            <div class="cs-sec-header-row"><p class="cs-sec-label">08 — Reflection</p></div>
+          <!-- 07 Reflection -->
+          <div class="cs-sec" id="cs-sec-6">
+            <div class="cs-sec-header-row"><p class="cs-sec-label">07 — Reflection</p></div>
             <h2 class="cs-sec-heading">What stepping up taught me.</h2>
             <div class="cs-sec-layout">
               <div class="cs-sec-body">
                 <p>The biggest thing I learned is that <strong>domain depth is the prerequisite for influence</strong>. I could write the PRD, run the KTs, and make the architecture calls because I understood the problem space — not because I had a PM title. The title came later. The credibility came first.</p>
-                <p>Being the designer and the PM at once was a real advantage on a small team and a tight timeline: no translation layer between what the user needed and what got specced. What I saw in client calls went into the PRD; what I wrote in the PRD, I designed the next day.</p>
+                <p>Being the designer and the PM at once was a real advantage on a small team and a tight timeline: no translation layer between what the user needed and what got specced. What I saw in research went into the PRD; what I wrote in the PRD, I designed the next day.</p>
                 <p>The hardest part wasn't the workload — it was making decisions with incomplete information and not second-guessing them in public. That's the PM skill nobody talks about.</p>
               </div>
               <aside class="cs-sec-aside"><div class="cs-insight-card"><span class="cs-insight-icon">❝</span><p class="cs-insight-text">Domain depth is the prerequisite for influence. The title came later; the credibility came first.</p></div></aside>
@@ -338,7 +301,7 @@
             <a class="cs-next-btn" href="./index.html#work"><span class="cs-next-title">All projects</span><span class="cs-next-arrow">→</span></a>
           </div>
 
-          <p class="cs-source" style="margin-top:2.4em;padding-bottom:3rem">Client context from the client's business requirements and the auction PRD. Measured figures are PostHog only (single tenant, July partial); BRD success metrics are targets, not results; AI Category Intelligence and Negotiation are roadmap (Jan–Mar 2026), not shipped. The measured analytics tenant is anonymised pending a naming decision.</p>
+          <p class="cs-source" style="margin-top:2.4em;padding-bottom:3rem">Client anonymised. Measured figures are PostHog only (single tenant, first ~8 weeks, July partial) — not annualised; the success metrics are targets, not results. Comparisons to SAP Ariba and our first version reflect each tool's documented behaviour, not benchmarked measurements.</p>
 
         </div>
       </div>
