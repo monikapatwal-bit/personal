@@ -175,12 +175,13 @@
               <p class="cs-eyebrow-sm">What an enterprise auction is</p>
               <p>An auction lets a buyer put line items in front of invited suppliers and let competition set the price — reverse auctions to buy raw materials, forward auctions to sell scrap. Done well, it replaces weeks of back-and-forth email negotiation with a single, governed, live event.</p>
               <p class="cs-eyebrow-sm">Why it needed a redesign</p>
-              <p>Our buyers had two tools, and both fought them: <strong>SAP Ariba</strong> — the incumbent they were moving off — and <strong>our own first version</strong>. Four problems ran through both.</p>
+              <p>Our buyers had two tools, and both fought them: <strong>SAP Ariba</strong> — the incumbent they were moving off — and <strong>our own first version</strong>. Five problems ran through both.</p>
             </div>
             <ul class="cs-issues">
-              <li><b>Buyers were forced to enter the price.</b><span>On the create screen, both tools made the buyer type in a price — the exact number an auction exists to discover.</span></li>
-              <li><b>Suppliers had no way in.</b><span>Ariba served suppliers so poorly that buyers bid on their behalf — the "Surrogate Bidder" workaround. Our v1 added suppliers one by one, by hand.</span></li>
+              <li><b>Suppliers couldn't help themselves.</b><span>Ariba served suppliers so poorly that buyers bid on their behalf — the "Surrogate Bidder" workaround; our v1 added suppliers one by one, by hand.</span></li>
+              <li><b>No intelligence, in an AI age.</b><span>Neither tool offered a single suggestion — buyers configured complex auctions and picked vendors blind, with nothing carried forward from one event to the next.</span></li>
               <li><b>The live event was unreadable.</b><span>Rank-only numbers on a dashboard that lagged around ten seconds, with clarifications happening over calls and WhatsApp.</span></li>
+              <li><b>Buyers couldn't steer the auction.</b><span>Once it went live, the buyer was a spectator — no way to pause, extend, nudge a supplier, or step in. A fixed end time, and WhatsApp on the side.</span></li>
               <li><b>One rigid format, six status words.</b><span>Our v1 ran a single English-reverse format, no lot structure, and showed the same auction as six different labels across the app.</span></li>
             </ul>
           </div>
@@ -192,20 +193,15 @@
 
             <div class="cs-fullwrap" style="margin-top:20px">
               <p class="cs-phase">Phase 1 — Uncovering Real Problems</p>
-              <p class="cs-phase-sub">Two research threads: the supplier's day, and how the category actually solves this.</p>
+              <p class="cs-phase-sub">Two research threads: a teardown of the incumbents, and how the category actually solves this.</p>
 
-              <p class="cs-eyebrow-sm">Supplier field research · 17 sessions</p>
-              <div class="cs-facts" style="margin-bottom:8px">
-                <div class="f"><b>9/17</b><span>away from their desk during live auctions</span></div>
-                <div class="f"><b>8/17</b><span>dictated bids to buyer staff to enter</span></div>
-                <div class="f"><b>4/17</b><span>missed auctions entirely</span></div>
-              </div>
+              <p class="cs-eyebrow-sm">Incumbent audit · SAP Ariba &amp; our v1 (web)</p>
               <ol class="cs-disc">
-                <li>Suppliers weren't at a desk — <strong>14 of 17 were Android-first</strong>, and none used a laptop on the move.</li>
-                <li>Because they couldn't bid themselves, <strong>8 of 17 dictated bids to buyer staff</strong> — the human root of the "Surrogate Bidder" pattern.</li>
-                <li>Four missed auctions outright; participation was leaking before the event even started.</li>
-                <li>The pre-bid form was the wall — <strong>28 fields, 30–40 minutes</strong> to complete.</li>
-                <li>Network drops mid-event lost bids, so suppliers hesitated to rely on the app at all.</li>
+                <li>The create form demanded a <strong>price up front</strong> — the very number the auction is meant to discover.</li>
+                <li><strong>No AI anywhere</strong> — no vendor suggestions, no template help, no evaluation support; every setup was manual.</li>
+                <li>Vendors were added <strong>one by one</strong>, with no recommendations and no bulk invite.</li>
+                <li>The live dashboard showed <strong>rank only</strong> and lagged around ten seconds, pushing clarifications onto calls and WhatsApp.</li>
+                <li>Any auction type could be paired with any award format — <strong>including structurally broken ones</strong>, with no guardrail.</li>
               </ol>
 
               <p class="cs-eyebrow-sm">Category analysis · 6 platforms</p>
@@ -220,11 +216,13 @@
 
             <div class="cs-fullwrap" style="margin-top:2.8em">
               <p class="cs-phase">Phase 2 — Strategic Design Decisions</p>
-              <p class="cs-phase-sub">Three moves, each aimed at one of the problems above.</p>
+              <p class="cs-phase-sub">Five moves, each aimed at one of the problems above.</p>
               <ul class="cs-issues" style="max-width:none;margin-top:20px">
                 <li><b>Buyers set bounds; suppliers set the price.</b><span>Ceiling and floor replace the forced price field; suppliers bid between them. The single change that removed the most confusing input in both tools.</span></li>
                 <li><b>One guided flow — and broken setups made impossible.</b><span>A five-step wizard with plain-language format cards, backed by a compatibility matrix that blocks structurally invalid auctions before a buyer can build them.</span></li>
                 <li><b>A live event you can read at a glance.</b><span>Real-time rank, bid-coverage bands, and item / supplier activity signals — plus in-platform negotiation, so the event never leaves the tool.</span></li>
+                <li><b>Put intelligence where setup was manual.</b><span>An AI vendor-recommendation engine suggests suppliers from past participation — location, vendor type, prior engagement, a confidence score — with AI-assisted template completion and bid-evaluation support. Price stays human, on purpose.</span></li>
+                <li><b>Hand the buyer the controls.</b><span>Live, the buyer can pause, extend or end the event, send reminders, qualify or disqualify suppliers, and negotiate 1:1 or broadcast — driving the auction, not just watching it.</span></li>
               </ul>
 
               <div class="cs-abhead" style="margin-top:2.4em"><span class="lbl lbl--planned">Compatibility matrix · auction type × award format</span></div>
@@ -252,18 +250,14 @@
             <ul class="cs-feat">
               <li><b>Guided 5-step wizard</b><span>Details → Items → Suppliers → Timing &amp; Rules → Review — about 13 clicks from blank to launch.</span></li>
               <li><b>Ceiling / floor bidding</b><span>Buyers set the bounds; suppliers provide the price by bidding between them.</span></li>
+              <li><b>AI vendor recommendations</b><span>Suggests suppliers from past participation — location, vendor type, prior engagement, confidence score — plus AI-assisted template completion.</span></li>
               <li><b>Bid-coverage bands</b><span>Every live bid is colour-banded Well Bid / Moderate / Low, so quality reads at a glance.</span></li>
               <li><b>Live activity signals</b><span>Item heat (Hot / Active / Cold) and supplier presence (Active / Idle / Inactive).</span></li>
-              <li><b>In-platform negotiation</b><span>1:1 and broadcast, audit-logged — no more clarifying over WhatsApp.</span></li>
-              <li><b>Auto-extend</b><span>A late bid nudges the clock, ending "bid at the buzzer" disputes by design.</span></li>
+              <li><b>Live control panel</b><span>Pause, extend or end the event, qualify or disqualify suppliers, and negotiate 1:1 or broadcast — the buyer drives it.</span></li>
             </ul>
             <div class="cs-fullwrap">
               <div class="cs-flow-label">And one status model everyone could follow — replacing our v1's six labels</div>
               <div class="cs-flow"><span class="st">Draft</span><span class="ar">→</span><span class="st">Pre-Live</span><span class="ar">→</span><span class="st">Live</span><span class="ar">→</span><span class="st">Post-Live</span><span class="ar">→</span><span class="st">Cancelled</span></div>
-            </div>
-            <div class="cs-note-box">
-              <div class="nh">Companion · supplier mobile app <span class="lbl lbl--planned">tested · build in progress</span></div>
-              <p>A parallel sprint redesigned the supplier's mobile bidding flow from that same field research. In usability testing, the pre-bid form dropped from <span class="stat">28 fields to 12</span> and completion from <span class="stat">30–40 minutes to 10–15</span>, with local bid-caching for network drops. Designs were approved by the anchor enterprise clients; engineering build is in progress — tested outcomes, not production metrics.</p>
             </div>
             <div class="cs-img-block" style="--cover-bg:#FFF4D0"><span class="cs-img-label"><span class="cs-img-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span><span class="cs-img-tag">Image placeholder</span>Guided create flow &amp; live comparative view — coverage bands, item heat</span></div>
           </div>
@@ -282,8 +276,10 @@
                   <tbody>
                     <tr><td class="dim">Who enters the price</td><td class="old">Buyer, forced</td><td class="old">Buyer, forced</td><td class="newc">Buyer sets <strong>ceiling + floor</strong>; supplier bids the price</td></tr>
                     <tr><td class="dim">Formats</td><td class="old">Many, but a configuration maze — easy to misconfigure</td><td class="old">One: English reverse</td><td class="newc"><strong>Five</strong>, via one guided flow; invalid combos <strong>blocked by design</strong></td></tr>
-                    <tr><td class="dim">Live visibility</td><td class="old">Rank-only, ~10s lag; clarify over call / WhatsApp</td><td class="old">Buyer flies blind</td><td class="newc"><strong>Real-time</strong> rank, coverage bands &amp; activity signals; in-platform negotiation</td></tr>
-                    <tr><td class="dim">Supplier access</td><td class="old">So poor buyers bid for suppliers ("Surrogate Bidder")</td><td class="old">Manual, one-by-one adds</td><td class="newc">Suppliers bid for themselves; <strong>AI-recommended</strong> + bulk invite; mobile flow in build</td></tr>
+                    <tr><td class="dim">Live visibility</td><td class="old">Rank-only, ~10s lag; clarify over call / WhatsApp</td><td class="old">Buyer flies blind</td><td class="newc"><strong>Real-time</strong> rank, coverage bands &amp; activity signals</td></tr>
+                    <tr><td class="dim">Buyer control (live)</td><td class="old">Spectator — fixed end, no intervention</td><td class="old">Spectator</td><td class="newc"><strong>Drives it</strong> — pause / extend / end, qualify, negotiate, all live</td></tr>
+                    <tr><td class="dim">Supplier access</td><td class="old">So poor buyers bid for suppliers ("Surrogate Bidder")</td><td class="old">Manual, one-by-one adds</td><td class="newc">Suppliers bid for themselves; <strong>AI-recommended</strong> vendors + bulk invite</td></tr>
+                    <tr><td class="dim">Assistance / AI</td><td class="old">None — fully manual</td><td class="old">None</td><td class="newc"><strong>AI</strong> vendor recommendations, template completion &amp; bid-evaluation support</td></tr>
                     <tr><td class="dim">Status model</td><td class="old">Event-type sprawl</td><td class="old">Six overlapping labels</td><td class="newc"><strong>One</strong> followable lifecycle</td></tr>
                     <tr><td class="dim">Setup</td><td class="old">Configuration screen; steep learning curve</td><td class="old">Rigid single template</td><td class="newc"><strong>Five-step guided</strong> flow, ~13 clicks to launch</td></tr>
                   </tbody>
@@ -307,7 +303,7 @@
                 <div class="mi"><div class="mn">92</div><div class="ml">Closed</div></div>
                 <div class="mi"><div class="mn">9</div><div class="ml">Cancelled</div></div>
               </div>
-              <p class="cs-strip-cap">Distinct buyers 2 → 15 · monthly auctions 26 → 243 (~9×) · closed-to-started ≈ 79% (aggregate ratio). Raw event counts on a single tenant; real human base ≈ 15 buyers + 2 suppliers (~8 automation actors excluded); test and production events not separable; supplier joins captured on mobile only, so participation is understated. Not annualised.</p>
+              <p class="cs-strip-cap">Distinct buyers 2 → 15 · monthly auctions 26 → 243 (~9×) · closed-to-started ≈ 79% (aggregate ratio). Raw event counts on a single tenant; real human base ≈ 15 buyers + 2 suppliers (~8 automation actors excluded); test and production events not separable. Not annualised.</p>
 
               <div class="cs-sec-body" style="margin-top:2.4em">
                 <p><span class="lbl lbl--target">Targets · not yet achieved</span> &nbsp;The yardsticks the redesign will be judged on as it rolls out (baselines TBD, measured post go-live):</p>
@@ -344,7 +340,7 @@
             <a class="cs-next-btn" href="./index.html#work"><span class="cs-next-title">All projects</span><span class="cs-next-arrow">→</span></a>
           </div>
 
-          <p class="cs-source" style="margin-top:2.4em;padding-bottom:3rem">Client anonymised. Measured figures are PostHog event counts from a single tenant, first ~8 weeks (July partial) — not annualised; ratios are aggregate, not per-auction cohorts. Shipped UI facts (formats, wizard, click counts, coverage bands) are verifiable in the product; the success metrics are targets, not results; the companion supplier-app figures are usability-test outcomes, not production. Comparisons to SAP Ariba and our first version reflect each tool's documented behaviour, not benchmarked measurements.</p>
+          <p class="cs-source" style="margin-top:2.4em;padding-bottom:3rem">Client anonymised. Measured figures are PostHog event counts from a single tenant, first ~8 weeks (July partial) — not annualised; ratios are aggregate, not per-auction cohorts. Shipped UI facts (formats, wizard, click counts, coverage bands) are verifiable in the product; the success metrics are targets, not results. Comparisons to SAP Ariba and our first version reflect each tool's documented behaviour, not benchmarked measurements.</p>
 
         </div>
       </div>
