@@ -48,6 +48,13 @@
     .cs-ab td.to strong{font-weight:600}
     .cs-ab tr:last-child td{border-bottom:none}
     .cs-ab tbody tr:hover td{background:#faf5ea}
+    /* compatibility matrix markers */
+    .cs-ab th.ctr,.cs-ab td.ctr{text-align:center;width:70px}
+    .mk{font-weight:700}
+    .mk.ok{color:#3f8f5f}
+    .mk.warn{color:#B8943A}
+    .mk.no{color:#c0574a}
+    .cs-matrix .mk{font-size:1.05rem}
 
     /* spec: lifecycle flow + limits */
     .cs-flow-label{font-family:var(--syne);text-transform:uppercase;letter-spacing:.12em;font-size:.62rem;
@@ -168,16 +175,40 @@
           <!-- 03 -->
           <div class="cs-sec" id="cs-sec-2">
             <div class="cs-sec-header-row"><p class="cs-sec-label">03 — Research</p></div>
-            <h2 class="cs-sec-heading">An as-is process map, and how the category solves it.</h2>
+            <h2 class="cs-sec-heading">An as-is process map, a screen-by-screen audit, and the category's own rules.</h2>
             <div class="cs-sec-layout">
               <div class="cs-sec-body">
-                <p>The redesign is grounded in Diageo India's <strong>as-is process map</strong> — actors, systems, the eight-step Ariba flow, pain points, and audit gaps — alongside a category scan of <strong>SAP Ariba, Coupa, GEP, Jaggaer, and Zycus</strong>.</p>
-                <p>Ariba's "Surrogate Bidder" workaround — buyer staff placing bids on suppliers' behalf — was the clearest signal of the supplier-access gap: a platform designed so poorly for suppliers that buyers had to bid for them.</p>
-                <p class="cs-source">[Open slot: Confluence primary research — SAP Ariba deep-dive + Buyer Guide on Auction Types &amp; Award Formats.]</p>
+                <p>The redesign sits on three research threads. First, Diageo India's <strong>as-is process map</strong> — actors, systems, the eight-step Ariba flow, pain points, and audit gaps.</p>
+                <p>Second, a <strong>screen-by-screen audit of Ariba's live buyer and supplier flows</strong> (auction creation, pre-bid, live event) that surfaced concrete requirements:</p>
+                <ul>
+                  <li><strong>Bulk line-item editing</strong> — multi-select items and edit together (e.g. increment / decrement price in bulk) instead of one at a time.</li>
+                  <li><strong>Vendor-wise price control</strong> — set ceiling / floor per vendor, not only per item.</li>
+                  <li><strong>Richer lot configurations</strong> — item-level and basket-level lots, basket-without-item-breakdown, staggered (phased) lots, and configurable review period / lot-wise duration.</li>
+                  <li><strong>Bid management &amp; notifications</strong> — a reviewed delete-bid path and email notification / resend controls.</li>
+                </ul>
+                <p>Third, a <strong>category scan</strong> of SAP Ariba, Keelvar, Coupa, GEP, Jaggaer, and Zycus. Two patterns stood out: mature platforms model a family of auction types × award formats where <em>not every combination is valid</em>; and they use buyer-friendly language — Ariba and Keelvar label the "English" auction as <strong>Open / Live</strong> and treat Sealed-Bid as a separate event type, because buyers recognise "live competition" faster than academic terms. That directly shaped the plain-language naming in the redesign.</p>
               </div>
               <aside class="cs-sec-aside"><div class="cs-insight-card"><span class="cs-insight-icon">❝</span><p class="cs-insight-text">The "Surrogate Bidder" workaround said it all — when buyers bid for suppliers, the supplier experience is the real problem.</p></div></aside>
             </div>
-            <div class="cs-img-block" style="--cover-bg:#FFF4D0"><span class="cs-img-label"><span class="cs-img-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span><span class="cs-img-tag">Image placeholder</span>As-is process map — actors, systems, 8-step Ariba flow</span></div>
+            <div class="cs-fullwrap">
+              <div class="cs-abhead"><span class="lbl lbl--planned">Research artifact · type × format compatibility</span></div>
+              <p class="cs-sec-body" style="margin:0 0 14px">The category research crystallised into a <strong>compatibility matrix</strong> — which auction type × award format combinations are sound, which need care, and which are structurally misaligned. It became the guardrail that stops invalid configurations from ever reaching a buyer.</p>
+              <div class="cs-table-scroll">
+                <table class="cs-ab cs-matrix">
+                  <thead><tr><th>Auction type</th><th class="ctr">List</th><th class="ctr">Lot</th><th class="ctr">Cherry</th><th>Why</th></tr></thead>
+                  <tbody>
+                    <tr><td class="to">English Reverse</td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk ok">✓</span></td><td class="as">Real-time competition supports all allocation types</td></tr>
+                    <tr><td class="to">English Forward</td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk warn">⚠</span></td><td class="ctr"><span class="mk no">✗</span></td><td class="as">Designed for selling defined assets</td></tr>
+                    <tr><td class="to">Sealed Reverse</td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk ok">✓</span></td><td class="as">Confidential evaluation supports structured awards</td></tr>
+                    <tr><td class="to">Sealed Forward</td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk warn">⚠</span></td><td class="ctr"><span class="mk no">✗</span></td><td class="as">Mainly asset-disposal use cases</td></tr>
+                    <tr><td class="to">Dutch Reverse</td><td class="ctr"><span class="mk warn">⚠</span></td><td class="ctr"><span class="mk warn">⚠</span></td><td class="ctr"><span class="mk no">✗</span></td><td class="as">First-accept logic limits allocation flexibility</td></tr>
+                    <tr><td class="to">Japanese Reverse</td><td class="ctr"><span class="mk warn">⚠</span></td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk no">✗</span></td><td class="as">Strong for bundle-level competitive narrowing</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="cs-strip-cap"><span class="mk ok">✓</span> common &amp; logical &nbsp;·&nbsp; <span class="mk warn">⚠</span> possible with careful design &nbsp;·&nbsp; <span class="mk no">✗</span> structurally misaligned</p>
+              <p class="cs-source" style="margin-top:1.4em">Primary research: SAP Ariba screen audit (buyer + supplier auction flows) and the internal Buyer Guide — Auction Types &amp; Award Formats. Category references: SAP Ariba Guided Sourcing, Keelvar, Coupa, GEP, Jaggaer, Zycus.</p>
+            </div>
           </div>
 
           <!-- 04 As-Is → To-Be (full-width table) -->
