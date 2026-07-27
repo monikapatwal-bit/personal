@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Auctions — Monika Patwal</title>
-  <meta name="description" content="I took over a PRD mid-project, expanded a single-format auction tool into a multi-format procurement event system, and helped land the largest enterprise pilot — in three months." />
+  <meta name="description" content="Rebuilding an enterprise auction module: what I researched across nine platforms, what I chose to build, and how a single-format tool became a procurement event system in three months." />
   <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,51 +12,44 @@
   <link rel="stylesheet" crossorigin href="./assets/index-2FCE6Xp1.css">
   <style>
     html,body{cursor:auto!important;overflow:visible!important;height:auto!important;background:var(--cream);}
-    .cs-page-shell{min-height:100vh;display:flex;align-items:flex-start;}
+    .cs-page-shell{min-height:100vh;display:flex;align-items:flex-start;overflow-x:clip;}
     .cs-page-shell .cs-toc{position:sticky;top:0;align-self:flex-start;height:100vh;}
-    .cs-page-main{background:var(--cream);flex:1;min-width:0;}
-    .cs-page-main .cs-body{max-width:none;}
+    .cs-page-main{background:var(--cream);flex:1;min-width:0;max-width:100%;}
+    .cs-page-main .cs-body{max-width:100%;width:100%;min-width:0;box-sizing:border-box;}
     @media (max-width:900px){.cs-page-shell{display:block;}.cs-page-shell .cs-toc{position:static;height:auto;}}
 
     .cs-strip-cap{font-family:var(--body);font-size:.8rem;font-style:italic;color:#0f0f0d80;margin-top:14px;padding-left:2px}
     .lbl{display:inline-block;font-family:var(--syne);font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 9px;border-radius:5px;vertical-align:middle;line-height:1}
-    .lbl--code{background:#e7efe7;color:#3f8f5f}
-    .cs-fullwrap{max-width:none;margin-top:34px}
+    .cs-fullwrap{max-width:100%;min-width:0;margin-top:34px}
 
-    /* hero subhead + opening lede */
     .cs-subhead{font-size:clamp(1.05rem,1.7vw,1.32rem);line-height:1.55;color:#0f0f0d;font-weight:450;max-width:54ch;margin-top:24px}
-    .cs-lede{max-width:var(--col,660px);margin-top:8px}
+    .cs-lede{max-width:var(--col,660px)}
     .cs-lede p{font-size:1.08rem;line-height:1.75;color:#0f0f0d;opacity:.9;margin-top:1.15em}
     .cs-lede p:first-child{margin-top:0}
 
-    /* impact cards */
-    .cs-cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:10px}
+    .cs-cards3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:10px;max-width:100%}
     .cs-cards3 .c{border:1px solid #0f0f0d1a;border-radius:10px;padding:24px;background:#fffdf7}
     .cs-cards3 .c h3{font-family:var(--serif);font-style:italic;font-weight:400;font-size:1.7rem;color:#B8943A;line-height:1.1;margin:0 0 12px}
     .cs-cards3 .c p{font-size:.9rem;color:#0f0f0d99;line-height:1.55;margin:0}
     @media(max-width:820px){.cs-cards3{grid-template-columns:1fr}}
 
-    /* small eyebrow + phase labels */
     .cs-eyebrow-sm{font-family:var(--syne);text-transform:uppercase;letter-spacing:.14em;font-size:.62rem;font-weight:700;color:#0f0f0d80;margin:32px 0 12px}
     .cs-eyebrow-sm:first-child{margin-top:0}
-    .cs-phase{font-family:var(--syne);text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;font-weight:800;color:var(--pink);margin:0 0 4px}
-    .cs-phase-sub{font-family:var(--body);font-size:1.15rem;color:#0f0f0d;font-weight:500;margin:0 0 4px}
     .cs-bigline{font-family:var(--serif);font-style:italic;font-size:clamp(1.5rem,2.6vw,2.1rem);line-height:1.15;color:#0f0f0d;margin:26px 0 6px;max-width:22ch}
 
-    /* named-tension / reflection cards */
     .cs-issues{list-style:none;margin:18px 0 0;display:flex;flex-direction:column;gap:20px;max-width:var(--col,660px)}
-    .cs-issues.two{max-width:none;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .cs-issues.two{max-width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 30px}
     @media(max-width:760px){.cs-issues.two{grid-template-columns:1fr}}
     .cs-issues li{padding-left:18px;border-left:2px solid var(--pink)}
     .cs-issues li b{display:block;color:#0f0f0d;font-size:1.05rem;margin-bottom:5px}
     .cs-issues li span{color:#0f0f0d99;font-size:.95rem;line-height:1.6}
 
-    /* numbered discovery lists */
-    .cs-disc{list-style:none;margin:16px 0 0;counter-reset:disc;max-width:var(--col,660px)}
-    .cs-disc li{counter-increment:disc;position:relative;padding-left:46px;margin-top:15px;line-height:1.6;color:#0f0f0d;opacity:.92;font-size:1rem}
-    .cs-disc li::before{content:counter(disc,decimal-leading-zero);position:absolute;left:0;top:-2px;font-family:var(--serif);font-style:italic;font-size:1.35rem;color:#B8943A}
+    .cs-findings{list-style:none;margin:16px 0 0;counter-reset:fnd;max-width:none;display:flex;flex-direction:column;gap:0}
+    .cs-findings li{counter-increment:fnd;position:relative;padding:22px 0 22px 58px;border-top:1px solid #0f0f0d14}
+    .cs-findings li::before{content:counter(fnd);position:absolute;left:0;top:20px;font-family:var(--serif);font-style:italic;font-size:2rem;color:#B8943A;line-height:1}
+    .cs-findings li b{display:block;font-size:1.15rem;color:#0f0f0d;margin-bottom:6px;font-family:var(--serif);font-style:italic}
+    .cs-findings li span{color:#0f0f0d99;font-size:.95rem;line-height:1.6}
 
-    /* features grid */
     .cs-feat{list-style:none;margin:6px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:0}
     .cs-feat li{padding:24px 30px 24px 0;border-top:1px solid #0f0f0d14}
     .cs-feat li:nth-child(odd){border-right:1px solid #0f0f0d12;padding-right:32px}
@@ -64,29 +57,32 @@
     .cs-feat li span{font-size:.93rem;color:#0f0f0d99;line-height:1.58}
     @media(max-width:760px){.cs-feat{grid-template-columns:1fr}.cs-feat li:nth-child(odd){border-right:none;padding-right:0}}
 
-    /* tables: matrix + before/after */
     .cs-abhead{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
     .cs-abhead .lbl{margin:0}
-    .cs-table-scroll{overflow-x:auto;border:1px solid #0f0f0d1f;border-radius:10px;background:#fffdf7}
-    table.cs-ab{border-collapse:collapse;width:100%;min-width:640px;font-family:var(--body)}
-    .cs-ab thead th{text-align:left;font-family:var(--syne);text-transform:uppercase;letter-spacing:.11em;font-size:.64rem;font-weight:700;color:#0f0f0d80;padding:15px 20px;background:#f2ece1;border-bottom:1px solid #0f0f0d1f}
+    .cs-table-scroll{overflow-x:auto;min-width:0;max-width:100%;border:1px solid #0f0f0d1f;border-radius:10px;background:#fffdf7}
+    table.cs-ab{border-collapse:collapse;width:100%;min-width:660px;font-family:var(--body)}
+    .cs-ab thead th{text-align:left;font-family:var(--syne);text-transform:uppercase;letter-spacing:.11em;font-size:.64rem;font-weight:700;color:#0f0f0d80;padding:14px 18px;background:#f2ece1;border-bottom:1px solid #0f0f0d1f}
+    .cs-ab thead th.cc{text-align:center}
     .cs-ab thead th.aft{color:#B8943A;background:#fbeecb}
-    .cs-ab td{padding:15px 20px;border-bottom:1px solid #0f0f0d14;vertical-align:top;font-size:.95rem;line-height:1.55}
-    .cs-ab td.as{color:#0f0f0d99;width:45%}
-    .cs-ab td.to{color:#0f0f0d;font-weight:450}
+    .cs-ab td{padding:13px 18px;border-bottom:1px solid #0f0f0d14;vertical-align:top;font-size:.93rem;line-height:1.5}
+    .cs-ab td.cap{color:#0f0f0d;font-weight:500;width:40%}
+    .cs-ab td.grp{font-family:var(--syne);text-transform:uppercase;letter-spacing:.1em;font-size:.58rem;font-weight:700;color:var(--pink);background:#faf1f5;padding:12px 18px}
+    .cs-ab td.y,.cs-ab td.n,.cs-ab td.pt{text-align:center;font-weight:700}
+    .cs-ab td.y{color:#3f8f5f}.cs-ab td.n{color:#c0574a}.cs-ab td.pt{color:#B8943A}
     .cs-ab td.bef{color:#0f0f0d8c;width:50%}
     .cs-ab td.aft{color:#0f0f0d;background:#fff7e4;width:50%;font-weight:450}
+    .cs-ab td.as{color:#0f0f0d99;width:45%}
+    .cs-ab td.to{color:#0f0f0d;font-weight:450}
+    .cs-ab td.to strong{font-weight:600}
     .cs-ab tr:last-child td{border-bottom:none}
     .cs-ab tbody tr:hover td{background:#faf5ea}
-    .cs-ab tbody tr:hover td.aft{background:#fdf0d0}
-    .cs-ab th.ctr,.cs-ab td.ctr{text-align:center;width:70px}
+    .cs-ab tbody tr:hover td.grp{background:#faf1f5}
+    .cs-ab th.ctr,.cs-ab td.ctr{text-align:center;width:66px}
     .mk{font-weight:700}.mk.ok{color:#3f8f5f}.mk.warn{color:#B8943A}.mk.no{color:#c0574a}
     .cs-matrix .mk{font-size:1.05rem}
 
-    /* pull quote */
     .cs-pull{font-family:var(--serif);font-style:italic;font-size:clamp(1.5rem,2.7vw,2.15rem);line-height:1.2;color:#0f0f0d;border-left:3px solid var(--pink);padding-left:24px;margin:2.2em 0 0;max-width:26ch}
 
-    /* closing */
     .cs-closing{margin-top:clamp(48px,7vw,80px);padding-top:clamp(36px,5vw,56px);border-top:1px solid #0f0f0d1a;padding-bottom:3rem}
     .cs-closing h2{font-family:var(--serif);font-style:italic;font-size:clamp(1.8rem,4vw,2.8rem);color:#0f0f0d;line-height:1.05;margin:0}
     .cs-closing p{color:#0f0f0d99;font-size:1rem;margin-top:12px;max-width:46ch}
@@ -96,6 +92,7 @@
     .cs-closing a.btn:hover{border-color:var(--pink);color:var(--pink)}
     .cs-closing a.btn.fill:hover{color:#fff;opacity:.92}
     .cs-imgcap{font-style:italic}
+    .cs-src{font-family:var(--body);font-size:.82rem;font-style:italic;color:#0f0f0d73;margin-top:1.4em}
   </style>
 </head>
 <body>
@@ -104,12 +101,14 @@
       <a class="cs-home-btn" href="./index.html#work">← Home</a>
       <p class="cs-toc-label">Table of Contents</p>
       <nav class="cs-toc-nav">
-        <a class="cs-toc-link active" href="#cs-sec-0"><span class="cs-toc-num">01</span><span class="cs-toc-text">Understanding</span></a>
-        <a class="cs-toc-link" href="#cs-sec-1"><span class="cs-toc-num">02</span><span class="cs-toc-text">My Approach</span></a>
-        <a class="cs-toc-link" href="#cs-sec-2"><span class="cs-toc-num">03</span><span class="cs-toc-text">Pivotal Moment</span></a>
-        <a class="cs-toc-link" href="#cs-sec-3"><span class="cs-toc-num">04</span><span class="cs-toc-text">Key Features</span></a>
-        <a class="cs-toc-link" href="#cs-sec-4"><span class="cs-toc-num">05</span><span class="cs-toc-text">Before / After</span></a>
-        <a class="cs-toc-link" href="#cs-sec-5"><span class="cs-toc-num">06</span><span class="cs-toc-text">Reflection</span></a>
+        <a class="cs-toc-link active" href="#cs-sec-0"><span class="cs-toc-num">01</span><span class="cs-toc-text">What an auction is</span></a>
+        <a class="cs-toc-link" href="#cs-sec-1"><span class="cs-toc-num">02</span><span class="cs-toc-text">The problem</span></a>
+        <a class="cs-toc-link" href="#cs-sec-2"><span class="cs-toc-num">03</span><span class="cs-toc-text">Market research</span></a>
+        <a class="cs-toc-link" href="#cs-sec-3"><span class="cs-toc-num">04</span><span class="cs-toc-text">What I chose to build</span></a>
+        <a class="cs-toc-link" href="#cs-sec-4"><span class="cs-toc-num">05</span><span class="cs-toc-text">The pivotal moment</span></a>
+        <a class="cs-toc-link" href="#cs-sec-5"><span class="cs-toc-num">06</span><span class="cs-toc-text">Key features</span></a>
+        <a class="cs-toc-link" href="#cs-sec-6"><span class="cs-toc-num">07</span><span class="cs-toc-text">Before &amp; after</span></a>
+        <a class="cs-toc-link" href="#cs-sec-7"><span class="cs-toc-num">08</span><span class="cs-toc-text">Gaps &amp; reflection</span></a>
       </nav>
       <a class="cs-top-btn" href="#top">↑ Back to top</a>
     </aside>
@@ -117,7 +116,7 @@
     <div class="cs-page-main">
       <div class="cs-body">
 
-        <!-- HERO -->
+        <!-- 1 HERO -->
         <div class="cs-hero-band" style="background:#FFF4D0" id="top">
           <div class="cs-hero-text">
             <p class="cs-company-label">Aerchain · Auctions · 2026</p>
@@ -129,93 +128,127 @@
 
         <p class="cs-subhead">How I took over a PRD mid-project, expanded a single-format auction tool into a multi-format procurement event system, and helped Aerchain land its largest enterprise pilot — in three months.</p>
 
-        <div class="cs-img-block" style="--cover-bg:#FFF4D0;margin-top:28px"><span class="cs-img-label"><span class="cs-img-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span><span class="cs-img-tag">Image placeholder</span>Buyer Live view — the live command centre</span></div>
-
-        <!-- IMPACT CARDS -->
-        <div class="cs-cards3">
-          <div class="c"><h3>Enterprise pilot live</h3><p>A global enterprise client went live on Lot-based English Reverse auctions — a format that didn't exist in the product three months earlier.</p></div>
-          <div class="c"><h3>1 → 6</h3><p>Auction formats went from a single List-only flow to six validated auction-type × award-format combinations.</p></div>
-          <div class="c"><h3>Days → minutes</h3><p>Time from auction close to award-ready data, previously a manual reconciliation exercise.</p></div>
-        </div>
-
-        <!-- META -->
         <div class="cs-meta-row">
           <div class="cs-meta-pill"><span class="cs-meta-pill-lbl">My Role</span><span class="cs-meta-pill-val">Product Designer → PM (dual)</span></div>
           <div class="cs-meta-pill"><span class="cs-meta-pill-lbl">Timeline</span><span class="cs-meta-pill-val">Jan–Mar 2026 · 3 months</span></div>
           <div class="cs-meta-pill"><span class="cs-meta-pill-lbl">Team</span><span class="cs-meta-pill-val">CTO · Tech Lead · Head of Product · Design led by me</span></div>
         </div>
 
-        <!-- OPENING NARRATIVE -->
+        <div class="cs-img-block" style="--cover-bg:#FFF4D0;margin-top:26px"><span class="cs-img-label"><span class="cs-img-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span><span class="cs-img-tag">Image placeholder</span><span class="cs-imgcap">Buyer Live view — the live command centre.</span></span></div>
+
+        <!-- 2 OPENING -->
         <div class="cs-overview-block">
           <div class="cs-lede">
             <p>When our PM transitioned off mid-project, I wasn't handed a design brief — I was handed an unfinished product. Aerchain's auction module supported exactly one format, and the enterprise client we were chasing needed something it couldn't do. There was no spec, no user stories, and a build window of three months.</p>
-            <p>I'd sat in every client call as the designer. That turned out to be the fastest onboarding I could have asked for. Over the next three months I benchmarked five competing platforms, wrote the PRD from scratch, ran KT sessions with our CTO, wrote every user story — and designed every screen I specced. What started as a gap in our product roadmap became the module that took us live with a global enterprise client.</p>
+            <p>I'd sat in every client call as the designer. That turned out to be the fastest onboarding I could have asked for. Over the next three months I benchmarked nine competing platforms, wrote the PRD from scratch, ran KT sessions with our CTO, wrote every user story — and designed every screen I specced. What started as a gap in our roadmap became the module that took us live with a global enterprise client.</p>
           </div>
+        </div>
+
+        <!-- 3 IMPACT -->
+        <div class="cs-cards3">
+          <div class="c"><h3>Enterprise pilot live</h3><p>A global enterprise client went live on Lot-based English Reverse auctions — a format that didn't exist in the product three months earlier.</p></div>
+          <div class="c"><h3>1 → 6</h3><p>Auction formats went from a single List-only flow to six validated auction-type × award-format combinations.</p></div>
+          <div class="c"><h3>Days → minutes</h3><p>Time from auction close to award-ready data, previously a manual reconciliation exercise.</p></div>
         </div>
 
         <div class="cs-sections">
 
-          <!-- 01 UNDERSTANDING -->
+          <!-- 01 WHAT AN AUCTION IS -->
           <div class="cs-sec" id="cs-sec-0">
-            <div class="cs-sec-header-row"><p class="cs-sec-label">01 — Understanding the Module &amp; the Problem</p></div>
-            <h2 class="cs-sec-heading">What the module is, and why it needed a rebuild.</h2>
+            <div class="cs-sec-header-row"><p class="cs-sec-label">01 — What an auction is</p></div>
+            <h2 class="cs-sec-heading">Live price discovery, not a form.</h2>
             <div class="cs-sec-body">
-              <p class="cs-eyebrow-sm">What is Aerchain?</p>
+              <p class="cs-eyebrow-sm">The platform</p>
               <p>Aerchain is an enterprise procurement platform — the system large organisations use to run sourcing events, negotiate with suppliers, and award contracts. It competes with SAP Ariba, Coupa, Jaggaer, and Keelvar, and was already live with one of India's largest conglomerates on the RFX module.</p>
-              <p class="cs-eyebrow-sm">What is the Auction Module?</p>
+              <p class="cs-eyebrow-sm">The auction</p>
               <p>An auction is how a buyer runs live competitive price discovery. Instead of collecting static quotes over email, the buyer invites suppliers into a timed event where they bid against each other in real time — and the platform captures every bid, every rank change, and every rupee of savings as it happens.</p>
-              <p>Aerchain had a version of this. It could run exactly one kind of auction: a <strong>List</strong> auction, where one supplier wins every item. That works for single-vendor contracts. It does not work for a procurement team splitting a category across regions, running a hundred lots on independent timers, or needing a defensible record of the whole event afterwards.</p>
-              <p class="cs-bigline">The auction we had could run an auction. It couldn't run <em>procurement.</em></p>
-              <p>The existing module treated an auction as a single event with a single winner. Real enterprise procurement isn't shaped like that — it's bundled, scheduled, audited, and negotiated. Every deal conversation surfaced the same four gaps.</p>
+              <p>Aerchain had a version of this. It could run exactly one kind: a <strong>List</strong> auction, where one supplier wins every item. That works for single-vendor contracts. It does not work for a procurement team splitting a category across regions, running a hundred lots on independent timers, or needing a defensible record afterwards.</p>
+            </div>
+          </div>
+
+          <!-- 02 THE PROBLEM -->
+          <div class="cs-sec" id="cs-sec-1">
+            <div class="cs-sec-header-row"><p class="cs-sec-label">02 — The problem</p></div>
+            <h2 class="cs-sec-heading">It could run an auction. It couldn't run procurement.</h2>
+            <div class="cs-sec-body">
+              <p>The existing module treated an auction as a single event with a single winner. Real enterprise procurement isn't shaped like that — it's bundled, scheduled, audited, and negotiated. Sitting in the client calls as the designer, I watched the same four gaps surface in every conversation.</p>
             </div>
             <ul class="cs-issues two">
               <li><b>The format ceiling</b><span>One format meant one shape of deal. Enterprise buyers wanted items grouped into lots with independent timers — and we had to say no in the room.</span></li>
-              <li><b>The savings paradox</b><span>The whole point of an auction is savings. Ours were calculated manually, in a spreadsheet, after the event had closed. The number that justified the tool arrived too late to act on.</span></li>
+              <li><b>The savings paradox</b><span>The whole point of an auction is savings. Ours were calculated manually, in a spreadsheet, after the event closed. The number that justified the tool arrived too late to act on.</span></li>
               <li><b>The pre-bid blind spot</b><span>Buyers discovered half their items had no supplier coverage <em>after</em> the auction went live. By then there was nothing to do. The live event was only ever as good as what walked into it.</span></li>
               <li><b>The compliance void</b><span>No audit trail. For regulated procurement teams, an event they can't defend line-by-line to an auditor is an event they can't run.</span></li>
             </ul>
             <div class="cs-img-block" style="--cover-bg:#FFF4D0"><span class="cs-img-label"><span class="cs-img-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span><span class="cs-img-tag">Image placeholder</span><span class="cs-imgcap">The original module: one format, one winner, no record.</span></span></div>
           </div>
 
-          <!-- 02 MY APPROACH -->
-          <div class="cs-sec" id="cs-sec-1">
-            <div class="cs-sec-header-row"><p class="cs-sec-label">02 — My Approach</p></div>
-            <h2 class="cs-sec-heading">Learn the domain first. Spec against it second.</h2>
-
-            <div class="cs-fullwrap" style="margin-top:18px">
-              <p class="cs-phase">Phase 1 — Learning the domain before writing a line of spec</p>
-
-              <p class="cs-eyebrow-sm">Competitive benchmarking · 5 platforms</p>
-              <p class="cs-sec-body" style="margin:0">I studied SAP Ariba, Keelvar, Coupa, Jaggaer, and Prokuria — not just their features, but their terminology, their defaults, and the buyer mental models baked into their flows. In enterprise procurement, naming <em>is</em> usability: a buyer coming from Ariba should recognise what they're looking at.</p>
-              <ol class="cs-disc">
-                <li>Lot scheduling was table stakes — every serious platform had it, we had none.</li>
-                <li>Staggered Closing is the industry-recommended pattern for high-item-count events.</li>
-                <li>No competitor had a structured pre-bid commercial-terms phase — an open differentiation gap.</li>
-                <li>Terminology diverged wildly; aligning to Ariba / Keelvar conventions reduced onboarding friction.</li>
-                <li>Audit and export were treated as compliance checkboxes, not product surface — an opening.</li>
-              </ol>
-
-              <p class="cs-eyebrow-sm">Client-call archaeology · the designer's advantage</p>
-              <p class="cs-sec-body" style="margin:0">I'd been in every client call for months as the designer. Instead of running fresh discovery, I went back through those conversations looking for the moments buyers got frustrated and nobody wrote it down.</p>
-              <ol class="cs-disc">
-                <li>Buyers were chasing suppliers over email to submit pre-bids — the single biggest time sink in the event.</li>
-                <li>"Which items are actually getting bids?" had no answer until the auction was over.</li>
-                <li>Suppliers dropped out silently; buyers had no way to see who had gone quiet.</li>
-                <li>Savings were reconstructed after the fact and always contested.</li>
-                <li>Every buyer asked some version of "can I get a record of this?"</li>
-              </ol>
-              <div class="cs-img-block" style="--cover-bg:#FFF4D0"><span class="cs-img-label"><span class="cs-img-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span><span class="cs-img-tag">Image placeholder</span><span class="cs-imgcap">Competitive benchmark matrix — research artefact.</span></span></div>
+          <!-- 03 MARKET RESEARCH -->
+          <div class="cs-sec" id="cs-sec-2">
+            <div class="cs-sec-header-row"><p class="cs-sec-label">03 — Market research</p></div>
+            <h2 class="cs-sec-heading">Nine platforms, read from their own documentation.</h2>
+            <div class="cs-sec-body">
+              <p>Before writing a line of spec, I studied how the category actually solves this — SAP Ariba, Keelvar, Coupa, Jaggaer, Zycus, GEP, Market Dojo, Prokuria and Oracle — plus the India layer that no Western analysis covers: <strong>GeM</strong>, the government portal, and <strong>mjunction</strong>, the domestic incumbent. In enterprise procurement, naming <em>is</em> usability: a buyer coming from Ariba should recognise what they're looking at.</p>
+            </div>
+            <div class="cs-fullwrap">
+              <div class="cs-abhead"><span class="lbl" style="background:#f2ece1;color:#0f0f0d80">State of the market vs Aerchain v4</span></div>
+              <div class="cs-table-scroll">
+                <table class="cs-ab">
+                  <thead><tr><th>Capability</th><th class="cc">Ariba</th><th class="cc">Keelvar</th><th class="cc">Mid-market</th><th class="cc">Aerchain v4</th></tr></thead>
+                  <tbody>
+                    <tr><td class="grp" colspan="5">Standard across the market</td></tr>
+                    <tr><td class="cap">English, Dutch &amp; Japanese formats</td><td class="y">Yes</td><td class="y">Yes</td><td class="pt">Partial</td><td class="n">No</td></tr>
+                    <tr><td class="cap">Lots: parallel, serial, staggered</td><td class="y">Yes</td><td class="pt">Partial</td><td class="pt">Partial</td><td class="n">No</td></tr>
+                    <tr><td class="cap">Overtime &amp; anti-sniping</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+                    <tr><td class="cap">Pre-bid phase before going live</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+                    <tr><td class="grp" colspan="5">Where nobody was — including us</td></tr>
+                    <tr><td class="cap">Overtime inside serial-lot mode</td><td class="n">No</td><td class="n">No</td><td class="n">No</td><td class="n">No</td></tr>
+                    <tr><td class="cap">Item coverage scoring pre-live</td><td class="n">No</td><td class="n">No</td><td class="n">No</td><td class="n">No</td></tr>
+                    <tr><td class="cap">Live supplier engagement state</td><td class="n">No</td><td class="n">No</td><td class="n">No</td><td class="n">No</td></tr>
+                    <tr><td class="cap">Item heat classification</td><td class="n">No</td><td class="n">No</td><td class="n">No</td><td class="n">No</td></tr>
+                    <tr><td class="cap">Supplier smart-bid assistance</td><td class="n">No</td><td class="n">No</td><td class="n">No</td><td class="n">No</td></tr>
+                    <tr><td class="cap">Buyer-approved bid reset</td><td class="n">No</td><td class="n">No</td><td class="n">No</td><td class="n">No</td></tr>
+                    <tr><td class="cap">Tamper-evident audit record</td><td class="pt">Partial</td><td class="pt">Partial</td><td class="pt">Partial</td><td class="n">No</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="cs-strip-cap">The top half is a twenty-year-old standard we were behind on. The bottom half is whitespace nobody had reached — which is where the redesign went.</p>
             </div>
 
-            <div class="cs-fullwrap" style="margin-top:2.8em">
-              <p class="cs-phase">Phase 2 — Strategic product decisions</p>
-              <ul class="cs-issues" style="max-width:none;margin-top:18px">
-                <li><b>Compatibility as a product decision, not an engineering one.</b><span>I built an auction-type × award-format matrix and documented <em>why</em> each incompatible pair fails — Dutch instant-accept can't support item-level comparative evaluation; Japanese clock elimination conflicts with independent item allocation. Deciding what we wouldn't build, with reasoning, protected the three-month window.</span></li>
-                <li><b>Pre-bid as the leverage point.</b><span>The obvious place to invest was the live bidding screen. The high-leverage place was the phase before it. I specced a pre-bid wizard, item-level coverage scoring, and a Needs Attention panel that surfaces weak items and silent suppliers <em>while there's still time to fix them.</em></span></li>
-                <li><b>A dynamic ceiling per supplier.</b><span>The original logic used a single buyer-defined ceiling. I changed it so each supplier's own pre-bid becomes their ceiling reference in the live event — turning a static gate into a per-supplier baseline, and making savings measurable per relationship rather than in aggregate.</span></li>
-              </ul>
+            <div class="cs-fullwrap">
+              <p class="cs-eyebrow-sm">Three findings</p>
+              <ol class="cs-findings">
+                <li><b>These tools help you pick a winner. They don't help you run the event.</b><span>Every major platform puts its effort into comparing bids after the auction closes. Almost nothing goes into the hour when suppliers are actually bidding — Keelvar, Coupa and Jaggaer all lead with award analysis; none leads with the live screen.</span></li>
+                <li><b>SAP hit a hard problem, patented the fix, then switched it off.</b><span>Ariba disables overtime entirely in serial-lot bidding — while holding a patent (US 7152043) that describes how to resolve the underlying scheduling collision. The problem was real, solvable, and unclaimed.</span></li>
+                <li><b>Nobody checks whether an auction will work before it starts.</b><span>The industry's answer to weak supplier coverage is a reminder email the day before. Ariba's own guidance treats coverage as a question for the buyer to think about, not something the product answers.</span></li>
+              </ol>
+            </div>
 
-              <div class="cs-abhead" style="margin-top:2.4em"><span class="lbl lbl--code" style="background:#f2ece1;color:#0f0f0d80">Compatibility matrix · auction type × award format</span></div>
+            <div class="cs-fullwrap">
+              <p class="cs-eyebrow-sm">What the research settled</p>
+              <ul class="cs-issues two">
+                <li><b>Savings has no agreed benchmark.</b><span>Keelvar claims 3–25%, Zycus 5–20%, Jaggaer 10–15% (relative), and Unit4's measured quarters run 7.6–19.6%. Fixing ceiling price as the savings baseline is a stance on a contested question — not a spec detail.</span></li>
+                <li><b>Indian buyers are calibrated on fixed rules.</b><span>GeM extends by a fixed 15 minutes on any late bid, every time. Every Indian procurement pro carries that mental model — so a configurable extension is more powerful but less familiar. An adoption consideration, not just a feature.</span></li>
+                <li><b>Audit is commercial, not compliance.</b><span>The EU has permitted e-auctions for two decades, yet they're under 1% of public contracts — the gap is trust and defensibility. That's what makes a tamper-evident record worth building.</span></li>
+                <li><b>The supplier side is substantive, not cosmetic.</b><span>The research on reverse auctions finds a supplier's perception of procedural fairness drives the relationship — so readable rules, visible bid history and a stated reason on any pause are design decisions, not decoration.</span></li>
+              </ul>
+              <p class="cs-src">Sources: each platform's own product documentation and learning material; SAP patent US 7152043; EU Directive 2004/18/EC and European Parliament usage figures; academic work on reverse-auction savings methodology and buyer–supplier relationships. Compiled July 2026. "Not found" in the matrix means absent from public docs, which is weaker than proven absence.</p>
+            </div>
+          </div>
+
+          <!-- 04 WHAT I CHOSE TO BUILD -->
+          <div class="cs-sec" id="cs-sec-3">
+            <div class="cs-sec-header-row"><p class="cs-sec-label">04 — What I chose to build</p></div>
+            <h2 class="cs-sec-heading">Close the twenty-year gap — and pick what to close first.</h2>
+            <div class="cs-sec-body">
+              <p>Most of what v4 lacked was already standard: parallel and serial lots, Dutch and Japanese formats, decrement rules, pre-bid phases, audit logs. The job wasn't inventing a category — it was closing a twenty-year gap in three months, and deciding what to close first. Three decisions did the heavy lifting.</p>
+            </div>
+            <ul class="cs-issues" style="max-width:none;margin-top:18px">
+              <li><b>Compatibility as a product decision, not an engineering one.</b><span>I built an auction-type × award-format matrix and documented <em>why</em> each incompatible pair fails — Dutch instant-accept can't support item-level comparative evaluation; Japanese clock elimination conflicts with independent item allocation. Deciding what we wouldn't build, with reasoning, protected the three-month window.</span></li>
+              <li><b>Pre-bid as the leverage point.</b><span>The market's answer to weak coverage was a reminder email. I specced a pre-bid wizard, item-level coverage scoring, and a Needs Attention panel that surfaces weak items and silent suppliers <em>while there's still time to fix them</em> — the one place the whole category had left empty.</span></li>
+              <li><b>A dynamic ceiling per supplier.</b><span>The original logic used a single buyer-defined ceiling. I changed it so each supplier's own pre-bid becomes their ceiling reference in the live event — turning a static gate into a per-supplier baseline, and making savings measurable per relationship rather than in aggregate.</span></li>
+            </ul>
+            <div class="cs-fullwrap">
+              <div class="cs-abhead"><span class="lbl" style="background:#f2ece1;color:#0f0f0d80">Compatibility matrix · auction type × award format</span></div>
               <div class="cs-table-scroll">
                 <table class="cs-ab cs-matrix">
                   <thead><tr><th>Auction type</th><th class="ctr">List</th><th class="ctr">Lot</th><th class="ctr">Cherry</th><th>Why</th></tr></thead>
@@ -231,9 +264,9 @@
             </div>
           </div>
 
-          <!-- 03 PIVOTAL MOMENT -->
-          <div class="cs-sec" id="cs-sec-2">
-            <div class="cs-sec-header-row"><p class="cs-sec-label">03 — The Pivotal Moment</p></div>
+          <!-- 05 THE PIVOTAL MOMENT -->
+          <div class="cs-sec" id="cs-sec-4">
+            <div class="cs-sec-header-row"><p class="cs-sec-label">05 — The pivotal moment</p></div>
             <h2 class="cs-sec-heading">The change that looked like a schema migration.</h2>
             <div class="cs-sec-body">
               <p>Our enterprise pilot client ran procurement in three levels: programme → category → line item. The PRD structured auction data differently. On the surface this was a schema change — weeks of backend work and a timeline slip we didn't have room for.</p>
@@ -243,9 +276,9 @@
             <p class="cs-pull">The best product decisions look obvious in hindsight. That's how you know they were right.</p>
           </div>
 
-          <!-- 04 KEY FEATURES -->
-          <div class="cs-sec" id="cs-sec-3">
-            <div class="cs-sec-header-row"><p class="cs-sec-label">04 — Key Features</p></div>
+          <!-- 06 KEY FEATURES -->
+          <div class="cs-sec" id="cs-sec-5">
+            <div class="cs-sec-header-row"><p class="cs-sec-label">06 — Key features</p></div>
             <h2 class="cs-sec-heading">From one auction format to a procurement event system.</h2>
             <ul class="cs-feat">
               <li><b>Four Auction Formats, One Flow</b><span>English Forward and Reverse, Dutch, and Japanese clock auctions — each with its own bidding logic, all created through the same five-step wizard. Buyers pick the negotiation style that fits the category, not the one the software supports.</span></li>
@@ -253,19 +286,20 @@
               <li><b>Needs Attention</b><span>Before the auction goes live, the platform flags which items nobody has bid on and which suppliers accepted the invite but went quiet — with a one-click nudge on the same screen. The gaps get found while they're still fixable.</span></li>
               <li><b>A Live Event You Can Actually Read</b><span>Every bid updates the screen in real time — rank changes, savings percentage, and which items are hot, active, or going cold. Suppliers show as active, idle, or inactive, so the buyer knows who to chase mid-event.</span></li>
               <li><b>Smart Bids</b><span>On the supplier side, the platform calculates the exact minimum bid needed to take the lead on every item that needs one — and lets them submit all of it at once. Competitive without overshooting.</span></li>
+              <li><b>Buyer-Approved Bid Reset</b><span>A supplier who fat-fingers a bid can request a correction; the buyer approves it and the reset is logged. A safety valve no competitor documented.</span></li>
               <li><b>A Record You Can Defend</b><span>Three reports at close: full bid progression, a tamper-evident audit trail with every actor and timestamp, and a complete message log. What used to be an unanswerable question is now a download.</span></li>
             </ul>
             <div class="cs-img-block" style="--cover-bg:#FFF4D0"><span class="cs-img-label"><span class="cs-img-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span><span class="cs-img-tag">Image placeholder</span><span class="cs-imgcap">Create wizard · lot scheduling · Needs Attention · live command centre.</span></span></div>
           </div>
 
-          <!-- 05 BEFORE / AFTER -->
-          <div class="cs-sec" id="cs-sec-4">
-            <div class="cs-sec-header-row"><p class="cs-sec-label">05 — Before / After</p></div>
+          <!-- 07 BEFORE & AFTER -->
+          <div class="cs-sec" id="cs-sec-6">
+            <div class="cs-sec-header-row"><p class="cs-sec-label">07 — Before &amp; after</p></div>
             <h2 class="cs-sec-heading">A categorical change, not an incremental one.</h2>
             <div class="cs-fullwrap" style="margin-top:20px">
               <div class="cs-table-scroll">
                 <table class="cs-ab">
-                  <thead><tr><th>Before</th><th class="aft">After</th></tr></thead>
+                  <thead><tr><th>Before — Aerchain v4</th><th class="aft">After — the rebuild</th></tr></thead>
                   <tbody>
                     <tr><td class="bef">One auction format — List only</td><td class="aft">Six validated auction-type × award-format combinations</td></tr>
                     <tr><td class="bef">Savings calculated manually after the event</td><td class="aft">Savings computed automatically at auction close</td></tr>
@@ -280,9 +314,9 @@
             </div>
           </div>
 
-          <!-- 06 REFLECTION -->
-          <div class="cs-sec" id="cs-sec-5">
-            <div class="cs-sec-header-row"><p class="cs-sec-label">06 — Reflection</p></div>
+          <!-- 08 GAPS & REFLECTION -->
+          <div class="cs-sec" id="cs-sec-7">
+            <div class="cs-sec-header-row"><p class="cs-sec-label">08 — Gaps &amp; reflection</p></div>
             <h2 class="cs-sec-heading">What three months as an accidental PM taught me.</h2>
             <ul class="cs-issues two">
               <li><b>Domain depth is the fastest onboarding there is.</b><span>I picked up PM responsibilities in days, not weeks — entirely because I'd been in every client call as the designer. Proximity to the customer compounds in ways an org chart doesn't capture.</span></li>
@@ -290,6 +324,10 @@
               <li><b>Deferred decisions don't disappear.</b><span>The one place I let ambiguity sit — conditional cherry-picking logic for lots — came back during build, with less time and more people in the room. It cost more then than it would have in week two.</span></li>
               <li><b>Specifying and designing the same screen makes both better.</b><span>Every requirement I wrote, I had to draw. Anything that couldn't be drawn wasn't actually specified yet.</span></li>
             </ul>
+            <p class="cs-eyebrow-sm">Honest limits of the work</p>
+            <div class="cs-sec-body">
+              <p>The research had no <strong>primary supplier interviews</strong> — everything supplier-side came from vendor documentation and academic work. Five conversations with suppliers who bid regularly would be the single highest-value addition, and genuinely original: nobody publishes it. And the module shipped the standards first; several of the "where nobody was" bets are live with the pilot but not yet measured against a baseline.</p>
+            </div>
           </div>
 
           <!-- CLOSING -->
