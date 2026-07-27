@@ -44,6 +44,33 @@
     @media(max-width:820px){.cs-mstrip{grid-template-columns:repeat(2,minmax(0,1fr))}}
     @media(max-width:480px){.cs-mstrip{grid-template-columns:1fr}}
 
+    /* impact metric groups */
+    .cs-igroup{padding-top:22px;border-top:1px solid #0f0f0d14;margin-top:24px}
+    .cs-glabel{font-family:var(--syne);text-transform:uppercase;letter-spacing:.12em;font-size:.62rem;font-weight:700;color:var(--pink);margin-bottom:14px}
+    .cs-mpair{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:540px}
+    .cs-mpair .mn{display:block;font-family:var(--serif);font-style:italic;font-size:clamp(1.8rem,3vw,2.4rem);color:#0f0f0d;line-height:1}
+    .cs-mpair .mc{display:block;font-size:.85rem;color:#0f0f0d99;margin-top:6px;line-height:1.4}
+    .cs-gexp{margin-top:16px;font-size:.95rem;color:#0f0f0d99;line-height:1.6;max-width:62ch}
+    @media(max-width:560px){.cs-mpair{grid-template-columns:1fr;gap:16px}}
+    /* lifecycle diagram */
+    .cs-life{position:relative;margin-top:26px}
+    .cs-life::before{content:"";position:absolute;left:31px;top:30px;bottom:30px;width:1px;background:#0f0f0d1a}
+    .cs-life .ph{position:relative;display:grid;grid-template-columns:44px 1fr auto;gap:16px;align-items:start;padding:16px}
+    .cs-life .ph.hot{background:#fff7e4;border-radius:8px}
+    .cs-life .num{width:30px;height:30px;border-radius:50%;border:1px solid #0f0f0d33;background:var(--cream);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-style:italic;font-size:1rem;color:#0f0f0d99;position:relative;z-index:1}
+    .cs-life .ph.hot .num{background:var(--pink);border-color:var(--pink);color:#fff}
+    .cs-life .pt{font-weight:600;color:#0f0f0d;font-size:1rem}
+    .cs-life .pd{color:#0f0f0d99;font-size:.9rem;line-height:1.5;margin-top:3px}
+    .cs-life .dur{font-family:var(--syne);text-transform:uppercase;letter-spacing:.08em;font-size:.6rem;color:#0f0f0d80;white-space:nowrap;padding-top:7px}
+    @media(max-width:560px){.cs-life .ph{grid-template-columns:40px 1fr}.cs-life .dur{grid-column:2;padding-top:2px}.cs-life::before{left:35px}}
+    /* glossary */
+    .cs-gloss{margin-top:20px;border:1px solid #0f0f0d1a;border-radius:10px;overflow:hidden}
+    .cs-gloss .row{display:grid;grid-template-columns:130px 1fr;gap:18px;padding:15px 20px;border-top:1px solid #0f0f0d12}
+    .cs-gloss .row:first-child{border-top:none}
+    .cs-gloss .term{font-weight:600;color:#0f0f0d;font-size:.95rem}
+    .cs-gloss .def{color:#0f0f0d99;font-size:.92rem;line-height:1.55}
+    @media(max-width:600px){.cs-gloss .row{grid-template-columns:1fr;gap:4px}}
+
     .cs-eyebrow-sm{font-family:var(--syne);text-transform:uppercase;letter-spacing:.14em;font-size:.62rem;font-weight:700;color:#0f0f0d80;margin:32px 0 12px}
     .cs-eyebrow-sm:first-child{margin-top:0}
     .cs-bigline{font-family:var(--serif);font-style:italic;font-size:clamp(1.5rem,2.6vw,2.1rem);line-height:1.15;color:#0f0f0d;margin:26px 0 6px;max-width:22ch}
@@ -112,14 +139,15 @@
       <a class="cs-home-btn" href="./index.html#work">← Home</a>
       <p class="cs-toc-label">Table of Contents</p>
       <nav class="cs-toc-nav">
-        <a class="cs-toc-link active" href="#cs-sec-0"><span class="cs-toc-num">01</span><span class="cs-toc-text">What an auction is</span></a>
-        <a class="cs-toc-link" href="#cs-sec-1"><span class="cs-toc-num">02</span><span class="cs-toc-text">The problem</span></a>
-        <a class="cs-toc-link" href="#cs-sec-2"><span class="cs-toc-num">03</span><span class="cs-toc-text">Market research</span></a>
-        <a class="cs-toc-link" href="#cs-sec-3"><span class="cs-toc-num">04</span><span class="cs-toc-text">What I chose to build</span></a>
-        <a class="cs-toc-link" href="#cs-sec-4"><span class="cs-toc-num">05</span><span class="cs-toc-text">The pivotal moment</span></a>
-        <a class="cs-toc-link" href="#cs-sec-5"><span class="cs-toc-num">06</span><span class="cs-toc-text">Key features</span></a>
-        <a class="cs-toc-link" href="#cs-sec-6"><span class="cs-toc-num">07</span><span class="cs-toc-text">Before &amp; after</span></a>
-        <a class="cs-toc-link" href="#cs-sec-7"><span class="cs-toc-num">08</span><span class="cs-toc-text">Gaps &amp; reflection</span></a>
+        <a class="cs-toc-link active" href="#cs-sec-imp"><span class="cs-toc-num">01</span><span class="cs-toc-text">Impact</span></a>
+        <a class="cs-toc-link" href="#cs-sec-0"><span class="cs-toc-num">02</span><span class="cs-toc-text">What an auction is</span></a>
+        <a class="cs-toc-link" href="#cs-sec-1"><span class="cs-toc-num">03</span><span class="cs-toc-text">The problem</span></a>
+        <a class="cs-toc-link" href="#cs-sec-2"><span class="cs-toc-num">04</span><span class="cs-toc-text">Market research</span></a>
+        <a class="cs-toc-link" href="#cs-sec-3"><span class="cs-toc-num">05</span><span class="cs-toc-text">What I chose to build</span></a>
+        <a class="cs-toc-link" href="#cs-sec-4"><span class="cs-toc-num">06</span><span class="cs-toc-text">The pivotal moment</span></a>
+        <a class="cs-toc-link" href="#cs-sec-5"><span class="cs-toc-num">07</span><span class="cs-toc-text">Key features</span></a>
+        <a class="cs-toc-link" href="#cs-sec-6"><span class="cs-toc-num">08</span><span class="cs-toc-text">Before &amp; after</span></a>
+        <a class="cs-toc-link" href="#cs-sec-7"><span class="cs-toc-num">09</span><span class="cs-toc-text">Gaps &amp; reflection</span></a>
       </nav>
       <a class="cs-top-btn" href="#top">↑ Back to top</a>
     </aside>
@@ -157,30 +185,80 @@
 
         <!-- 2 OPENING -->
         <div class="cs-overview-block">
+          <p class="cs-eyebrow-sm">How it started</p>
           <div class="cs-lede">
-            <p>When our PM transitioned off mid-project, I wasn't handed a design brief — I was handed an unfinished product. Aerchain's auction module supported exactly one format, and the enterprise client we were chasing needed something it couldn't do. There was no spec, no user stories, and a build window of three months.</p>
-            <p>I'd sat in every client call as the designer. That turned out to be the fastest onboarding I could have asked for. Over the next three months I benchmarked nine competing platforms, wrote the PRD from scratch, ran working sessions with our CTO, wrote every user story — and designed every screen I specced. What started as a gap in our roadmap became the module that took us live with a global enterprise client.</p>
+            <p>When our PM moved off the project halfway through, I wasn't handed a design brief. I was handed an unfinished product, a three-month window, and an enterprise client whose core requirement our platform couldn't meet.</p>
+            <p>I'd sat in every client call for months as the designer, so I already knew the gaps better than any document did. Over the next three months I studied five competing platforms, wrote the product spec from scratch, ran handover sessions with our CTO, wrote every user story — and designed every screen I specced.</p>
+            <p>The first thing I did was open our own auction tool and try to answer one question: what actually happens during an auction? It took about a day to find the honest answer.</p>
           </div>
         </div>
 
         <div class="cs-sections">
 
-          <!-- 01 WHAT AN AUCTION IS -->
+          <!-- 01 IMPACT -->
+          <div class="cs-sec" id="cs-sec-imp">
+            <div class="cs-sec-header-row"><p class="cs-sec-label">01 — Impact</p></div>
+            <h2 class="cs-sec-heading">What the first month showed.</h2>
+            <div class="cs-sec-body"><p>The rebuilt module went live in late June 2026. One month of usage from a single enterprise tenant:</p></div>
+            <div class="cs-fullwrap" style="margin-top:6px">
+              <div class="cs-igroup">
+                <div class="cs-glabel">Usage</div>
+                <div class="cs-mpair"><div><span class="mn">184</span><span class="mc">distinct auctions</span></div><div><span class="mn">2 → 15</span><span class="mc">buyers, month on month</span></div></div>
+                <p class="cs-gexp">The buyer count is the number I care about more. It grew without anyone being told to use it, which is the clearest evidence the tool actually works for the job.</p>
+              </div>
+              <div class="cs-igroup">
+                <div class="cs-glabel">Health</div>
+                <div class="cs-mpair"><div><span class="mn">70%</span><span class="mc">of drafts went live</span></div><div><span class="mn">73%</span><span class="mc">of live auctions closed</span></div></div>
+                <p class="cs-gexp">Abandoned drafts are normal in any sourcing tool — buyers set events up and change their minds. What matters is that most auctions that opened reached a close. Some of the remainder were still running when this snapshot was taken.</p>
+              </div>
+              <div class="cs-igroup">
+                <div class="cs-glabel">Speed</div>
+                <div class="cs-mpair"><div><span class="mn">24 min</span><span class="mc">median live auction</span></div><div><span class="mn">1 hr</span><span class="mc">median create to close</span></div></div>
+                <p class="cs-gexp">These are short, high-tempo events. A buyer who misses a problem in the first ten minutes has already lost half the auction — which is exactly why the live view was worth building properly.</p>
+              </div>
+              <div class="cs-igroup">
+                <div class="cs-glabel">Scope</div>
+                <div class="cs-mpair"><div><span class="mn">1 → 6</span><span class="mc">auction formats</span></div><div><span class="mn">3</span><span class="mc">lot scheduling modes</span></div></div>
+                <p class="cs-gexp">Six validated combinations of auction type and award format, each with documented reasoning for why the incompatible pairs don't work.</p>
+              </div>
+              <p class="cs-src">Figures cover 26 June to 27 July 2026, from a single enterprise tenant. One month of data from one customer — enough to show the module works, not enough to generalise.</p>
+            </div>
+          </div>
+
+          <!-- 02 WHAT AN AUCTION IS -->
           <div class="cs-sec" id="cs-sec-0">
-            <div class="cs-sec-header-row"><p class="cs-sec-label">01 — What an auction is</p></div>
-            <h2 class="cs-sec-heading">Live price discovery, not a form.</h2>
+            <div class="cs-sec-header-row"><p class="cs-sec-label">02 — What an auction is</p></div>
+            <h2 class="cs-sec-heading">What an auction actually is.</h2>
             <div class="cs-sec-body">
-              <p class="cs-eyebrow-sm">The platform</p>
-              <p>Aerchain is an enterprise procurement platform — the system large organisations use to run sourcing events, negotiate with suppliers, and award contracts. It competes with SAP Ariba, Coupa, Jaggaer, and Keelvar, and was already live with one of India's largest conglomerates on the RFX module.</p>
-              <p class="cs-eyebrow-sm">The auction</p>
-              <p>An auction is how a buyer runs live competitive price discovery. Instead of collecting static quotes over email, the buyer invites suppliers into a timed event where they bid against each other in real time — and the platform captures every bid, every rank change, and every rupee of savings as it happens.</p>
-              <p>Aerchain had a version of this. It could run exactly one kind: a <strong>List</strong> auction, where one supplier wins every item. That works for single-vendor contracts. It does not work for a procurement team splitting a category across regions, running a hundred lots on independent timers, or needing a defensible record afterwards.</p>
+              <p>Most large-company buying happens over email. A buyer sends a request to a handful of suppliers, collects quotes back over days or weeks, and picks one.</p>
+              <p>An auction compresses all of that into a single timed event. The buyer invites suppliers into a scheduled window — often under half an hour — where they bid against each other in real time. Because the buyer is purchasing rather than selling, the price moves down instead of up. The lowest bid leads.</p>
+              <p>Done well, it turns weeks of back-and-forth into one afternoon and a defensible record. Done badly, suppliers don't show up, half the items get no bids, and the buyer finds out when it's already too late to fix.</p>
+            </div>
+            <div class="cs-fullwrap">
+              <div class="cs-eyebrow-sm">The auction lifecycle</div>
+              <div class="cs-life">
+                <div class="ph"><div class="num">1</div><div><div class="pt">Set up</div><div class="pd">Buyer builds the event — items, starting prices, bidding rules, and which suppliers to invite.</div></div><div class="dur">days</div></div>
+                <div class="ph"><div class="num">2</div><div><div class="pt">Invite &amp; pre-bid</div><div class="pd">Suppliers accept the invitation and submit an opening price before the live event opens.</div></div><div class="dur">days</div></div>
+                <div class="ph hot"><div class="num">3</div><div><div class="pt">Live bidding</div><div class="pd">Everyone bids at once against a countdown. Each new lowest bid changes the ranking, live.</div></div><div class="dur">~24 min</div></div>
+                <div class="ph"><div class="num">4</div><div><div class="pt">Close &amp; award</div><div class="pd">Bidding stops, the result locks, and the buyer awards the business.</div></div><div class="dur">minutes</div></div>
+              </div>
+              <p class="cs-strip-cap">Days of preparation for roughly twenty-four minutes that decide the price.</p>
+            </div>
+            <div class="cs-fullwrap">
+              <div class="cs-eyebrow-sm">Five words used later on this page</div>
+              <div class="cs-gloss">
+                <div class="row"><div class="term">Lot</div><div class="def">A group of items bid on and awarded together. Splitting a hundred items into ten lots lets different suppliers win different parts.</div></div>
+                <div class="row"><div class="term">Pre-bid</div><div class="def">An opening price submitted before the live event. It sets the starting point everyone bids down from.</div></div>
+                <div class="row"><div class="term">L1</div><div class="def">The leading bid — the lowest price currently on the table. L2 is second, and so on.</div></div>
+                <div class="row"><div class="term">Ceiling price</div><div class="def">The most the buyer will pay. Bids above it are blocked, so it also doubles as the baseline savings are measured against.</div></div>
+                <div class="row"><div class="term">Extension</div><div class="def">Extra time added when someone bids in the last few minutes, so a supplier can't win by hiding until the clock runs out.</div></div>
+              </div>
             </div>
           </div>
 
           <!-- 02 THE PROBLEM -->
           <div class="cs-sec" id="cs-sec-1">
-            <div class="cs-sec-header-row"><p class="cs-sec-label">02 — The problem</p></div>
+            <div class="cs-sec-header-row"><p class="cs-sec-label">03 — The problem</p></div>
             <h2 class="cs-sec-heading">It could run an auction. It couldn't run procurement.</h2>
             <div class="cs-sec-body">
               <p>The existing module treated an auction as a single event with a single winner. Real enterprise procurement isn't shaped like that — it's bundled, scheduled, audited, and negotiated. Sitting in the client calls as the designer, I watched the same four gaps surface in every conversation.</p>
@@ -196,7 +274,7 @@
 
           <!-- 03 MARKET RESEARCH -->
           <div class="cs-sec" id="cs-sec-2">
-            <div class="cs-sec-header-row"><p class="cs-sec-label">03 — Market research</p></div>
+            <div class="cs-sec-header-row"><p class="cs-sec-label">04 — Market research</p></div>
             <h2 class="cs-sec-heading">Nine platforms, read from their own documentation.</h2>
             <div class="cs-sec-body">
               <p>Before writing a line of spec, I studied how the category actually solves this — SAP Ariba, Keelvar, Coupa, Jaggaer, Zycus, GEP, Market Dojo, Prokuria and Oracle — plus the India layer that no Western analysis covers: <strong>GeM</strong>, the government portal, and <strong>mjunction</strong>, the domestic incumbent. In enterprise procurement, naming <em>is</em> usability: a buyer coming from Ariba should recognise what they're looking at.</p>
@@ -249,7 +327,7 @@
 
           <!-- 04 WHAT I CHOSE TO BUILD -->
           <div class="cs-sec" id="cs-sec-3">
-            <div class="cs-sec-header-row"><p class="cs-sec-label">04 — What I chose to build</p></div>
+            <div class="cs-sec-header-row"><p class="cs-sec-label">05 — What I chose to build</p></div>
             <h2 class="cs-sec-heading">Close the twenty-year gap — and pick what to close first.</h2>
             <div class="cs-sec-body">
               <p>Most of what v4 lacked was already standard: parallel and serial lots, Dutch and Japanese formats, decrement rules, pre-bid phases, audit logs. The job wasn't inventing a category — it was closing a twenty-year gap in three months, and deciding what to close first. Three decisions did the heavy lifting.</p>
@@ -278,7 +356,7 @@
 
           <!-- 05 THE PIVOTAL MOMENT -->
           <div class="cs-sec" id="cs-sec-4">
-            <div class="cs-sec-header-row"><p class="cs-sec-label">05 — The pivotal moment</p></div>
+            <div class="cs-sec-header-row"><p class="cs-sec-label">06 — The pivotal moment</p></div>
             <h2 class="cs-sec-heading">The change that looked like a schema migration.</h2>
             <div class="cs-sec-body">
               <p>Our enterprise pilot client ran procurement in three levels: programme → category → line item. The PRD structured auction data differently. On the surface this was a schema change — weeks of backend work and a timeline slip we didn't have room for.</p>
@@ -290,7 +368,7 @@
 
           <!-- 06 KEY FEATURES -->
           <div class="cs-sec" id="cs-sec-5">
-            <div class="cs-sec-header-row"><p class="cs-sec-label">06 — Key features</p></div>
+            <div class="cs-sec-header-row"><p class="cs-sec-label">07 — Key features</p></div>
             <h2 class="cs-sec-heading">From one auction format to a procurement event system.</h2>
             <ul class="cs-feat">
               <li><b>Four Auction Formats, One Flow</b><span>English Forward and Reverse, Dutch, and Japanese clock auctions — each with its own bidding logic, all created through the same five-step wizard. Buyers pick the negotiation style that fits the category, not the one the software supports.</span></li>
@@ -306,7 +384,7 @@
 
           <!-- 07 BEFORE & AFTER -->
           <div class="cs-sec" id="cs-sec-6">
-            <div class="cs-sec-header-row"><p class="cs-sec-label">07 — Before &amp; after</p></div>
+            <div class="cs-sec-header-row"><p class="cs-sec-label">08 — Before &amp; after</p></div>
             <h2 class="cs-sec-heading">A categorical change, not an incremental one.</h2>
             <div class="cs-fullwrap" style="margin-top:20px">
               <div class="cs-table-scroll">
@@ -328,7 +406,7 @@
 
           <!-- 08 GAPS & REFLECTION -->
           <div class="cs-sec" id="cs-sec-7">
-            <div class="cs-sec-header-row"><p class="cs-sec-label">08 — Gaps &amp; reflection</p></div>
+            <div class="cs-sec-header-row"><p class="cs-sec-label">09 — Gaps &amp; reflection</p></div>
             <h2 class="cs-sec-heading">What three months as an accidental PM taught me.</h2>
             <ul class="cs-issues two">
               <li><b>Domain depth is the fastest onboarding there is.</b><span>I picked up PM responsibilities in days, not weeks — entirely because I'd been in every client call as the designer. Proximity to the customer compounds in ways an org chart doesn't capture.</span></li>
