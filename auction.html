@@ -163,6 +163,37 @@
     .cs-leftout .cs-note-h{margin-bottom:12px}
     .cs-leftout p{font-size:1rem;color:#0f0f0d99;line-height:1.62;margin:0;max-width:62ch}
     @media(max-width:760px){.cs-leftout{padding:24px 22px}}
+    /* mapping diagram (pivotal moment) */
+    .cs-map{margin-top:26px;border:1px solid #0f0f0d12;border-radius:14px;padding:28px 30px;background:#fffdf7}
+    .cs-map-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:14px 20px;align-items:center;max-width:520px}
+    .cs-map-hd{font-family:var(--syne);text-transform:uppercase;letter-spacing:.09em;font-size:.62rem;font-weight:700;color:#0f0f0d80;padding-bottom:4px}
+    .cs-map-hd.r{color:#B8943A}
+    .cs-map-box{border-radius:8px;height:46px;display:flex;align-items:center;padding:0 18px;font-family:var(--body);font-size:.95rem;font-weight:500;color:#0f0f0d}
+    .cs-map-box.l{background:#f4efe2;border:1px solid #0f0f0d14}
+    .cs-map-box.r{background:#fbeecb;border:1px solid #e6cf95;color:#8a6d28}
+    .cs-map-arrow{color:#B8943A;font-size:1.1rem;line-height:1;text-align:center}
+    .cs-map-cap{font-family:var(--body);font-size:.86rem;color:#0f0f0d80;margin:18px 0 0;font-style:italic}
+    @media(max-width:620px){.cs-map-grid{grid-template-columns:1fr auto 1fr;gap:10px}.cs-map-box{font-size:.85rem;padding:0 12px}.cs-map{padding:22px 18px}}
+    /* feature blocks (key features) */
+    .cs-feats{margin-top:24px}
+    .cs-phase-label{font-family:var(--syne);text-transform:uppercase;letter-spacing:.14em;font-size:.64rem;font-weight:700;color:#0f0f0d66;margin:0 0 2px;padding-top:34px;border-top:1px solid #0f0f0d12}
+    .cs-feats > .cs-featblock:first-of-type .cs-phase-label,.cs-phase-label.first{padding-top:0;border-top:none}
+    .cs-featblock{margin-top:20px}
+    .cs-featblock h3{font-family:var(--body);font-weight:500;font-size:1.24rem;color:#0f0f0d;margin:10px 0 12px;line-height:1.3}
+    .cs-featblock p{font-size:1rem;color:#0f0f0d99;line-height:1.62;margin:0 0 12px;max-width:62ch}
+    .cs-featblock p:last-of-type{margin-bottom:0}
+    .cs-featblock p b{color:#0f0f0d;font-weight:600}
+    /* gaps + reflection */
+    .cs-gap{border-top:1px solid #0f0f0d12;padding-top:18px;margin-top:20px}
+    .cs-gap:first-child{border-top:none;padding-top:0;margin-top:0}
+    .cs-gap h3{font-family:var(--body);font-weight:500;font-size:1.12rem;color:#0f0f0d;margin:0 0 8px;line-height:1.35}
+    .cs-gap p{font-size:1rem;color:#0f0f0d99;line-height:1.6;margin:0;max-width:62ch}
+    .cs-part-divider{border:none;border-top:2px solid #0f0f0d1f;margin:44px 0 34px}
+    .cs-learn{margin-top:32px}
+    .cs-learn:first-of-type{margin-top:0}
+    .cs-learn h3{font-family:var(--body);font-weight:500;font-size:1.14rem;color:#0f0f0d;margin:0 0 10px;line-height:1.35}
+    .cs-learn p{font-size:1rem;color:#0f0f0d99;line-height:1.62;margin:0;max-width:62ch}
+    .cs-closingline{font-family:var(--serif);font-style:italic;font-size:1.5rem;color:#0f0f0d;margin:40px 0 0;line-height:1.35}
   </style>
 </head>
 <body>
@@ -494,65 +525,173 @@
             <div class="cs-sec-header-row"><p class="cs-sec-label">06 — The pivotal moment</p></div>
             <h2 class="cs-sec-heading">The change that looked like a schema migration.</h2>
             <div class="cs-sec-body">
-              <p>Our enterprise pilot client ran procurement in three levels: programme → category → line item. The PRD structured auction data differently. On the surface this was a schema change — weeks of backend work and a timeline slip we didn't have room for.</p>
-              <p>I spent a day mapping their hierarchy against what we'd already built and found it fit exactly onto <strong>Auction → Lot → Item.</strong> Not as a workaround — as a configuration convention. Their programme was an auction, their categories were lots, their line items were items.</p>
-              <p>Zero engineering cost. Zero timeline impact. And it turned out to be the correct long-term data model for every lot-based auction we've built since. Sign-off came the same week.</p>
+              <p>Our pilot client ran procurement in three levels: programme, then category, then line item. Our spec structured auction data differently. On the surface this was a schema change — weeks of backend work and a timeline slip we had no room for.</p>
+              <p>I spent a day mapping their hierarchy against what we'd already built, and found it fitted exactly. Not as a workaround — as a configuration convention. Their programme was an auction. Their categories were lots. Their line items were items.</p>
+            </div>
+            <div class="cs-map">
+              <div class="cs-map-grid">
+                <div class="cs-map-hd">How the client ran procurement</div><div></div><div class="cs-map-hd r">What we had already built</div>
+                <div class="cs-map-box l">Programme</div><div class="cs-map-arrow">→</div><div class="cs-map-box r">Auction</div>
+                <div class="cs-map-box l">Category</div><div class="cs-map-arrow">→</div><div class="cs-map-box r">Lot</div>
+                <div class="cs-map-box l">Line item</div><div class="cs-map-arrow">→</div><div class="cs-map-box r">Item</div>
+              </div>
+              <p class="cs-map-cap">A naming convention, not a schema change. Zero engineering cost.</p>
+            </div>
+            <div class="cs-sec-body" style="margin-top:22px">
+              <p>Zero engineering cost. Zero timeline impact. And it turned out to be the right long-term data model for every lot-based auction we've built since. Sign-off came the same week.</p>
             </div>
             <p class="cs-pull">The best product decisions look obvious in hindsight. That's how you know they were right.</p>
           </div>
 
           <!-- 06 KEY FEATURES -->
           <div class="cs-sec" id="cs-sec-5">
-            <div class="cs-sec-header-row"><p class="cs-sec-label">07 — Key features</p></div>
-            <h2 class="cs-sec-heading">From one auction format to a procurement event system.</h2>
-            <ul class="cs-feat">
-              <li><b>Four Auction Formats, One Flow</b><span>English Forward and Reverse, Dutch, and Japanese clock auctions — each with its own bidding logic, all created through the same five-step wizard. Buyers pick the negotiation style that fits the category, not the one the software supports.</span></li>
-              <li><b>Lots That Run on Their Own Clocks</b><span>Group items into named lots and choose how they open and close: all at once, one after another, or at staggered intervals. A hundred-lot event no longer means a hundred separate auctions.</span></li>
-              <li><b>Needs Attention</b><span>Before the auction goes live, the platform flags which items nobody has bid on and which suppliers accepted the invite but went quiet — with a one-click nudge on the same screen. The gaps get found while they're still fixable.</span></li>
-              <li><b>A Live Event You Can Actually Read</b><span>Every bid updates the screen in real time — rank changes, savings percentage, and which items are hot, active, or going cold. Suppliers show as active, idle, or inactive, so the buyer knows who to chase mid-event.</span></li>
-              <li><b>Smart Bids</b><span>On the supplier side, the platform calculates the exact minimum bid needed to take the lead on every item that needs one — and lets them submit all of it at once. Competitive without overshooting.</span></li>
-              <li><b>Buyer-Approved Bid Reset</b><span>A supplier who fat-fingers a bid can request a correction; the buyer approves it and the reset is logged. A safety valve no competitor documented.</span></li>
-              <li><b>A Record You Can Defend</b><span>Three reports at close: full bid progression, a tamper-evident audit trail with every actor and timestamp, and a complete message log. What used to be an unanswerable question is now a download.</span></li>
-            </ul>
-            <div class="cs-img-block" style="--cover-bg:#FFF4D0"><span class="cs-img-label"><span class="cs-img-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span><span class="cs-img-tag">Image placeholder</span><span class="cs-imgcap">Create wizard · lot scheduling · Needs Attention · live command centre.</span></span></div>
+            <div class="cs-sec-header-row"><p class="cs-sec-label">07 — What we built</p></div>
+            <h2 class="cs-sec-heading">Six things, in the order they happen.</h2>
+            <div class="cs-feats">
+
+              <div class="cs-featblock">
+                <p class="cs-phase-label first">Setup</p>
+                <h3>Four formats, one flow</h3>
+                <p>English forward and reverse, Dutch, and Japanese clock auctions — each with different bidding logic, all created through the same five-step wizard. The compatibility matrix sits behind it, so the system won't let a buyer configure a combination that can't work.</p>
+                <div class="cs-img-block" style="--cover-bg:#FFF4D0"><span class="cs-img-label"><span class="cs-img-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span><span class="cs-img-tag">Image placeholder</span><span class="cs-imgcap">Create wizard, step 1 — format selection.</span></span></div>
+              </div>
+
+              <div class="cs-featblock">
+                <h3>Lots that run on their own clocks</h3>
+                <p>Group items into named lots and choose how they open and close: all together, one after another, or closing at staggered intervals. A hundred-lot event stops being a hundred separate auctions.</p>
+                <p>And when a late bid extends one lot in sequential mode, only that lot extends — every lot after it shifts forward to absorb the change. <b>The market leader disables extensions entirely rather than solve this.</b> A buyer running thirty sequential lots shouldn't have to choose between anti-sniping protection and a schedule.</p>
+                <div class="cs-img-block" style="--cover-bg:#FFF4D0"><span class="cs-img-label"><span class="cs-img-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span><span class="cs-img-tag">Image placeholder</span><span class="cs-imgcap">Scheduling mode cards + serial lot timing table.</span></span></div>
+              </div>
+
+              <div class="cs-featblock">
+                <p class="cs-phase-label">Before the auction</p>
+                <h3>Needs Attention</h3>
+                <p>Before the auction opens, the platform names the items nobody has bid on and the suppliers who accepted the invite and then went quiet — with a nudge button beside each one.</p>
+                <p>The industry's answer to this is a reminder email the day before. Ours is a list of exactly what's wrong and who to chase, while there's still time to fix it.</p>
+                <div class="cs-img-block" style="--cover-bg:#FFF4D0"><span class="cs-img-label"><span class="cs-img-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span><span class="cs-img-tag">Image placeholder</span><span class="cs-imgcap">Invited status → Overview tab → Needs Attention panel.</span></span></div>
+              </div>
+
+              <div class="cs-featblock">
+                <p class="cs-phase-label">During</p>
+                <h3>A live event you can read</h3>
+                <p>Every bid updates the screen in real time — rank, savings, and which items are hot, active or going cold based on how many actively bidding suppliers have touched them.</p>
+                <p>Suppliers show as active, idle or inactive on interaction thresholds, so a buyer knows who's gone quiet while there's still time to do something about it. In a twenty-four minute event, that matters.</p>
+                <div class="cs-img-block" style="--cover-bg:#FFF4D0"><span class="cs-img-label"><span class="cs-img-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span><span class="cs-img-tag">Image placeholder</span><span class="cs-imgcap">Buyer Live view, Items tab.</span></span></div>
+              </div>
+
+              <div class="cs-featblock">
+                <p class="cs-phase-label">During · supplier side</p>
+                <h3>Smart Bids</h3>
+                <p>On the supplier side, the platform works out the exact minimum bid needed to take the lead on every item they're losing, and submits them together. Competitive without overshooting — because a supplier who feels the process was fair is a supplier who turns up to your next event.</p>
+                <div class="cs-img-block" style="--cover-bg:#FFF4D0"><span class="cs-img-label"><span class="cs-img-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span><span class="cs-img-tag">Image placeholder</span><span class="cs-imgcap">Supplier live view with Smart Bids.</span></span></div>
+              </div>
+
+              <div class="cs-featblock">
+                <p class="cs-phase-label">After</p>
+                <h3>A record you can defend</h3>
+                <p>Three reports generate at close: full bid progression, a tamper-evident audit trail with every actor, IP address and timestamp under a document reference, and a complete log of every message exchanged.</p>
+                <p>Every disruptive action during the event — a pause, an extension, a disqualification — carries the reason its buyer gave into that record. What used to be an unanswerable question is now a download.</p>
+                <div class="cs-img-block" style="--cover-bg:#FFF4D0"><span class="cs-img-label"><span class="cs-img-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span><span class="cs-img-tag">Image placeholder</span><span class="cs-imgcap">Export reports.</span></span></div>
+              </div>
+
+            </div>
           </div>
 
           <!-- 07 BEFORE & AFTER -->
           <div class="cs-sec" id="cs-sec-6">
-            <div class="cs-sec-header-row"><p class="cs-sec-label">08 — Before &amp; after</p></div>
-            <h2 class="cs-sec-heading">A categorical change, not an incremental one.</h2>
+            <div class="cs-sec-header-row"><p class="cs-sec-label">08 — Before and after</p></div>
+            <h2 class="cs-sec-heading">What changed between v4 and the rebuild.</h2>
             <div class="cs-fullwrap" style="margin-top:20px">
               <div class="cs-table-scroll">
                 <table class="cs-ab">
-                  <thead><tr><th>Before — Aerchain v4</th><th class="aft">After — the rebuild</th></tr></thead>
+                  <thead><tr><th>Before — v4</th><th class="aft">After</th></tr></thead>
                   <tbody>
-                    <tr><td class="bef">One auction format — List only</td><td class="aft">Six auction types buyers can actually choose from</td></tr>
-                    <tr><td class="bef">Savings calculated manually after the event</td><td class="aft">Savings computed automatically at auction close</td></tr>
-                    <tr><td class="bef">Supplier participation tracked over email</td><td class="aft">Real-time funnel from invite to qualified</td></tr>
-                    <tr><td class="bef">No audit trail</td><td class="aft">Full lifecycle audit trail, export-ready</td></tr>
-                    <tr><td class="bef">No lot structure</td><td class="aft">Lot format live with an enterprise client</td></tr>
-                    <tr><td class="bef">No pre-bid structure</td><td class="aft">Coverage scoring, Needs Attention, nudge flows</td></tr>
+                    <tr><td class="bef">The auction was a property of a quote request</td><td class="aft">The auction is its own event type, with its own lifecycle</td></tr>
+                    <tr><td class="bef">One format: English reverse only</td><td class="aft">Six validated auction type and award format combinations</td></tr>
+                    <tr><td class="bef">Lifecycle was one dot on a purchase pipeline</td><td class="aft">Draft, Pending Approval, Invited, Live, Completed, Cancelled</td></tr>
+                    <tr><td class="bef">Participation measured as emails delivered</td><td class="aft">Live funnel from invite through qualified, with engagement state</td></tr>
+                    <tr><td class="bef">No lot structure</td><td class="aft">Parallel, serial and staggered lots, with per-lot extension</td></tr>
+                    <tr><td class="bef">Savings reconstructed by hand afterwards</td><td class="aft">Computed at close against one documented baseline</td></tr>
+                    <tr><td class="bef">Extensions applied by unlabelled button</td><td class="aft">Every disruptive action carries its reason into the record</td></tr>
+                    <tr><td class="bef">Auction ended with a dismissal box</td><td class="aft">Completed view with rank, results and full history, both sides</td></tr>
+                    <tr><td class="bef">No audit trail</td><td class="aft">Tamper-evident lifecycle record, export-ready</td></tr>
                   </tbody>
                 </table>
               </div>
-              <div class="cs-img-block" style="--cover-bg:#FFF4D0"><span class="cs-img-label"><span class="cs-img-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span><span class="cs-img-tag">Image placeholder</span><span class="cs-imgcap">Old UI (left) and new UI (right), same viewport.</span></span></div>
             </div>
+            <div class="cs-fullwrap" style="margin-top:26px">
+              <div class="cs-abhead"><span class="lbl" style="background:#f2ece1;color:#0f0f0d80">Auction formats · across the market</span></div>
+              <div class="cs-table-scroll">
+                <table class="cs-ab cs-matrix">
+                  <thead><tr><th>Platform</th><th class="ctr">English rev.</th><th class="ctr">English fwd.</th><th class="ctr">Dutch</th><th class="ctr">Japanese</th></tr></thead>
+                  <tbody>
+                    <tr><td class="to">SAP Ariba</td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk warn">⚠</span></td></tr>
+                    <tr><td class="to">Jaggaer</td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk ok">✓</span></td></tr>
+                    <tr><td class="to">Coupa</td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk warn">⚠</span></td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk ok">✓</span></td></tr>
+                    <tr><td class="to">Keelvar</td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk warn">⚠</span></td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk warn">⚠</span></td></tr>
+                    <tr><td class="to">Market Dojo</td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk no">✗</span></td><td class="ctr"><span class="mk ok">✓</span></td></tr>
+                    <tr><td class="to">Aerchain v4</td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk no">✗</span></td><td class="ctr"><span class="mk no">✗</span></td><td class="ctr"><span class="mk no">✗</span></td></tr>
+                    <tr class="hl"><td class="to"><strong>Aerchain, rebuilt</strong></td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk ok">✓</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="cs-strip-cap"><span class="mk ok">✓</span> supported &nbsp;·&nbsp; <span class="mk warn">⚠</span> partial or gated &nbsp;·&nbsp; <span class="mk no">✗</span> absent. Ariba ships Japanese only after a support request to enable the template.</p>
+            </div>
+            <div class="cs-img-block" style="--cover-bg:#FFF4D0;margin-top:26px"><span class="cs-img-label"><span class="cs-img-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span><span class="cs-img-tag">Image placeholder</span><span class="cs-imgcap">The end of an auction, from the supplier's side — the v4 dismissal box beside the rebuilt Completed view. Before and after.</span></span></div>
           </div>
 
           <!-- 08 GAPS & REFLECTION -->
           <div class="cs-sec" id="cs-sec-7">
-            <div class="cs-sec-header-row"><p class="cs-sec-label">09 — Gaps &amp; reflection</p></div>
-            <h2 class="cs-sec-heading">What three months as an accidental PM taught me.</h2>
-            <ul class="cs-issues two">
-              <li><b>Domain depth is the fastest onboarding there is.</b><span>I picked up PM responsibilities in days, not weeks — entirely because I'd been in every client call as the designer. Proximity to the customer compounds in ways an org chart doesn't capture.</span></li>
-              <li><b>The pre-bid phase had more leverage than the live auction.</b><span>The live event is the part everyone wants to design. It's only as good as the data that walks into it.</span></li>
-              <li><b>Deferred decisions don't disappear.</b><span>The one place I let ambiguity sit — conditional cherry-picking logic for lots — came back during build, with less time and more people in the room. It cost more then than it would have in week two.</span></li>
-              <li><b>Specifying and designing the same screen makes both better.</b><span>Every requirement I wrote, I had to draw. Anything that couldn't be drawn wasn't actually specified yet.</span></li>
-            </ul>
-            <p class="cs-eyebrow-sm">Honest limits of the work</p>
+            <div class="cs-sec-header-row"><p class="cs-sec-label">09 — What I'd still build</p></div>
+            <h2 class="cs-sec-heading">The gaps I'd rather name than imply aren't there.</h2>
             <div class="cs-sec-body">
-              <p>The research had no <strong>primary supplier interviews</strong> — everything supplier-side came from vendor documentation and academic work. Five conversations with suppliers who bid regularly would be the single highest-value addition, and genuinely original: nobody publishes it. And the module shipped the standards first; several of the "where nobody was" bets are live with the pilot but not yet measured against a baseline.</p>
+              <p>Three months bought us an event system. It didn't buy us everything, and I'd rather name the gaps than imply they aren't there.</p>
             </div>
+            <div class="cs-decisions" style="margin-top:26px">
+              <div class="cs-gap">
+                <h3>Award optimisation</h3>
+                <p>We ship five preset award scenarios. Keelvar models award structures against real constraints — supplier caps, regional continuity, capacity limits. That's a different class of capability and we don't have it.</p>
+              </div>
+              <div class="cs-gap">
+                <h3>Combinatorial bidding</h3>
+                <p>A supplier who could deliver lots three, seven and nine more cheaply as a bundle currently has nowhere to say so. Package bids with contingent discounts are the clearest next unlock.</p>
+              </div>
+              <div class="cs-gap">
+                <h3>Multi-currency</h3>
+                <p>Deferred to the next release, and it's the single thing that limits how global this can go. A cross-border supplier can't bid in their own currency and have the ranking normalise automatically.</p>
+              </div>
+              <div class="cs-gap">
+                <h3>Supplier-facing exports</h3>
+                <p>Suppliers can't yet download their own record of an event they took part in. Given how much of this rebuild was justified by making the process feel fair, that's the gap that bothers me most.</p>
+              </div>
+            </div>
+
+            <hr class="cs-part-divider" />
+
+            <div class="cs-sec-header-row"><p class="cs-sec-label">What three months taught me</p></div>
+            <div class="cs-learns" style="margin-top:8px">
+              <div class="cs-learn">
+                <h3>Domain depth is the fastest onboarding there is</h3>
+                <p>I picked up product management responsibilities in days rather than weeks, entirely because I'd been in every client call as the designer. Proximity to the customer compounds in ways an org chart doesn't capture.</p>
+              </div>
+              <div class="cs-learn">
+                <h3>Knowing the market changes what you build, not just how you pitch it</h3>
+                <p>Studying five platforms didn't give me a feature list to copy. It told me which gaps were expected-and-missing, which were genuinely open, and — most usefully — which fights not to pick.</p>
+              </div>
+              <div class="cs-learn">
+                <h3>The pre-bid phase had more leverage than the live auction</h3>
+                <p>The live event is the part everyone wants to design. It is only ever as good as the data that walks into it.</p>
+              </div>
+              <div class="cs-learn">
+                <h3>Deferred decisions don't disappear</h3>
+                <p>The one place I let ambiguity sit — conditional cherry-picking logic for lots — came back during build, with less time and more people in the room. It cost more then than deciding it in week two would have.</p>
+              </div>
+              <div class="cs-learn">
+                <h3>Specifying and designing the same screen makes both better</h3>
+                <p>Every requirement I wrote, I had to draw. Anything I couldn't draw wasn't actually specified yet.</p>
+              </div>
+            </div>
+            <p class="cs-closingline">The auction still isn't finished. It's just finally an auction.</p>
           </div>
 
           <!-- CLOSING -->
