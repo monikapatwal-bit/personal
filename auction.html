@@ -120,6 +120,11 @@
     .cs-matrix .mk{font-size:1.05rem}
 
     .cs-pull{font-family:var(--serif);font-style:italic;font-size:clamp(1.5rem,2.7vw,2.15rem);line-height:1.2;color:#0f0f0d;border-left:3px solid var(--pink);padding-left:24px;margin:2.2em 0 0;max-width:26ch}
+    /* problem: transition line + evidence blocks */
+    .cs-transition{font-family:var(--serif);font-style:italic;font-size:1.2rem;color:#0f0f0d;margin-top:24px;max-width:62ch}
+    .cs-evb{border-top:1px solid #0f0f0d14;padding-top:26px;margin-top:30px}
+    .cs-evb-h{font-size:1.18rem;font-weight:600;color:#0f0f0d;margin:0}
+    .cs-evb-b{margin-top:10px;font-size:1rem;color:#0f0f0d99;line-height:1.65;max-width:62ch}
 
     .cs-closing{margin-top:clamp(48px,7vw,80px);padding-top:clamp(36px,5vw,56px);border-top:1px solid #0f0f0d1a;padding-bottom:3rem}
     .cs-closing h2{font-family:var(--serif);font-style:italic;font-size:clamp(1.8rem,4vw,2.8rem);color:#0f0f0d;line-height:1.05;margin:0}
@@ -256,20 +261,52 @@
             </div>
           </div>
 
-          <!-- 02 THE PROBLEM -->
+          <!-- 03 THE PROBLEM -->
           <div class="cs-sec" id="cs-sec-1">
             <div class="cs-sec-header-row"><p class="cs-sec-label">03 — The problem</p></div>
-            <h2 class="cs-sec-heading">It could run an auction. It couldn't run procurement.</h2>
+            <h2 class="cs-sec-heading">We hadn't built an auction. We'd built a quote form with a clock on it.</h2>
             <div class="cs-sec-body">
-              <p>The existing module treated an auction as a single event with a single winner. Real enterprise procurement isn't shaped like that — it's bundled, scheduled, audited, and negotiated. Sitting in the client calls as the designer, I watched the same four gaps surface in every conversation.</p>
+              <p>The problem wasn't a missing feature list. It was that the auction had been built as a variation on our quotation tool — the thing that collects static prices over email — rather than as a live event.</p>
+              <p>The product said so out loud. On the supplier's own invitation screen, the event type field read <strong>RFQ</strong>, with the auction listed underneath as a property of it.</p>
             </div>
-            <ul class="cs-issues two">
-              <li><b>The format ceiling</b><span>One format meant one shape of deal. Enterprise buyers wanted items grouped into lots with independent timers — and we had to say no in the room.</span></li>
-              <li><b>The savings paradox</b><span>The whole point of an auction is savings. Ours were calculated manually, in a spreadsheet, after the event closed. The number that justified the tool arrived too late to act on.</span></li>
-              <li><b>The pre-bid blind spot</b><span>Buyers discovered half their items had no supplier coverage <em>after</em> the auction went live. By then there was nothing to do. The live event was only ever as good as what walked into it.</span></li>
-              <li><b>The compliance void</b><span>No audit trail. For regulated procurement teams, an event they can't defend line-by-line to an auditor is an event they can't run.</span></li>
-            </ul>
-            <div class="cs-img-block" style="--cover-bg:#FFF4D0"><span class="cs-img-label"><span class="cs-img-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span><span class="cs-img-tag">Image placeholder</span><span class="cs-imgcap">The original module: one format, one winner, no record.</span></span></div>
+            <div class="cs-img-block" style="--cover-bg:#FFF4D0"><span class="cs-img-label"><span class="cs-img-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span><span class="cs-img-tag">Image placeholder · key screenshot</span><span class="cs-imgcap">v4 supplier invitation — Event Type reads <strong>RFQ</strong>, with "auction" underneath as a property. Annotate the RFQ value; redact any client branding.</span></span></div>
+            <p class="cs-transition">Once you see that, everything else follows.</p>
+
+            <div class="cs-evb">
+              <h3 class="cs-evb-h">The event had no shape</h3>
+              <p class="cs-evb-b">The status timeline on every buyer screen was a purchase pipeline: New, Creation Date, Auction Release, then approval, purchase order, receipt. The entire live auction — the thing the product exists for — was one dot on it. No pre-bid stage. No live stage. No completed stage.</p>
+              <div class="cs-img-block" style="--cover-bg:#FFF4D0"><span class="cs-img-label"><span class="cs-img-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span><span class="cs-img-tag">Image placeholder</span><span class="cs-imgcap">v4 buyer detail — the lifecycle timeline, a purchase pipeline with the auction as one dot.</span></span></div>
+            </div>
+
+            <div class="cs-evb">
+              <h3 class="cs-evb-h">Participation was counted in emails</h3>
+              <p class="cs-evb-b">The participation card showed Sent, Delivered, Viewed, Bids, Rejected. Those are mailing metrics. They can tell a buyer that three invitations were delivered. They cannot tell a buyer that a supplier accepted and then went quiet — which is the only question worth asking in the hour before an auction opens.</p>
+              <div class="cs-img-block" style="--cover-bg:#FFF4D0"><span class="cs-img-label"><span class="cs-img-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span><span class="cs-img-tag">Image placeholder</span><span class="cs-imgcap">v4 Supplier Participation card — Sent, Delivered, Viewed, Bids, Rejected.</span></span></div>
+            </div>
+
+            <div class="cs-evb">
+              <h3 class="cs-evb-h">Extending a live auction was a row of buttons</h3>
+              <p class="cs-evb-b">Plus five minutes, plus ten, plus fifteen, plus twenty, plus twenty-five, plus thirty. No reason field. No record of why. An action with contractual consequences, given the interaction weight of a microwave.</p>
+              <div class="cs-img-block" style="--cover-bg:#FFF4D0"><span class="cs-img-label"><span class="cs-img-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span><span class="cs-img-tag">Image placeholder</span><span class="cs-imgcap">v4 buyer live view — empty trend chart, zeroed insights, and a row of extension buttons.</span></span></div>
+            </div>
+
+            <div class="cs-evb">
+              <h3 class="cs-evb-h">And when it ended, it just ended</h3>
+              <p class="cs-evb-b">The supplier who had spent the last half hour competing got a white card, a blue checkmark, and a timestamp. No rank. No result. No indication of whether they'd won.</p>
+              <div class="cs-img-block" style="--cover-bg:#FFF4D0"><span class="cs-img-label"><span class="cs-img-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span><span class="cs-img-tag">Image placeholder</span><span class="cs-imgcap">v4 supplier "Auction has been ended" modal — keep the white space; the emptiness is the point.</span></span></div>
+            </div>
+
+            <div class="cs-fullwrap">
+              <p class="cs-eyebrow-sm">What surprised me</p>
+              <div class="cs-sec-body">
+                <p>Our post-auction analysis was genuinely good. Item-by-supplier comparison grids, five award scenarios, bid version history logged down to the IP address, initial-versus-final analysis per item and per supplier. All of it inherited from the quotation module.</p>
+              </div>
+              <div class="cs-img-block" style="--cover-bg:#FFF4D0"><span class="cs-img-label"><span class="cs-img-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span><span class="cs-img-tag">Image placeholder</span><span class="cs-imgcap">v4 Analysis tab — mature evaluation capability, inherited wholesale, and the reason nobody noticed the event layer was missing.</span></span></div>
+              <div class="cs-sec-body">
+                <p>We were sophisticated at judging bids and primitive at running the event that produced them. That was the whole problem, and it had been invisible because the half we were good at was the half people looked at afterwards.</p>
+              </div>
+              <p class="cs-pull">An auction isn't a document. It's an event. We had built a document.</p>
+            </div>
           </div>
 
           <!-- 03 MARKET RESEARCH -->
