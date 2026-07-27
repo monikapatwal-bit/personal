@@ -151,6 +151,18 @@
     .cs-ab td.v4{background:#fff7e4}
     .cs-ab tr.hl td{background:#fff7e4}
     .cs-ab tbody tr:hover td.v4,.cs-ab tbody tr.hl:hover td{background:#fdf0d0}
+    .cs-decisions{margin-top:30px}
+    .cs-decision{border-top:1px solid #0f0f0d14;padding-top:22px;margin-top:28px}
+    .cs-decision:first-child{margin-top:0}
+    .cs-decision .dn{font-family:var(--syne);text-transform:uppercase;letter-spacing:.1em;font-size:.6rem;font-weight:700;color:var(--pink);margin:0 0 8px}
+    .cs-decision h3{font-family:var(--body);font-weight:500;font-size:1.12rem;color:#0f0f0d;margin:0 0 10px;line-height:1.35}
+    .cs-decision p{font-size:1rem;color:#0f0f0d99;line-height:1.62;margin:0 0 10px;max-width:62ch}
+    .cs-decision p:last-child{margin-bottom:0}
+    .cs-decision p b{color:#0f0f0d;font-weight:600}
+    .cs-leftout{margin-top:38px;background:#f7f0df;border:1px solid #0f0f0d12;border-radius:14px;padding:30px 32px}
+    .cs-leftout .cs-note-h{margin-bottom:12px}
+    .cs-leftout p{font-size:1rem;color:#0f0f0d99;line-height:1.62;margin:0;max-width:62ch}
+    @media(max-width:760px){.cs-leftout{padding:24px 22px}}
   </style>
 </head>
 <body>
@@ -416,29 +428,64 @@
           <!-- 04 WHAT I CHOSE TO BUILD -->
           <div class="cs-sec" id="cs-sec-3">
             <div class="cs-sec-header-row"><p class="cs-sec-label">05 — What I chose to build</p></div>
-            <h2 class="cs-sec-heading">Close the twenty-year gap — and pick what to close first.</h2>
+            <h2 class="cs-sec-heading">Three months buys you one bet. I made it on the event.</h2>
             <div class="cs-sec-body">
-              <p>Most of what v4 lacked was already standard: parallel and serial lots, Dutch and Japanese formats, decrement rules, pre-bid phases, audit logs. The job wasn't inventing a category — it was closing a twenty-year gap in three months, and deciding what to close first. Three decisions did the heavy lifting.</p>
+              <p>I stopped trying to win on evaluation. Keelvar's entire company is award optimisation — modelling scenarios against supplier caps, regional continuity, capacity limits. Ariba and Jaggaer both ship optimisation across millions of variables. We were not closing that gap in a quarter, and a shallow version of something three companies already do well would have been worse than nothing.</p>
+              <p>What nobody was doing well was the event itself. So that's where the work went.</p>
             </div>
-            <ul class="cs-issues" style="max-width:none;margin-top:18px">
-              <li><b>Compatibility as a product decision, not an engineering one.</b><span>I built an auction-type × award-format matrix and documented <em>why</em> each incompatible pair fails — a Dutch auction ends the moment someone accepts, so it can&rsquo;t compare items one by one; a Japanese knockout narrows to a single winner, which clashes with awarding items separately. Deciding what we wouldn't build, with reasoning, protected the three-month window.</span></li>
-              <li><b>Pre-bid as the leverage point.</b><span>The market's answer to weak coverage was a reminder email. I specced a pre-bid wizard, item-level coverage scoring, and a Needs Attention panel that surfaces weak items and silent suppliers <em>while there's still time to fix them</em> — the one place the whole category had left empty.</span></li>
-              <li><b>A dynamic ceiling per supplier.</b><span>The original logic used a single buyer-defined ceiling. I changed it so each supplier's own pre-bid becomes their ceiling reference in the live event — turning a static gate into a per-supplier baseline, and making savings measurable per relationship rather than in aggregate.</span></li>
-            </ul>
-            <div class="cs-fullwrap">
-              <div class="cs-abhead"><span class="lbl" style="background:#f2ece1;color:#0f0f0d80">Compatibility matrix · auction type × award format</span></div>
-              <div class="cs-table-scroll">
-                <table class="cs-ab cs-matrix">
-                  <thead><tr><th>Auction type</th><th class="ctr">List</th><th class="ctr">Lot</th><th class="ctr">Cherry</th><th>Why</th></tr></thead>
-                  <tbody>
-                    <tr><td class="to">English Reverse</td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk ok">✓</span></td><td class="as">Real-time competition supports all allocation types</td></tr>
-                    <tr><td class="to">English Forward</td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk warn">⚠</span></td><td class="ctr"><span class="mk no">✗</span></td><td class="as">Designed for selling defined assets</td></tr>
-                    <tr><td class="to">Dutch</td><td class="ctr"><span class="mk warn">⚠</span></td><td class="ctr"><span class="mk warn">⚠</span></td><td class="ctr"><span class="mk no">✗</span></td><td class="as">Instant-accept can't support item-level comparison</td></tr>
-                    <tr><td class="to">Japanese (clock)</td><td class="ctr"><span class="mk warn">⚠</span></td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk no">✗</span></td><td class="as">Clock elimination conflicts with independent item allocation</td></tr>
-                  </tbody>
-                </table>
+
+            <div class="cs-decisions">
+              <div class="cs-decision">
+                <p class="dn">Decision 1</p>
+                <h3>Compatibility as a product decision, not an engineering one</h3>
+                <p>I built a matrix of auction type against award format and documented why each incompatible pair fails. Dutch instant-accept can't support item-level comparison. Japanese clock elimination conflicts with independent item allocation.</p>
+                <p>Deciding what we <b>wouldn't</b> build, with the reasoning attached, is what protected the timeline. Nobody had to relitigate it mid-sprint.</p>
               </div>
-              <p class="cs-strip-cap"><span class="mk ok">✓</span> supported &nbsp;·&nbsp; <span class="mk warn">⚠</span> conditional &nbsp;·&nbsp; <span class="mk no">✗</span> structurally misaligned — documented so the flow never offers a broken pairing.</p>
+
+              <div class="cs-fullwrap">
+                <div class="cs-abhead"><span class="lbl" style="background:#f2ece1;color:#0f0f0d80">Compatibility matrix · auction type × award format</span></div>
+                <div class="cs-table-scroll">
+                  <table class="cs-ab cs-matrix">
+                    <thead><tr><th>Auction type</th><th class="ctr">List</th><th class="ctr">Lot</th><th class="ctr">Cherry</th><th>Why</th></tr></thead>
+                    <tbody>
+                      <tr><td class="to">English Reverse</td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk ok">✓</span></td><td class="as">Real-time competition supports all allocation types</td></tr>
+                      <tr><td class="to">English Forward</td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk warn">⚠</span></td><td class="ctr"><span class="mk no">✗</span></td><td class="as">Designed for selling defined assets</td></tr>
+                      <tr><td class="to">Dutch</td><td class="ctr"><span class="mk warn">⚠</span></td><td class="ctr"><span class="mk warn">⚠</span></td><td class="ctr"><span class="mk no">✗</span></td><td class="as">Instant-accept can't support item-level comparison</td></tr>
+                      <tr><td class="to">Japanese (clock)</td><td class="ctr"><span class="mk warn">⚠</span></td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk no">✗</span></td><td class="as">Clock elimination conflicts with independent item allocation</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p class="cs-strip-cap"><span class="mk ok">✓</span> supported &nbsp;·&nbsp; <span class="mk warn">⚠</span> conditional &nbsp;·&nbsp; <span class="mk no">✗</span> structurally misaligned — documented so the flow never offers a broken pairing.</p>
+              </div>
+
+              <div class="cs-decision">
+                <p class="dn">Decision 2</p>
+                <h3>Pre-bid as the leverage point</h3>
+                <p>The obvious investment was the live bidding screen. The high-leverage one was the two hours before it. The live event is only ever as good as the data that walks into it.</p>
+                <p>So the pre-bid phase got a structured wizard, item-level coverage scoring, and a panel that names weak items and silent suppliers while there's still time to act on either.</p>
+              </div>
+
+              <div class="cs-decision">
+                <p class="dn">Decision 3</p>
+                <h3>A ceiling price per supplier</h3>
+                <p>The original logic used one buyer-defined ceiling for everyone. I changed it so each supplier's own pre-bid becomes their reference point in the live event.</p>
+                <p>That turns a static gate into a per-supplier baseline, and makes savings measurable per relationship rather than only in aggregate.</p>
+              </div>
+
+              <div class="cs-decision">
+                <p class="dn">Decision 4</p>
+                <h3>One baseline for savings</h3>
+                <p>When there's no pre-bid phase, ceiling price becomes the benchmark — in every format, every time.</p>
+                <p>That sounds like a spec detail. It isn't. Savings methodology in reverse auctions is genuinely contested, and published industry benchmarks swing from 19% to 7% across consecutive quarters partly because everyone measures differently. Fixing one baseline is what makes our numbers comparable event to event.</p>
+              </div>
+            </div>
+
+            <div class="cs-leftout">
+              <p class="cs-note-h">And what I deliberately left out</p>
+              <p>Award optimisation. Package bids with contingent discounts. Multi-currency. Bid transformation for landed cost. Each of these is real capability that competitors ship and we don't. Each would have consumed the quarter on its own. Naming them as out of scope in the spec — rather than leaving them ambiguous — is what let the team move without stopping to argue about them.</p>
+              <div class="cs-chips">
+                <span class="cs-chip">Award optimisation</span><span class="cs-chip">Package bids</span><span class="cs-chip">Multi-currency</span><span class="cs-chip">Bid transformation</span>
+              </div>
             </div>
           </div>
 
