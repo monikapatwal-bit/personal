@@ -136,6 +136,21 @@
     .cs-closing a.btn.fill:hover{color:#fff;opacity:.92}
     .cs-imgcap{font-style:italic}
     .cs-src{font-family:var(--body);font-size:.82rem;font-style:italic;color:#0f0f0d73;margin-top:1.4em}
+    /* market research components */
+    .cs-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .cs-chip{font-family:var(--body);font-size:.82rem;color:#0f0f0d;padding:7px 14px;border:1px solid #0f0f0d1f;border-radius:999px;background:#fffdf7}
+    .cs-scards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:18px}
+    .cs-scards .sc{border:1px solid #0f0f0d1a;border-radius:10px;padding:22px;background:#fffdf7}
+    .cs-scards .sc .l{font-family:var(--syne);text-transform:uppercase;letter-spacing:.1em;font-size:.6rem;font-weight:700;color:var(--pink);margin-bottom:10px}
+    .cs-scards .sc p{font-size:.92rem;color:#0f0f0d99;line-height:1.55;margin:0}
+    @media(max-width:760px){.cs-scards{grid-template-columns:1fr}}
+    .cs-findings li p{color:#0f0f0d99;font-size:.98rem;line-height:1.6;margin:8px 0 0}
+    .cs-findings li p.sub{font-size:.9rem;color:#0f0f0d80;font-style:italic;margin-top:8px}
+    .cs-note-h{font-weight:600;color:#0f0f0d;font-size:1.05rem;margin:0 0 8px}
+    .cs-ab th.v4{background:#fbeecb;color:#B8943A}
+    .cs-ab td.v4{background:#fff7e4}
+    .cs-ab tr.hl td{background:#fff7e4}
+    .cs-ab tbody tr:hover td.v4,.cs-ab tbody tr.hl:hover td{background:#fdf0d0}
   </style>
 </head>
 <body>
@@ -309,57 +324,93 @@
             </div>
           </div>
 
-          <!-- 03 MARKET RESEARCH -->
+          <!-- 04 MARKET RESEARCH -->
           <div class="cs-sec" id="cs-sec-2">
             <div class="cs-sec-header-row"><p class="cs-sec-label">04 — Market research</p></div>
-            <h2 class="cs-sec-heading">Nine platforms, read from their own documentation.</h2>
+            <h2 class="cs-sec-heading">Before deciding what to build, I wanted to know what good already looked like.</h2>
             <div class="cs-sec-body">
-              <p>Before writing a line of spec, I studied how the category actually solves this — SAP Ariba, Keelvar, Coupa, Jaggaer, Zycus, GEP, Market Dojo, Prokuria and Oracle — plus the India layer that no Western analysis covers: <strong>GeM</strong>, the government portal, and <strong>mjunction</strong>, the domestic incumbent. In enterprise procurement, naming <em>is</em> usability: a buyer coming from Ariba should recognise what they're looking at.</p>
-            </div>
-            <div class="cs-fullwrap">
-              <div class="cs-abhead"><span class="lbl" style="background:#f2ece1;color:#0f0f0d80">State of the market vs Aerchain v4</span></div>
-              <div class="cs-table-scroll">
-                <table class="cs-ab">
-                  <thead><tr><th>Capability</th><th class="cc">Ariba</th><th class="cc">Keelvar</th><th class="cc">Mid-market</th><th class="cc">Aerchain v4</th></tr></thead>
-                  <tbody>
-                    <tr><td class="grp" colspan="5">Standard across the market</td></tr>
-                    <tr><td class="cap">More than one auction format (English, Dutch, Japanese)</td><td class="y">Yes</td><td class="y">Yes</td><td class="pt">Partial</td><td class="n">No</td></tr>
-                    <tr><td class="cap">Group items into lots on their own timers</td><td class="y">Yes</td><td class="pt">Partial</td><td class="pt">Partial</td><td class="n">No</td></tr>
-                    <tr><td class="cap">Overtime to stop last-second sniping</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
-                    <tr><td class="cap">A pre-bid phase before going live</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
-                    <tr><td class="grp" colspan="5">Where nobody was — including us</td></tr>
-                    <tr><td class="cap">Overtime when lots close one after another</td><td class="n">No</td><td class="n">No</td><td class="n">No</td><td class="n">No</td></tr>
-                    <tr><td class="cap">Shows which items have no bids yet — before it starts</td><td class="n">No</td><td class="n">No</td><td class="n">No</td><td class="n">No</td></tr>
-                    <tr><td class="cap">Shows which suppliers are active right now</td><td class="n">No</td><td class="n">No</td><td class="n">No</td><td class="n">No</td></tr>
-                    <tr><td class="cap">Flags which items are hot or going cold</td><td class="n">No</td><td class="n">No</td><td class="n">No</td><td class="n">No</td></tr>
-                    <tr><td class="cap">Tells a supplier the exact bid to take the lead</td><td class="n">No</td><td class="n">No</td><td class="n">No</td><td class="n">No</td></tr>
-                    <tr><td class="cap">Buyer can approve a bid correction</td><td class="n">No</td><td class="n">No</td><td class="n">No</td><td class="n">No</td></tr>
-                    <tr><td class="cap">A tamper-proof record of the whole event</td><td class="pt">Partial</td><td class="pt">Partial</td><td class="pt">Partial</td><td class="n">No</td></tr>
-                  </tbody>
-                </table>
-              </div>
-              <p class="cs-strip-cap">The top half is what the market already had and we didn&rsquo;t. The bottom half is what no one had built yet — that&rsquo;s where the redesign went.</p>
+              <p>I had three months and no spec to work from. Rather than start designing, I spent the first stretch studying what a serious auction module already contains — working from event rule guides, supplier manuals and filed patents rather than marketing pages.</p>
             </div>
 
             <div class="cs-fullwrap">
-              <p class="cs-eyebrow-sm">Three findings</p>
+              <p class="cs-eyebrow-sm">What I studied</p>
+              <div class="cs-chips">
+                <span class="cs-chip">SAP Ariba</span><span class="cs-chip">Keelvar</span><span class="cs-chip">Coupa</span><span class="cs-chip">Jaggaer</span><span class="cs-chip">Prokuria</span>
+              </div>
+              <div class="cs-scards">
+                <div class="sc"><div class="l">Sources</div><p>Event rule reference guides, supplier bidding manuals, product documentation, and filed patents — not marketing pages.</p></div>
+                <div class="sc"><div class="l">Compared across</div><p>Auction formats, lot scheduling, bid rules, the live event screen, and audit and export.</p></div>
+                <div class="sc"><div class="l">Also looked at</div><p>Terminology and defaults, so a buyer arriving from Ariba would recognise our screens.</p></div>
+              </div>
+            </div>
+
+            <p class="cs-transition">Three things came out of it.</p>
+
+            <div class="cs-fullwrap">
+              <p class="cs-eyebrow-sm">Three key findings</p>
               <ol class="cs-findings">
-                <li><b>These tools help you pick a winner. They don't help you run the event.</b><span>Every major platform puts its effort into comparing bids after the auction closes. Almost nothing goes into the hour when suppliers are actually bidding — Keelvar, Coupa and Jaggaer all lead with award analysis; none leads with the live screen.</span></li>
-                <li><b>SAP hit a hard problem, patented the fix, then switched it off.</b><span>Ariba disables overtime entirely in serial-lot bidding — while holding a patent (US 7152043) that describes how to resolve the underlying scheduling collision. The problem was real, solvable, and unclaimed.</span></li>
-                <li><b>Nobody checks whether an auction will work before it starts.</b><span>The industry's answer to weak supplier coverage is a reminder email the day before. Ariba's own guidance treats coverage as a question for the buyer to think about, not something the product answers.</span></li>
+                <li><b>These tools help you pick a winner. They don't help you run the event.</b><p>Every big platform puts its effort into comparing bids after the auction closes. Almost nothing goes into the hour when suppliers are actually bidding.</p><p class="sub">Keelvar, Coupa and Jaggaer all lead with award analysis. None leads with the live screen.</p></li>
+                <li><b>SAP hit a hard problem, patented the fix, then switched the feature off.</b><p>When lots close one after another, a last-second bid can push one lot's end time into the next lot's slot. SAP holds a patent describing how to handle this. In their shipping product they simply disable extensions in that mode.</p><p class="sub">The problem was real, solvable, and nobody had claimed it.</p></li>
+                <li><b>Nobody checks whether an auction will work before it starts.</b><p>If half your items have no supplier interest, you find out when bidding opens. By then it's too late. The industry's answer is a reminder email the day before.</p><p class="sub">Ariba's own guidance treats supplier coverage as a question for the buyer to think about, not something the product answers.</p></li>
               </ol>
             </div>
 
             <div class="cs-fullwrap">
-              <p class="cs-eyebrow-sm">What the research settled</p>
-              <ul class="cs-issues two">
-                <li><b>Savings has no agreed benchmark.</b><span>Keelvar claims 3–25%, Zycus 5–20%, Jaggaer 10–15% (relative), and Unit4's measured quarters run 7.6–19.6%. Fixing ceiling price as the savings baseline is a stance on a contested question — not a spec detail.</span></li>
-                <li><b>Indian buyers are calibrated on fixed rules.</b><span>GeM extends by a fixed 15 minutes on any late bid, every time. Every Indian procurement pro carries that mental model — so a configurable extension is more powerful but less familiar. An adoption consideration, not just a feature.</span></li>
-                <li><b>Audit is commercial, not compliance.</b><span>The EU has permitted e-auctions for two decades, yet they're under 1% of public contracts — the gap is trust and defensibility. That's what makes a tamper-evident record worth building.</span></li>
-                <li><b>The supplier side is substantive, not cosmetic.</b><span>The research on reverse auctions finds a supplier's perception of procedural fairness drives the relationship — so readable rules, visible bid history and a stated reason on any pause are design decisions, not decoration.</span></li>
-              </ul>
-              <p class="cs-src">Sources: each platform's own product documentation and learning material; SAP patent US 7152043; EU Directive 2004/18/EC and European Parliament usage figures; academic work on reverse-auction savings methodology and buyer–supplier relationships. Compiled July 2026. "Not found" in the matrix means absent from public docs, which is weaker than proven absence.</p>
+              <p class="cs-eyebrow-sm">Before bidding opens · what the buyer gets</p>
+              <div class="cs-table-scroll">
+                <table class="cs-ab">
+                  <thead><tr><th style="width:22%">Platform</th><th class="aft">Pre-live capability</th></tr></thead>
+                  <tbody>
+                    <tr><td class="to">SAP Ariba</td><td class="as">A preview window where suppliers can submit pre-bids, and the option to lock out anyone who doesn't.</td></tr>
+                    <tr><td class="to">Coupa</td><td class="as">An RFx round can run as the pre-bidding phase, collecting prices ahead of the live event.</td></tr>
+                    <tr><td class="to">Keelvar</td><td class="as">Bid validation on submission and qualification questionnaires that gate access to the bid sheet.</td></tr>
+                    <tr><td class="to">Prokuria</td><td class="as">A reminder email 24 hours before the deadline.</td></tr>
+                    <tr><td class="to">Market Dojo</td><td class="as">Standard invitations and acceptance tracking.</td></tr>
+                    <tr class="hl"><td class="to"><strong>Aerchain v4</strong></td><td class="as">A coverage percentage per supplier and a reminder bell beside each name — but no way to see which items had no bids at all.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="cs-strip-cap">Every platform gates <em>who can enter</em>. None of them tells the buyer whether the auction is actually <em>ready</em>.</p>
             </div>
+
+            <div class="cs-fullwrap">
+              <div class="cs-note-box">
+                <p class="cs-note-h">And one thing I had to accept</p>
+                <p>Most of what we were missing was already standard. We weren't inventing a category. We were closing a twenty-year gap in three months, and the real work was choosing which parts to close first.</p>
+                <div class="cs-chips" style="margin-top:16px">
+                  <span class="cs-chip">Parallel and serial lots</span><span class="cs-chip">Dutch and Japanese formats</span><span class="cs-chip">Decrement rules</span><span class="cs-chip">Pre-bid phases</span><span class="cs-chip">Audit logs</span>
+                </div>
+              </div>
+            </div>
+
+            <p class="cs-transition">Here is the same picture as a table — the state of the market, and where our own product sat inside it.</p>
+
+            <div class="cs-fullwrap">
+              <div class="cs-table-scroll">
+                <table class="cs-ab cs-matrix">
+                  <thead><tr><th>Capability</th><th class="ctr">Ariba</th><th class="ctr">Keelvar</th><th class="ctr">Mid-market</th><th class="ctr v4">Aerchain v4</th></tr></thead>
+                  <tbody>
+                    <tr><td class="grp" colspan="5">Standard across the market</td></tr>
+                    <tr><td class="cap">English, Dutch and Japanese formats</td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk warn">⚠</span></td><td class="ctr v4"><span class="mk no">✗</span></td></tr>
+                    <tr><td class="cap">Lots: parallel, serial, staggered</td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk warn">⚠</span></td><td class="ctr"><span class="mk warn">⚠</span></td><td class="ctr v4"><span class="mk no">✗</span></td></tr>
+                    <tr><td class="cap">Overtime and anti-sniping</td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr v4"><span class="mk ok">✓</span></td></tr>
+                    <tr><td class="cap">Pre-bid phase before going live</td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr"><span class="mk ok">✓</span></td><td class="ctr v4"><span class="mk ok">✓</span></td></tr>
+                    <tr><td class="grp" colspan="5">Where nobody was — including us</td></tr>
+                    <tr><td class="cap">Overtime inside serial-lot mode</td><td class="ctr"><span class="mk no">✗</span></td><td class="ctr"><span class="mk no">✗</span></td><td class="ctr"><span class="mk no">✗</span></td><td class="ctr v4"><span class="mk no">✗</span></td></tr>
+                    <tr><td class="cap">Item coverage scoring pre-live</td><td class="ctr"><span class="mk no">✗</span></td><td class="ctr"><span class="mk no">✗</span></td><td class="ctr"><span class="mk no">✗</span></td><td class="ctr v4"><span class="mk no">✗</span></td></tr>
+                    <tr><td class="cap">Live supplier engagement state</td><td class="ctr"><span class="mk no">✗</span></td><td class="ctr"><span class="mk no">✗</span></td><td class="ctr"><span class="mk no">✗</span></td><td class="ctr v4"><span class="mk no">✗</span></td></tr>
+                    <tr><td class="cap">Item heat: hot, active, cold</td><td class="ctr"><span class="mk no">✗</span></td><td class="ctr"><span class="mk no">✗</span></td><td class="ctr"><span class="mk no">✗</span></td><td class="ctr v4"><span class="mk no">✗</span></td></tr>
+                    <tr><td class="cap">Supplier smart-bid assistance</td><td class="ctr"><span class="mk no">✗</span></td><td class="ctr"><span class="mk no">✗</span></td><td class="ctr"><span class="mk no">✗</span></td><td class="ctr v4"><span class="mk no">✗</span></td></tr>
+                    <tr><td class="cap">Buyer-approved bid reset</td><td class="ctr"><span class="mk no">✗</span></td><td class="ctr"><span class="mk no">✗</span></td><td class="ctr"><span class="mk no">✗</span></td><td class="ctr v4"><span class="mk no">✗</span></td></tr>
+                    <tr><td class="cap">Tamper-evident audit record</td><td class="ctr"><span class="mk warn">⚠</span></td><td class="ctr"><span class="mk warn">⚠</span></td><td class="ctr"><span class="mk warn">⚠</span></td><td class="ctr v4"><span class="mk no">✗</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="cs-strip-cap"><span class="mk ok">✓</span> supported &nbsp;·&nbsp; <span class="mk warn">⚠</span> partial or gated &nbsp;·&nbsp; <span class="mk no">✗</span> absent — the state of the market and of our own product when I started.</p>
+              <p class="cs-src">Every claim traces to each platform's own event-rule guides, supplier manuals, product docs and filed patents (including Ariba's US 7152043, filed before the SAP acquisition) — not marketing pages. "Absent" reflects public documentation, which is weaker than proven absence.</p>
+            </div>
+
+            <p class="cs-transition">The second group is where I decided to spend the three months.</p>
           </div>
 
           <!-- 04 WHAT I CHOSE TO BUILD -->
